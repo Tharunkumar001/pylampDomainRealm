@@ -115,7 +115,7 @@
   border-radius: 1.5rem;
   padding: 1rem;
   display: block;
-  
+  width: 15rem;
 }
 
 .submitButton{
@@ -124,6 +124,7 @@
   font-weight: bold;
   border: none;
   padding: 1rem;
+  float: right;
 }
 
 .submitButton:hover{

@@ -6,12 +6,32 @@ import { useState } from 'react';
 import YouTube from "@material-ui/icons/YouTube";
 import LinkedIn from "@material-ui/icons/LinkedIn";
 import Instagram from "@material-ui/icons/Instagram";
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
+import { useRouter } from 'next/dist/client/router';
 
 export default function Home() {
   const [data,setData] = useState({name:"",rollNo:"",class:""});
+  const [open,setOpen] = useState(false);
+  const router = useRouter();
+
+  const handleClose = () => {
+    setOpen(false);
+  }
+
+  const handleOpen = () => {
+    setOpen(true);
+  }
+
   const submitHandler = (e) => {
     e.preventDefault();
+
+    handleOpen();
   }
+
+  const routeAttendancePage = () => {
+    router.push("/Attendance")
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -35,17 +55,20 @@ export default function Home() {
         <div className={styles.grid}>
           <label>
             <form className={styles.formLabel} onSubmit={submitHandler}>
-              <input placeholder="Name" value={data.name} type="text" name="inputForName" required  className={styles.input}
+              <input placeholder="Name" autoComplete="off" value={data.name.trim()} type="text" name="inputForName" required  className={styles.input}
                 onChange={e => setData({...data, name:e.target.value})}
               /><br />
-              
-              <input placeholder="RollNo" value={data.rollNo} type="text" name="inputForName" required  className={styles.input}
+
+              <input placeholder="RollNo" autoComplete="off" value={data.rollNo.trim()} type="text" name="inputForName" required  className={styles.input}
                 onChange={e => setData({...data, rollNo:e.target.value})}
               /><br />
 
-              <input placeholder="Class" value={data.class} type="text" name="inputForName" required className={styles.input} 
-                onChange={e => setData({...data, class:e.target.value})}
-              /><br />
+              <select value={data.class} className={styles.input} 
+                onChange={e => setData({...data, class:e.target.value})} required>
+                  <option value="20CSE2A">20CSE2A</option>
+                  <option value="20CSE2B">20CSE2B</option>
+              </select>    
+              <br />
 
               <button type="submit" className={styles.submitButton}>Submit <code>🏏</code></button>
             </form>
@@ -56,9 +79,33 @@ export default function Home() {
       <footer className={styles.footer}>
           
           <a href="https://youtu.be/dG4DGVikMpU"><YouTube /></a>
-          <a href=""><LinkedIn /></a>
+          <a href="www.linkedin.com/in/pylampofficial"><LinkedIn /></a>
           <a href=""><Instagram /></a>
       </footer>
+
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        >
+        <DialogTitle className={styles.alertDialogTitle}>
+            Well Done Folks!!!!
+        </DialogTitle>
+        <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+                Successfully your attendance marked..
+            </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+        <Button onClick={routeAttendancePage} autoFocus>
+            Look🧐
+        </Button>
+        <Button onClick={handleClose} autoFocus>
+            Close
+        </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   )
 }

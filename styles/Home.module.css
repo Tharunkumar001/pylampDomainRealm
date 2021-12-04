@@ -19,6 +19,9 @@
   border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
+  row-gap: 2rem;
+  /* background-color: grey; */
 }
 
 .footer a {
@@ -107,6 +110,26 @@
   height: 1em;
   margin-left: 0.5rem;
 }
+
+.input {
+  border-radius: 1.5rem;
+  padding: 1rem;
+  display: block;
+  
+}
+
+.submitButton{
+  border-radius: 1.5rem;
+  font-size: larger;
+  font-weight: bold;
+  border: none;
+  padding: 1rem;
+}
+
+.submitButton:hover{
+  background-color: #5d8bc0;
+}
+
 
 @media (max-width: 600px) {
   .grid {

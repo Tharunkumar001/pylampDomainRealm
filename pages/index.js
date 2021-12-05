@@ -9,14 +9,17 @@ import Instagram from "@material-ui/icons/Instagram";
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
 import { useRouter } from 'next/dist/client/router';
 import axios from 'axios';
+import cogoToast from 'cogo-toast';
 
 export default function Home() {
   const [data,setData] = useState({name:"",rollNo:"",class:""});
   const [open,setOpen] = useState(false);
-  const router = useRouter();
+  const [error,setError] = useState();
+  const router = useRouter(false);
 
   const handleClose = () => {
     setOpen(false);
+    window.location.reload();
   }
 
   const handleOpen = () => {
@@ -25,8 +28,23 @@ export default function Home() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:3000/api/form",data);
-    handleOpen();
+    let rollNoLength = data.rollNo.length;
+
+    const validation = (rollNoLength === 8) ?  false:  true;
+    
+    if(!validation){
+      axios.post("http://localhost:3000/api/form",data).then((res) => {
+        
+        if(res.data == false){
+          cogoToast.error("already you marked your attendance");
+        }else{
+          handleOpen();
+        }
+      })
+    }else{
+      setError(true)
+    }
+
   }
 
   const routeAttendancePage = () => {
@@ -60,14 +78,15 @@ export default function Home() {
                 onChange={e => setData({...data, name:e.target.value})}
               /><br />
 
-              <input placeholder="RollNo" autoComplete="off" value={data.rollNo.trim()} type="text" name="inputForName" required  className={styles.input}
+              <input placeholder="RollNo"  autoComplete="off" value={data.rollNo.trim()} type="text" name="inputForName" required  className={styles.input}
                 onChange={e => setData({...data, rollNo:e.target.value})}
               /><br />
-
+              {error && <span>Enter your Full Pattern</span>}
               <select  className={styles.input} 
                 onChange={e => setData({...data, class:e.target.value})} required>
-                  <option value={data.class}>20CSE2A</option>
-                  <option value={data.class}>20CSE2B</option>
+                  <option value="NA">NA</option>
+                  <option value="20CSE2A">20CSE2A</option>
+                  <option value="20CSE2B">20CSE2B</option>
               </select>    
               <br />
 

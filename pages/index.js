@@ -8,6 +8,7 @@ import LinkedIn from "@material-ui/icons/LinkedIn";
 import Instagram from "@material-ui/icons/Instagram";
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
 import { useRouter } from 'next/dist/client/router';
+import axios from 'axios';
 
 export default function Home() {
   const [data,setData] = useState({name:"",rollNo:"",class:""});
@@ -24,7 +25,7 @@ export default function Home() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-
+    axios.post("http://localhost:3000/api/form",data);
     handleOpen();
   }
 
@@ -63,10 +64,10 @@ export default function Home() {
                 onChange={e => setData({...data, rollNo:e.target.value})}
               /><br />
 
-              <select value={data.class} className={styles.input} 
+              <select  className={styles.input} 
                 onChange={e => setData({...data, class:e.target.value})} required>
-                  <option value="20CSE2A">20CSE2A</option>
-                  <option value="20CSE2B">20CSE2B</option>
+                  <option value={data.class}>20CSE2A</option>
+                  <option value={data.class}>20CSE2B</option>
               </select>    
               <br />
 

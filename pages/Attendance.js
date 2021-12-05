@@ -18,7 +18,8 @@ return (
         </h1>
 
         <h3>Domain Realm Attendance</h3>
-    </main>
+
+        </main>
 
 )
 }

@@ -1,15 +1,23 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import styles from '../styles/Home.module.css';
-import Logo from "../public/pylampLogo.png";
-import { useState } from 'react';
-import YouTube from "@material-ui/icons/YouTube";
-import LinkedIn from "@material-ui/icons/LinkedIn";
-import Instagram from "@material-ui/icons/Instagram";
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
-import { useRouter } from 'next/dist/client/router';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Tab } from '@material-ui/core';
+
+const TableData = (props) => {
+    return(<h2 id={props.id}>{props.id}</h2>)
+    
+}
 
 export default function Attendance() {
+    const [data,setData] = useState([])
+
+    useEffect(() => {
+        axios.get("http://localhost:3000/api/getUserData").then((res => {
+            const userData = [...res.data];
+            setData(userData);
+        }));
+    },[]);
 
 return (
     <main className={styles.main}>
@@ -19,7 +27,15 @@ return (
 
         <h3>Domain Realm Attendance</h3>
 
-        </main>
+        <div>
+            {data.map((ele,map) => {
+                return(
+                    <TableData id={ele} key={map} />
+                )
+            })}
+            <h2>tharun</h2>
+        </div>
+    </main>
 
 )
 }

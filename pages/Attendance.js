@@ -25,7 +25,7 @@ export default function Attendance() {
         await axios.get("http://localhost:3000/api/getUserData").then((res) => {
             setData([...res.data]);
             console.log(data)
-            bool = true;
+
         });
     };
 
@@ -39,7 +39,7 @@ return (
 
         <button onClick={getData}>show</button>
         <div>
-            {bool && data.map((ele,ind) => {
+            {data.map((ele,ind) => {
                     <TableData key={ind} name={ele.name} class={ele.class} roll={ele.rollNo}/>
             })}
         </div>

@@ -1,10 +1,10 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 import dbConnect from "./dbConnect";
+import getUserData from "./getUserData";
 import User from "./Models/UserDetails";
 
 const  handler = async(req, res) => {
-  console.log(req.body);
 
     const validate = User.findOne({rollNo: req.body.rollNo}).then((done) => {
       if(done == null){

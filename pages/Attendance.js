@@ -2,22 +2,32 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Tab } from '@material-ui/core';
+import { Tab, Table } from '@material-ui/core';
 
 const TableData = (props) => {
-    return(<h2 id={props.id}>{props.id}</h2>)
+
+    return(
+        <Table name={props.name} class={props.class} roll={props.roll}>
+        
+            <tr>
+                <td>{props.name}</td>
+                <td>{props.roll}</td>
+            </tr>
+        </Table>
+    )
     
 }
 
 export default function Attendance() {
-    const [data,setData] = useState([])
-
-    useEffect(() => {
-        axios.get("http://localhost:3000/api/getUserData").then((res => {
-            const userData = [...res.data];
-            setData(userData);
-        }));
-    },[]);
+    const [data,setData] = useState();
+    var bool = false;
+    const getData = async() => {
+        await axios.get("http://localhost:3000/api/getUserData").then((res) => {
+            setData([...res.data]);
+            console.log(data)
+            bool = true;
+        });
+    };
 
 return (
     <main className={styles.main}>
@@ -27,13 +37,11 @@ return (
 
         <h3>Domain Realm Attendance</h3>
 
+        <button onClick={getData}>show</button>
         <div>
-            {data.map((ele,map) => {
-                return(
-                    <TableData id={ele} key={map} />
-                )
+            {bool && data.map((ele,ind) => {
+                    <TableData key={ind} name={ele.name} class={ele.class} roll={ele.rollNo}/>
             })}
-            <h2>tharun</h2>
         </div>
     </main>
 

@@ -4,8 +4,8 @@ import dbConnect from "./dbConnect";
 import getUserData from "./getUserData";
 import User from "./Models/UserDetails";
 
-const  handler = async(req, res) => {
-
+const form = (req, res) => {
+  // res.send({name: "tharun"});
     const validate = User.findOne({rollNo: req.body.rollNo}).then((done) => {
       if(done == null){
         const userData  = new User({
@@ -24,4 +24,4 @@ const  handler = async(req, res) => {
     });
 }
 
-export default dbConnect(handler);
+export default dbConnect(form);

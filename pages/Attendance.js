@@ -4,30 +4,38 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Tab, Table } from '@material-ui/core';
 
+const tableStyle = {
+    padding: "1rem",
+    border: " 3px solid #ddd",
+    width: "100%",
+    
+}
+
+const rowStyle = {
+    paddingRight: "1rem",
+}
 const TableData = (props) => {
 
     return(
-        <Table name={props.name} class={props.class} roll={props.roll}>
-        
+        <table name={props.name} section={props.section} roll={props.roll} style={tableStyle}>
             <tr>
-                <td>{props.name}</td>
+                <td  style={rowStyle}>{props.name}</td>
                 <td>{props.roll}</td>
             </tr>
-        </Table>
+        </table>
     )
     
 }
 
 export default function Attendance() {
-    const [data,setData] = useState();
+    const [data,setData] = useState([]);
     var bool = false;
-    const getData = async() => {
-        await axios.get("http://localhost:3000/api/getUserData").then((res) => {
-            setData([...res.data]);
-            console.log(data)
 
-        });
-    };
+    useEffect(() => {
+        axios.get("http://localhost:3000/api/getUserData").then((res) => {
+            setData(res.data);
+    });
+    },[]);
 
 return (
     <main className={styles.main}>
@@ -37,11 +45,11 @@ return (
 
         <h3>Domain Realm Attendance</h3>
 
-        <button onClick={getData}>show</button>
         <div>
-            {data.map((ele,ind) => {
-                    <TableData key={ind} name={ele.name} class={ele.class} roll={ele.rollNo}/>
-            })}
+            {data.map((ele,ind) => (
+                // <p key={_id}>Coffee type {name} </p>
+                <TableData key={ind} name={ele.name} section={ele.class} roll={ele.rollNo}/>
+            ))}
         </div>
     </main>
 

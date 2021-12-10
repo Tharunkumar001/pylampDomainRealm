@@ -19,7 +19,7 @@ export default function Home() {
 
   const handleClose = () => {
     setOpen(false);
-    window.location.reload();
+    router.push("/Final");
   }
 
   const handleOpen = () => {
@@ -28,23 +28,21 @@ export default function Home() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    let rollNoLength = data.rollNo.length;
+    // let rollNoLength = data.rollNo.length;
 
-    const validation = (rollNoLength === 8) ?  false:  true;
-    
-    if(!validation){
+    // const validation = (rollNoLength === 8) ?  false:  true;
+
       axios.post("http://localhost:3000/api/form",data).then((res) => {
-        
         if(res.data == false){
           cogoToast.error("already you marked your attendance");
+          setTimeout(() => {
+            handleOpen();
+
+          },1000);
         }else{
           handleOpen();
         }
       })
-    }else{
-      setError(true)
-    }
-
   }
 
   const routeAttendancePage = () => {
@@ -81,7 +79,7 @@ export default function Home() {
               <input placeholder="RollNo"  autoComplete="off" value={data.rollNo.trim()} type="text" name="inputForName" required  className={styles.input}
                 onChange={e => setData({...data, rollNo:e.target.value})}
               /><br />
-              {error && <span>Enter your Full Pattern</span>}
+              {/* {error && <span>Enter your Full Pattern</span>} */}
               <select  className={styles.input} 
                 onChange={e => setData({...data, class:e.target.value})} required>
                   <option value="NA">NA</option>

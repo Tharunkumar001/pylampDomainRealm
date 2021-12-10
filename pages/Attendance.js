@@ -32,7 +32,7 @@ export default function Attendance() {
     var bool = false;
 
     useEffect(() => {
-        axios.get("https://pylamp-domain-realm.vercel.app/api/getUserData").then((res) => {
+        axios.get("https://pylamp-domain-realm-9ksxb0s9p-tharunkumar001.vercel.app/api/getUserData").then((res) => {
             setData(res.data);
     });
     },[]);

@@ -12,10 +12,10 @@ import axios from 'axios';
 import cogoToast from 'cogo-toast';
 
 export default function Home() {
-  const [data,setData] = useState({name:"",rollNo:"",class:""});
+  const [data,setData] = useState({name:"",rollNo:"",class:"NA"});
   const [open,setOpen] = useState(false);
   const [error,setError] = useState();
-  const router = useRouter(false);
+  const router = useRouter();
 
   const handleClose = () => {
     setOpen(false);
@@ -28,21 +28,27 @@ export default function Home() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    // let rollNoLength = data.rollNo.length;
+    let rollNoLength = data.rollNo.length;
 
-    // const validation = (rollNoLength === 8) ?  false:  true;
+    const validateRollNo = (rollNoLength === 8) ?  false:  true;
+    const validateclass = (data.class !== "NA")? false: true;
 
+    if(!validateRollNo && !validateclass){
       axios.post("http://localhost:3000/api/form",data).then((res) => {
         if(res.data == false){
           cogoToast.error("already you marked your attendance");
+
           setTimeout(() => {
             handleOpen();
-
           },1000);
+
         }else{
           handleOpen();
         }
       })
+    }else{
+      cogoToast.info("Enter valid RollNo");
+    }
   }
 
   const routeAttendancePage = () => {

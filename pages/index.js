@@ -34,8 +34,9 @@ export default function Home() {
     const validateclass = (data.class !== "NA")? false: true;
 
     if(!validateRollNo && !validateclass){
-      axios.post("http://localhost:3000/api/form",data).then((res) => {
-        if(res.data == false){
+      axios.post("https://pylamp-domain-realm.vercel.app/api/form",data).then((res) => {
+      //https://pylamp-domain-realm.vercel.app/  
+      if(res.data == false){
           cogoToast.error("already you marked your attendance");
 
           setTimeout(() => {

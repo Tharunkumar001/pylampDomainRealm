@@ -1,17 +1,9 @@
 import User from "./Models/UserDetails";
 import dbConnect from "./dbConnect";
-import { connectToDatabase } from "../../util/mongodb";
 
 const formData = async(req,res) => {
-    const { db } = await connectToDatabase();
-
-    // const formData = await db
-    // .collection("users")
-    // .find({rollNo: req.body.rollNo})
-    // .sort({ metacritic: -1 })
-    // .limit(20)
-    // .toArray();
-
+    const {db} = await dbConnect();
+    res.status(200).json({name: "tharun"});
     const validate = User.findOne({rollNo: req.body.rollNo}).then((done) => {
         if(done == null){
             const userData  = new User({

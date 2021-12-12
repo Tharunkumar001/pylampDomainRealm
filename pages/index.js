@@ -34,19 +34,19 @@ export default function Home() {
     const validateclass = (data.class !== "NA")? false: true;
 
     if(!validateRollNo && !validateclass){
-      axios.get("https://pylamp-domain-realm.vercel.app/api/formHandler").then((res) => {
+      axios.post("https://pylamp-domain-realm.vercel.app/api/formHandler",data).then((res) => {
       console.log(res);
       //https://pylamp-domain-realm.vercel.app/  
-      // if(res.data == false){
-      //     cogoToast.error("already you marked your attendance");
+      if(res.data == false){
+          cogoToast.error("already you marked your attendance");
 
-      //     setTimeout(() => {
-      //       handleOpen();
-      //     },1000);
+          setTimeout(() => {
+            handleOpen();
+          },1000);
 
-      //   }else{
-      //     handleOpen();
-      //   }
+        }else{
+          handleOpen();
+        }
       })
     }else{
       cogoToast.info("Enter valid RollNo");

@@ -1,10 +1,10 @@
-import User from "./Models/UserDetails";
+// import User from "./Models/UserDetails";
 
-const getUserData = (req,res) => {
-    const userData  = User.find({}).then((data) => {
+// const getUserData = (req,res) => {
+//     const userData  = User.find({}).then((data) => {
         
-        res.status(200).send(data);
-    })
-}
+//         res.status(200).send(data);
+//     })
+// }
 
-export default getUserData;
+// export default getUserData;

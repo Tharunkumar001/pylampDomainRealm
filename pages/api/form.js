@@ -5,23 +5,23 @@ import getUserData from "./getUserData";
 import User from "./Models/UserDetails";
 
 const form = (req, res) => {
-  // res.send({name: "tharun"});
-    const validate = User.findOne({rollNo: req.body.rollNo}).then((done) => {
-      if(done == null){
-        const userData  = new User({
-          name: req.body.name,
-          rollNo: req.body.rollNo,
-          class: req.body.class
-        })
-        userData.save();
+  res.send({name: "tharun"});
+    // const validate = User.findOne({rollNo: req.body.rollNo}).then((done) => {
+    //   if(done == null){
+    //     const userData  = new User({
+    //       name: req.body.name,
+    //       rollNo: req.body.rollNo,
+    //       class: req.body.class
+    //     })
+    //     userData.save();
 
-        res.status(200).send("your attendace marked succesffully");
-      }
-      else
-      {
-        res.send(false);
-      }
-    });
+    //     res.status(200).send("your attendace marked succesffully");
+    //   }
+    //   else
+    //   {
+    //     res.send(false);
+    //   }
+    // });
 }
 
 export default dbConnect(form);

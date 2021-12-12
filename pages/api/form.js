@@ -1,10 +1,10 @@
-// // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+// // // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
-// import dbConnect from "./dbConnect";
-// import getUserData from "./getUserData";
-// import User from "./Models/UserDetails";
+// // import dbConnect from "./dbConnect";
+// // import getUserData from "./getUserData";
+// // import User from "./Models/UserDetails";
 
-// export default (req, res) => {
+// // export default (req, res) => {
 //   res.status(200).json({name: "tharun"});
 //     // const validate = User.findOne({rollNo: req.body.rollNo}).then((done) => {
 //     //   if(done == null){
@@ -22,6 +22,6 @@
 //     //     res.send(false);
 //     //   }
 //     // });
-// }
+// // }
 
-// export default form;
+// // export default form;

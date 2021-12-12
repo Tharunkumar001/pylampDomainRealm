@@ -23,7 +23,9 @@ const handler = (req, res)=> {
               }
           });
   }else{
-    res.send("post");
+    const userData  = User.find({}).then((data) => {
+      res.status(200).send(data);
+    })
   }}
 
 export default connectDB(handler);

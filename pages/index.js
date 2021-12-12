@@ -35,7 +35,6 @@ export default function Home() {
 
     if(!validateRollNo && !validateclass){
       axios.post("https://pylamp-domain-realm.vercel.app/api/formHandler",data).then((res) => {
-      console.log(res);
       //https://pylamp-domain-realm.vercel.app/  
       if(res.data == false){
           cogoToast.error("already you marked your attendance");

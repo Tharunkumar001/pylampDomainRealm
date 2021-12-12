@@ -33,23 +33,24 @@ export default function Home() {
     const validateRollNo = (rollNoLength === 8) ?  false:  true;
     const validateclass = (data.class !== "NA")? false: true;
 
-    if(!validateRollNo && !validateclass){
-      axios.post("https://pylamp-domain-realm.vercel.app/api/form",data).then((res) => {
-      //https://pylamp-domain-realm.vercel.app/  
-      // if(res.data == false){
-      //     cogoToast.error("already you marked your attendance");
+  //   if(!validateRollNo && !validateclass){
+  //     axios.post("https://pylamp-domain-realm.vercel.app/api/form",data).then((res) => {
+      
+  //     //https://pylamp-domain-realm.vercel.app/  
+  //     // if(res.data == false){
+  //     //     cogoToast.error("already you marked your attendance");
 
-      //     setTimeout(() => {
-      //       handleOpen();
-      //     },1000);
+  //     //     setTimeout(() => {
+  //     //       handleOpen();
+  //     //     },1000);
 
-      //   }else{
-      //     handleOpen();
-      //   }
-      })
-    }else{
-      cogoToast.info("Enter valid RollNo");
-    }
+  //     //   }else{
+  //     //     handleOpen();
+  //     //   }
+  //     })
+  //   }else{
+  //     cogoToast.info("Enter valid RollNo");
+  //   }
   }
 
   const routeAttendancePage = () => {

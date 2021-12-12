@@ -1,10 +1,6 @@
 module.exports = {
-  async rewrites() {
-      return [
-        {
-          source: '/api/:path*',
-          destination: 'https://pylamp-domain-realm.vercel.app/:path*',
-        },
-      ]
-    },
-};
+  reactStrictMode: true,
+  env: {
+    mongodburl: "mongodb+srv://pylamp:pylampvcet@cluster0.4280v.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  }
+}

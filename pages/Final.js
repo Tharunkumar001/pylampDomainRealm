@@ -11,7 +11,12 @@ import { useRouter } from 'next/dist/client/router';
 import axios from 'axios';
 import cogoToast from 'cogo-toast';
 
+
+const style={
+    backgroundColor:"grey"
+}
 export default function Final() {
+    const router = useRouter();
 
 return (
     <div className={styles.container}>
@@ -34,6 +39,7 @@ return (
             </p>
 
             <h4>Thanks for your presence. Hapieee learning!!</h4>
+            <Button style={style} onClick={() => router.push("/Attendance")}>Attendance Page</Button>
         </main>
         
         <footer className={styles.footer}>

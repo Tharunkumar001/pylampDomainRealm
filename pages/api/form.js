@@ -5,7 +5,7 @@ import getUserData from "./getUserData";
 import User from "./Models/UserDetails";
 
 const form = (req, res) => {
-  res.send({name: "tharun"});
+  res.status(200).json({name: "tharun"});
     // const validate = User.findOne({rollNo: req.body.rollNo}).then((done) => {
     //   if(done == null){
     //     const userData  = new User({

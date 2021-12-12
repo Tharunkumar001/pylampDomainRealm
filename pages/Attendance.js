@@ -15,11 +15,11 @@ const rowStyle = {
     paddingRight: "1rem",
 }
 const TableData = (props) => {
-
+    var count = 1;
     return(
-        <table name={props.name} section={props.section} roll={props.roll} style={tableStyle}>
+        <table name={props.name} section={props.section} roll={props.roll}>
             <tr>
-                <td  style={rowStyle}>{props.name}</td>
+                <td>{props.name}</td>
                 <td>{props.roll}</td>
             </tr>
         </table>

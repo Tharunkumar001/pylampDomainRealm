@@ -44,6 +44,7 @@ export default function Home() {
           },1000);
 
         }else{
+          setShower(true);
           handleOpen();
         }
       })
@@ -107,6 +108,7 @@ export default function Home() {
           <a href="www.linkedin.com/in/pylampofficial"><LinkedIn /></a>
           <a href=""><Instagram /></a>
       </footer>
+
 
       <Dialog
         open={open}

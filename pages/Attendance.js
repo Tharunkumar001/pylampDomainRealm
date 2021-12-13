@@ -2,27 +2,23 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Tab, Table } from '@material-ui/core';
+import { ListItem, Tab, Table } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
-const tableStyle = {
-    padding: "1rem",
-    border: " 3px solid #ddd",
-    width: "100%",
-    
-}
 
-const rowStyle = {
-    paddingRight: "1rem",
-}
 const TableData = (props) => {
-    var count = 1;
     return(
-        <table name={props.name} section={props.section} roll={props.roll}>
-            <tr>
-                <td>{props.name}</td>
-                <td>{props.roll}</td>
-            </tr>
-        </table>
+            <Grid name={props.name} section={props.section} roll={props.roll} container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+                <Grid item xs={2}>
+                    <ListItem>{props.serialNo}</ListItem>
+                </Grid>
+                <Grid item xs={5}>
+                    <ListItem>{props.name}</ListItem>
+                </Grid>
+                <Grid item xs={5}>
+                    <ListItem>{props.section}</ListItem>
+                </Grid>
+            </Grid>
     )
     
 }
@@ -33,7 +29,10 @@ export default function Attendance() {
 
     useEffect(() => {
         axios.get("https://pylamp-domain-realm.vercel.app/api/formHandler").then((res) => {
-            setData(res.data);
+            var myArray  = [...res.data];
+            myArray.sort((a,b) => {return a.class - b.class});
+            console.log(myArray)
+            setData(myArray);
     });
     },[]);
 
@@ -48,7 +47,7 @@ return (
         <div>
             {data.map((ele,ind) => (
                 // <p key={_id}>Coffee type {name} </p>
-                <TableData key={ind} name={ele.name} section={ele.class} roll={ele.rollNo}/>
+                <TableData key={ind} serialNo={ind+1} name={ele.name} section={ele.class} roll={ele.rollNo}/>
             ))}
         </div>
     </main>

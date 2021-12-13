@@ -15,6 +15,7 @@ export default function Home() {
   const [data,setData] = useState({name:"",rollNo:"",class:"NA"});
   const [open,setOpen] = useState(false);
   const [error,setError] = useState();
+  const [loading,setLoading] = useState(false);
   const router = useRouter();
 
   const handleClose = () => {
@@ -36,7 +37,9 @@ export default function Home() {
     if(!validateRollNo && !validateclass){
       axios.post("https://pylamp-domain-realm.vercel.app/api/formHandler",data).then((res) => {
       //https://pylamp-domain-realm.vercel.app/  
+      setLoading(true);
       if(res.data == false){
+          setLoading(false);
           cogoToast.error("already you marked your attendance");
 
           setTimeout(() => {
@@ -44,7 +47,7 @@ export default function Home() {
           },1000);
 
         }else{
-          setShower(true);
+          setLoading(false);
           handleOpen();
         }
       })
@@ -91,8 +94,10 @@ export default function Home() {
               <select  className={styles.input} 
                 onChange={e => setData({...data, class:e.target.value})} required>
                   <option value="NA">NA</option>
-                  <option value="20CSE2A">20CSE2A</option>
-                  <option value="20CSE2B">20CSE2B</option>
+                  <option value="CSE3A">CSE3A</option>
+                  <option value="CSE3B">CSE3B</option>
+                  <option value="CSE5A">CSE5A</option>
+                  <option value="CSE5B">CSE5B</option>
               </select>    
               <br />
 

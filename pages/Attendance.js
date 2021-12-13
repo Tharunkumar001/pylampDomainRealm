@@ -29,10 +29,7 @@ export default function Attendance() {
 
     useEffect(() => {
         axios.get("https://pylamp-domain-realm.vercel.app/api/formHandler").then((res) => {
-            var myArray  = [...res.data];
-            myArray.sort((a,b) => {return a.class - b.class});
-            console.log(myArray)
-            setData(myArray);
+            setData(res.data)
     });
     },[]);
 

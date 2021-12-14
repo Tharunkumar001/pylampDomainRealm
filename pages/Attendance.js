@@ -28,13 +28,16 @@ export default function Attendance() {
     var bool = false;
 
     useEffect(() => {
-        axios.get("https://pylamp-domain-realm.vercel.app/api/formHandler").then((res) => {
-            setData(res.data)
+        axios.get("http://localhost:3000/api/formHandler").then((res) => {
+            var arrayOfData = res.data;
+            var sortedArray = arrayOfData.sort((a,b) => (a.class > b.class) ? 1 : ((b.class > a.class) ? -1 : 0))
+            setData(sortedArray)
     });
     },[]);
 
 return (
-    <main className={styles.main}>
+    <div className={styles.container}>
+            <main className={styles.main}>
         <h1 className={styles.title}>
             Welcome to Pylamp!
         </h1>
@@ -48,6 +51,20 @@ return (
             ))}
         </div>
     </main>
+        <ul className={styles.circles}>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </ul>
+    </div>
+
 
 )
 }

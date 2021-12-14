@@ -35,16 +35,16 @@ export default function Home() {
     const validateclass = (data.class !== "NA")? false: true;
 
     if(!validateRollNo && !validateclass){
-      axios.post("https://pylamp-domain-realm.vercel.app/api/formHandler",data).then((res) => {
+      axios.post("http://localhost:3000/api/formHandler",data).then((res) => {
       //https://pylamp-domain-realm.vercel.app/  
       setLoading(true);
       if(res.data == false){
           setLoading(false);
-          cogoToast.error("already you marked your attendance");
+          cogoToast.info("already you marked your attendance",{position:'bottom-center'});
 
           setTimeout(() => {
             handleOpen();
-          },1000);
+          },3000);
 
         }else{
           setLoading(false);
@@ -52,7 +52,7 @@ export default function Home() {
         }
       })
     }else{
-      cogoToast.info("Enter valid RollNo");
+      cogoToast.info("Enter valid RollNo or Class");
     }
   }
 
@@ -138,6 +138,19 @@ export default function Home() {
         </Button>
         </DialogActions>
       </Dialog>
+
+      <ul className={styles.circles}>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </ul>
     </div>
   )
 }

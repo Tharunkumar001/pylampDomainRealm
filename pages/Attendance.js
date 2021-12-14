@@ -36,7 +36,7 @@ export default function Attendance() {
     },[]);
 
 return (
-    <div className={styles.container}>
+    <div>
             <main className={styles.main}>
         <h1 className={styles.title}>
             Welcome to Pylamp!

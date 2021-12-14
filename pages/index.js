@@ -108,7 +108,7 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-        <a href="https://youtu.be/dG4DGVikMpU"><YouTube  style={{color:'white'}}/></a>
+        <a href="https://www.youtube.com/channel/UCJBaFNQuwfYXHDkICKpMYsg"><YouTube  style={{color:'white'}}/></a>
         <a href="https://linkedin.com/in/pylampofficial"><LinkedIn style={{color:'white'}}/></a>
         <a href="https://instagram.com/pylamp_official_"><Instagram style={{color:'white'}}/></a>
       </footer>

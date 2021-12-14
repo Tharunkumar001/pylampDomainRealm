@@ -35,7 +35,7 @@ export default function Home() {
     const validateclass = (data.class !== "NA")? false: true;
 
     if(!validateRollNo && !validateclass){
-      axios.post("https://pylamp-domain-realm.vercel.app/api/formHandler",data).then((res) => {
+      axios.post("http://localhost:3000/api/formHandler",data).then((res) => {
       //https://pylamp-domain-realm.vercel.app/  
       setLoading(true);
       if(res.data == false){
@@ -139,7 +139,7 @@ export default function Home() {
         </DialogActions>
       </Dialog>
 
-      <ul className={styles.circles}>
+      {/* <ul className={styles.circles}>
                     <li></li>
                     <li></li>
                     <li></li>
@@ -150,7 +150,7 @@ export default function Home() {
                     <li></li>
                     <li></li>
                     <li></li>
-            </ul>
+            </ul> */}
     </div>
   )
 }

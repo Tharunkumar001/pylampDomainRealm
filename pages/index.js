@@ -35,7 +35,7 @@ export default function Home() {
     const validateclass = (data.class !== "NA")? false: true;
 
     if(!validateRollNo && !validateclass){
-      axios.post("http://localhost:3000/api/formHandler",data).then((res) => {
+      axios.post("https://pylamp-domain-realm.vercel.app/api/formHandler",data).then((res) => {
       //https://pylamp-domain-realm.vercel.app/  
       setLoading(true);
       if(res.data == false){

@@ -284,6 +284,12 @@
 
 }
 
+.AttendanceCard{
+  width:fit-content;
+  border-radius: 1.5rem;
+  border-bottom:0.3rem solid #636f7c;
+  text-align: center;
+}
 
 .login1 {
     margin-top: 15px;

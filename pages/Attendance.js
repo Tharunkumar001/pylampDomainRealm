@@ -13,8 +13,7 @@ import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } f
 
 const delFunction = async(x) => {
     var rollNo = x;
-    const apiCall = await axios.put("http://localhost:3000/api/formHandler",{roll:rollNo});
-    console.log(apiCall);
+    const apiCall = await axios.put("https://pylamp-domain-realm.vercel.app/api/formHandler",{roll:rollNo});
 }
 
 
@@ -46,7 +45,7 @@ export default function Attendance() {
     var bool = false;
 
     useEffect(() => {
-        axios.get("http://localhost:3000/api/formHandler").then((res) => {
+        axios.get("https://pylamp-domain-realm.vercel.app/api/formHandler").then((res) => {
             //https://pylamp-domain-realm.vercel.app
             var arrayOfData = res.data;
             var sortedArray = arrayOfData.sort((a,b) => (a.class > b.class) ? 1 : ((b.class > a.class) ? -1 : 0))

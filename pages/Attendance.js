@@ -6,18 +6,32 @@ import { Button, Card, IconButton, ListItem, Tab, Table } from '@material-ui/cor
 import { Grid } from '@material-ui/core';
 import BoxIcon from "@material-ui/icons/AddBoxOutlined"
 import ListIcon from "@material-ui/icons/ListAltOutlined";
+import DeleteIcon from "@material-ui/icons/Delete";
+import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
+
+
+
+const delFunction = async(x) => {
+    var rollNo = x;
+    const apiCall = await axios.put("http://localhost:3000/api/formHandler",{roll:rollNo});
+    console.log(apiCall);
+}
+
 
 const TableData = (props) => {
     return(
-            <Grid name={props.name} section={props.section} roll={props.roll} container rowSpacing={1} columnSpacing={{ xs: 3, sm: 3, md: 3 }}>
+            <Grid name={props.name} section={props.section} roll={props.roll} container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                 <Grid item xs={2}>
                     <ListItem>{props.serialNo}</ListItem>
                 </Grid>
                 <Grid item xs={5}>
                     <ListItem>{props.name}</ListItem>
                 </Grid>
-                <Grid item xs={5}>
+                <Grid item xs={3}>
                     <ListItem>{props.section}</ListItem>
+                </Grid>
+                <Grid item xs={2}>
+                    <ListItem ><DeleteIcon /></ListItem>
                 </Grid>
             </Grid>
     )
@@ -27,17 +41,27 @@ const TableData = (props) => {
 export default function Attendance() {
     const [data,setData] = useState([]);
     const [view,setView] = useState("grid");
+    const [open, setOpen] = useState(false);
 
     var bool = false;
 
     useEffect(() => {
-        axios.get("https://pylamp-domain-realm.vercel.app/api/formHandler").then((res) => {
+        axios.get("http://localhost:3000/api/formHandler").then((res) => {
             //https://pylamp-domain-realm.vercel.app
             var arrayOfData = res.data;
             var sortedArray = arrayOfData.sort((a,b) => (a.class > b.class) ? 1 : ((b.class > a.class) ? -1 : 0))
             setData(sortedArray)
     });
     },[]);
+
+    const handleClose = () => {
+        setOpen(false);
+        router.push("/Final");
+    }
+    
+    const handleOpen = () => {
+        setOpen(true);
+    }
 
 return (
     <div>
@@ -58,7 +82,6 @@ return (
             </Button>
         </div><br />
         
-        
             {(view == "grid")? <Grid container rowSpacing={1} spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                     {data.map((ele,ind) => (
                             <Grid item xs={6} sm={4} md={4} key={ind} className={styles.AttendanceCard}>
@@ -71,6 +94,31 @@ return (
                         <TableData key={ind} serialNo={ind+1} name={ele.name} section={ele.class} roll={ele.rollNo}/>
                     ))}
             </Grid> }
+
+            <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle className={styles.alertDialogTitle}>
+                Well Done Folks!!!!
+                </DialogTitle>
+                <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                    Successfully your attendance marked..
+                </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                <Button autoFocus>
+                    Look🧐
+                </Button>
+                <Button onClick={handleClose} autoFocus>
+                    Close
+                </Button>
+                </DialogActions>
+            </Dialog>
+
     </main>
     </div>
 )

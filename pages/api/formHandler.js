@@ -22,6 +22,10 @@ const handler = (req, res)=> {
               res.send(false);
               }
           });
+  }else if(req.method === 'PUT'){
+      User.deleteOne({rollNo: req.body.roll}).then((done) => {
+        res.send(true);
+      })
   }else{
     const userData  = User.find({}).then((data) => {
       res.status(200).send(data);

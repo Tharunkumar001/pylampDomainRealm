@@ -8,7 +8,7 @@ import BoxIcon from "@material-ui/icons/AddBoxOutlined"
 import ListIcon from "@material-ui/icons/ListAltOutlined";
 import DeleteIcon from "@material-ui/icons/Delete";
 import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
-
+import { CircularProgress } from '@material-ui/core';
 
 
 const delFunction = async(x) => {
@@ -41,13 +41,14 @@ export default function Attendance() {
     const [data,setData] = useState([]);
     const [view,setView] = useState("grid");
     const [open, setOpen] = useState(false);
-
+    const [count, setCount] = useState(0);
     var bool = false;
 
     useEffect(() => {
         axios.get("https://pylamp-domain-realm.vercel.app/api/formHandler").then((res) => {
             //https://pylamp-domain-realm.vercel.app
             var arrayOfData = res.data;
+            var count = setCount(res.data.length);
             var sortedArray = arrayOfData.sort((a,b) => (a.class > b.class) ? 1 : ((b.class > a.class) ? -1 : 0))
             setData(sortedArray)
     });
@@ -70,7 +71,7 @@ return (
         </h1>
 
         <h3>Domain Realm Attendance</h3>
-
+        <h4 className={styles.countBar}>{count}</h4>
         <div>
             <Button variant="contained" startIcon={<BoxIcon />} onClick={() => setView("grid")}>
                 GridView

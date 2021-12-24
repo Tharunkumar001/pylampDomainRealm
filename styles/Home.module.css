@@ -302,3 +302,39 @@
   box-shadow: 0.375em 0.375em 0 0 rgba(15, 28, 63, 0.125);
   padding: 1rem;
 }
+
+/* AdminPage */
+
+.adminMain{
+  min-height: 100vh;
+  padding: 4rem 0;
+  flex: 1;
+}
+
+.Adminheader{
+  display: flex;
+  flex: 1;
+  align-items: flex-start;
+  gap: 1rem;
+  margin: 1rem;
+
+}
+
+.adminContainer{
+  background: #4e54c8;  
+    background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
+    width: 100%;
+    height:max-content;
+}
+
+.cardGrid{
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.adminCard{
+  width: 50%;
+  border-radius: 1.5rem;
+}

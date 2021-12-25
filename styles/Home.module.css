@@ -313,11 +313,9 @@
 
 .Adminheader{
   display: flex;
-  flex: 1;
-  align-items: flex-start;
+  flex-direction: row;
   gap: 1rem;
   margin: 1rem;
-
 }
 
 .adminContainer{

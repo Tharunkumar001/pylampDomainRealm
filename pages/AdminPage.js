@@ -7,14 +7,16 @@ import YouTube from "@material-ui/icons/YouTube";
 import LinkedIn from "@material-ui/icons/LinkedIn";
 import Instagram from "@material-ui/icons/Instagram";
 import { Button, Card, CardContent, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid } from '@material-ui/core';
-import { useRouter } from 'next/dist/client/router';
+import { Router, useRouter } from 'next/dist/client/router';
 import axios from 'axios';
 import cogoToast from 'cogo-toast';
 import EdiText from 'react-editext';
 import { Send } from '@material-ui/icons';
+import HomeIcon from "@material-ui/icons/Home";
+import RefreshIcon from "@material-ui/icons/Refresh";
 
-export default function Home() {
-
+export default function AdminPage() {
+    const router = useRouter();
     const [sessionTopic,setTopic] = useState({pylampSession:"pylampSession Attendance", solveMe:"Solve Me Attendance", 
     hackerRank:"Hackerrank Attendance", signatureEvent:"signatureEvent Attendance"});
     
@@ -44,9 +46,11 @@ return (
     </Head>
 
     <main className={styles.adminMain}>
-        {/* <div className={styles.Adminheader}><br />
-            <h2 style={{display:"flex",justifyContent: "center"}}>Pylamp</h2>
-        </div> */}
+        <div className={styles.Adminheader}>
+            <h1>Pylamp</h1>
+            <Button endIcon={<RefreshIcon />} onClick={() => window.location.reload()} />
+            <Button  endIcon={<HomeIcon />} onClick={() => router.push("/HomePage")} />
+        </div>
 
         <div className={styles.mainContent}>
             <Image src={Logo} alt="logo" width="150rem" height="150rem" />
@@ -106,7 +110,6 @@ return (
             </Grid>
 
             <Dialog
-                
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="alert-dialog-title"

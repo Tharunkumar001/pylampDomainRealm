@@ -44,13 +44,12 @@ return (
     </Head>
 
     <main className={styles.adminMain}>
-        <div className={styles.Adminheader}>
-            <Image src={Logo} alt="logo" width="50rem" height="50rem" />
-
+        {/* <div className={styles.Adminheader}><br />
             <h2 style={{display:"flex",justifyContent: "center"}}>Pylamp</h2>
-        </div>
+        </div> */}
 
         <div className={styles.mainContent}>
+            <Image src={Logo} alt="logo" width="150rem" height="150rem" />
             <h1>We Are Here For You!!</h1>
         </div>
 
@@ -59,8 +58,9 @@ return (
                 <Grid item xs={12} sm={6} className={styles.cardGrid}>
                     <Card className={styles.adminCard}>
                         <CardContent> 
-                            <EdiText type="text" id="pylampSession" value={sessionTopic.pylampSession} onSave={handleSave} /><hr />
-                            <EdiText type="text" id="pylampSession" value={aboutSession.pylampSession} onSave={handleSave} /><br />
+                            <h3 style={{textAlign:"center", color: "GrayText"}}>Event Details</h3>
+                            <EdiText buttonsAlign='before' type="text"  value={sessionTopic.pylampSession} onSave={handleSave} /><hr />
+                            <EdiText buttonsAlign='before' type="text"  value={aboutSession.pylampSession} onSave={handleSave} /><br />
                             <Button variant="contained" endIcon={<Send />} className={styles.cardBtn} onClick={() => setOpen(true)}>
                                 SET
                             </Button>                        
@@ -70,8 +70,9 @@ return (
                 <Grid item xs={12} sm={6} className={styles.cardGrid}>
                     <Card className={styles.adminCard}>
                         <CardContent>
-                            <EdiText type="text" id="pylampSession" value={sessionTopic.solveMe} onSave={handleSave} /><hr />
-                            <EdiText type="text" id="pylampSession" value={aboutSession.solveMe} onSave={handleSave} /><br />
+                            <h3 style={{textAlign:"center", color: "GrayText"}}>Event Details</h3>
+                            <EdiText buttonsAlign='before' type="text"  value={sessionTopic.solveMe} onSave={handleSave} /><hr />
+                            <EdiText buttonsAlign='before' type="text"  value={aboutSession.solveMe} onSave={handleSave} /><br />
                             <Button variant="contained" endIcon={<Send />} className={styles.cardBtn} onClick={() => setOpen(true)}>
                                 SET
                             </Button>
@@ -81,8 +82,9 @@ return (
                 <Grid item xs={12} sm={6} className={styles.cardGrid}>
                     <Card className={styles.adminCard}>
                         <CardContent>
-                            <EdiText type="text" id="pylampSession" value={sessionTopic.hackerRank} onSave={handleSave} /><hr />
-                            <EdiText type="text" id="pylampSession" value={aboutSession.hackerRank} onSave={handleSave} /><br />
+                            <h3 style={{textAlign:"center", color: "GrayText"}}>Event Details</h3>
+                            <EdiText buttonsAlign='before' type="text"  value={sessionTopic.hackerRank} onSave={handleSave} /><hr />
+                            <EdiText buttonsAlign='before' type="text"  value={aboutSession.hackerRank} onSave={handleSave} /><br />
                             <Button variant="contained" endIcon={<Send />} className={styles.cardBtn} onClick={() => setOpen(true)}>
                                 SET
                             </Button>
@@ -92,8 +94,9 @@ return (
                 <Grid item xs={12} sm={6} className={styles.cardGrid}>
                     <Card className={styles.adminCard}>
                         <CardContent>
-                            <EdiText type="text" id="pylampSession" value={sessionTopic.signatureEvent} onSave={handleSave} /><hr />
-                            <EdiText type="text" id="pylampSession" value={aboutSession.signatureEvent} onSave={handleSave} /><br />
+                            <h3 style={{textAlign:"center", color: "GrayText"}}>Event Details</h3>
+                            <EdiText buttonsAlign='before' type="text" value={sessionTopic.signatureEvent} onSave={handleSave} /><hr />
+                            <EdiText buttonsAlign='before' type="text"  value={aboutSession.signatureEvent} onSave={handleSave} /><br />
                             <Button variant="contained" endIcon={<Send />} className={styles.cardBtn} onClick={() => setOpen(true)}>
                                 SET
                             </Button>
@@ -103,6 +106,7 @@ return (
             </Grid>
 
             <Dialog
+                
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="alert-dialog-title"

@@ -356,3 +356,30 @@
   border: none;
   color: #0070f3;
 }
+
+/*HomePage CSS*/
+
+.headerDiv{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  margin: 1rem;
+  
+}
+.homeMain{
+  min-height: 100vh;
+  padding: 4rem 0;
+  flex: 1;
+}
+
+
+.headerBtn{
+  border: none;
+  background: none;
+  shape-outside: none;
+  overflow: none;
+  bottom: 0%;
+}
+

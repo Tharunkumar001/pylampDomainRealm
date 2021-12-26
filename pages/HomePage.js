@@ -9,33 +9,9 @@ import Instagram from "@material-ui/icons/Instagram";
 import { Button, Card, CardContent, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid } from '@material-ui/core';
 import { Router, useRouter } from 'next/dist/client/router';
 import axios from 'axios';
-import cogoToast from 'cogo-toast';
-import EdiText from 'react-editext';
-import { Send } from '@material-ui/icons';
-import HomeIcon from "@material-ui/icons/Home";
-import RefreshIcon from "@material-ui/icons/Refresh";
-
+import { Navbar } from './Navbar';
 export default function HomePage() {
 
-    const [sessionTopic,setTopic] = useState({pylampSession:"pylampSession Attendance", solveMe:"Solve Me Attendance", 
-    hackerRank:"Hackerrank Attendance", signatureEvent:"signatureEvent Attendance"});
-    
-    const [aboutSession,setAbout] = useState({pylampSession:"About pylampSession", solveMe:"About Solve Me Session", 
-    hackerRank:"About Hackerrank Session", signatureEvent:"About signatureEvent"});
-    
-    const [open, setOpen] = useState(false);
-
-    const handleClose = () => {
-        setOpen(false);
-    }
-    
-    const handleOpen = () => {
-        setOpen(true);
-    }
-
-    const handleSave = (val) => {
-        console.log(val);
-    }
 return (
 
 <div className={styles.adminContainer}>
@@ -45,8 +21,13 @@ return (
         <link rel="icon" href="/pylampLogo.png" />
     </Head>
 
-    <main className={styles.adminMain}>
-        <h1>HomePage</h1>
+    <main className={styles.homeMain}>
+        <Navbar />
+        <div className={styles.headerDiv}>
+            <Image src={Logo} alt="logo" width="100rem" height="100rem" />
+            <Button>Admin</Button>
+        </div>
+
     </main>
 
     <footer className={styles.footer}>

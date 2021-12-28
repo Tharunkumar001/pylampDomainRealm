@@ -22,9 +22,6 @@ export default function Layout({children}){
                         <Button>Admin</Button>
                     </li>
                     <li className={styles.navitem}>
-                        <Button>About</Button>
-                    </li>
-                    <li className={styles.navitem}>
                         <Button>Events</Button>
                     </li>
                     <li className={styles.navitem}>

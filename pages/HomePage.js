@@ -34,7 +34,7 @@ export default function AdminPage() {
     }
 return (
 
-<div className={styles.adminContainer}>
+<div className={styles.homeContainer}>
     <Head>
         <title>Domain Realm</title>
         <meta name="description" content="Web development session" />
@@ -49,7 +49,7 @@ return (
         </AppBar>
     </main>
 
-    <footer className={styles.footer}>
+    <footer className={styles.homeFotter}>
         <a href="https://www.youtube.com/channel/UCJBaFNQuwfYXHDkICKpMYsg" target="blank"><YouTube  style={{color:'white'}}/></a>
         <a href="https://linkedin.com/in/pylampofficial" target="blank"><LinkedIn style={{color:'white'}}/></a>
         <a href="https://instagram.com/pylamp_official_" target="blank"><Instagram style={{color:'white'}}/></a>

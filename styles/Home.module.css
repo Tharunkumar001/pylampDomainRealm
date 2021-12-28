@@ -423,6 +423,8 @@
   color: white;
 }
 
+
+
 .navlink{
   font-size: 2rem;
   font-weight: 400;
@@ -478,4 +480,16 @@
       -webkit-transform: translateY(-8px) rotate(-45deg);
       transform: translateY(-8px) rotate(-45deg);
   }
+}
+
+.homeFotter{
+  display: flex;
+  flex: 1;
+  padding: 2rem 0;
+  border-top: 1px solid #1b1a1a;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 2rem;
+  background-color: black;
 }

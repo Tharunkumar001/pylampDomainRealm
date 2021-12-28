@@ -6,12 +6,32 @@ import { useState } from 'react';
 import YouTube from "@material-ui/icons/YouTube";
 import LinkedIn from "@material-ui/icons/LinkedIn";
 import Instagram from "@material-ui/icons/Instagram";
-import { Button, Card, CardContent, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid } from '@material-ui/core';
 import { Router, useRouter } from 'next/dist/client/router';
-import axios from 'axios';
-import { Navbar } from './Navbar';
-export default function HomePage() {
 
+import Navbar from './Navbar';
+import { AppBar, Toolbar } from '@material-ui/core';
+
+export default function AdminPage() {
+    const router = useRouter();
+    const [sessionTopic,setTopic] = useState({pylampSession:"pylampSession Attendance", solveMe:"Solve Me Attendance", 
+    hackerRank:"Hackerrank Attendance", signatureEvent:"signatureEvent Attendance"});
+    
+    const [aboutSession,setAbout] = useState({pylampSession:"About pylampSession", solveMe:"About Solve Me Session", 
+    hackerRank:"About Hackerrank Session", signatureEvent:"About signatureEvent"});
+    
+    const [open, setOpen] = useState(false);
+
+    const handleClose = () => {
+        setOpen(false);
+    }
+    
+    const handleOpen = () => {
+        setOpen(true);
+    }
+
+    const handleSave = (val) => {
+        console.log(val);
+    }
 return (
 
 <div className={styles.adminContainer}>
@@ -21,13 +41,12 @@ return (
         <link rel="icon" href="/pylampLogo.png" />
     </Head>
 
-    <main className={styles.homeMain}>
-        <Navbar />
-        <div className={styles.headerDiv}>
-            <Image src={Logo} alt="logo" width="100rem" height="100rem" />
-            <Button>Admin</Button>
-        </div>
-
+    <main className={styles.adminMain}>
+        <AppBar>
+            <Toolbar>
+                <Navbar />
+            </Toolbar>
+        </AppBar>
     </main>
 
     <footer className={styles.footer}>

@@ -6,7 +6,7 @@ import { useState } from 'react';
 import YouTube from "@material-ui/icons/YouTube";
 import LinkedIn from "@material-ui/icons/LinkedIn";
 import Instagram from "@material-ui/icons/Instagram";
-import { Button, Card, CardContent, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid } from '@material-ui/core';
+import { Button, Card, CardContent, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Typography } from '@material-ui/core';
 import { Router, useRouter } from 'next/dist/client/router';
 import axios from 'axios';
 import cogoToast from 'cogo-toast';
@@ -14,6 +14,9 @@ import EdiText from 'react-editext';
 import { Send } from '@material-ui/icons';
 import HomeIcon from "@material-ui/icons/Home";
 import RefreshIcon from "@material-ui/icons/Refresh";
+import { AppBar } from '@material-ui/core';
+import { Toolbar } from '@material-ui/core';
+import Navbar from './Navbar';
 
 export default function AdminPage() {
     const router = useRouter();
@@ -46,12 +49,6 @@ return (
     </Head>
 
     <main className={styles.adminMain}>
-        <div className={styles.Adminheader}>
-            <h1>Pylamp</h1>
-            <Button endIcon={<RefreshIcon />} onClick={() => window.location.reload()} />
-            <Button  endIcon={<HomeIcon />} onClick={() => router.push("/HomePage")} />
-        </div>
-
         <div className={styles.mainContent}>
             <Image src={Logo} alt="logo" width="150rem" height="150rem" />
             <h1>We Are Here For You!!</h1>

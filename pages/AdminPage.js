@@ -6,7 +6,7 @@ import { useState } from 'react';
 import YouTube from "@material-ui/icons/YouTube";
 import LinkedIn from "@material-ui/icons/LinkedIn";
 import Instagram from "@material-ui/icons/Instagram";
-import { button, ButtonGroup, buttonGroup, Card, CardContent, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Typography } from '@material-ui/core';
+import { Button, button, ButtonGroup, buttonGroup, Card, CardActions, CardContent, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Typography } from '@material-ui/core';
 import { Router, useRouter } from 'next/dist/client/router';
 import axios from 'axios';
 import cogoToast from 'cogo-toast';
@@ -39,9 +39,9 @@ export default function AdminPage() {
     const handleSave = (val) => {
         console.log(val);
     }
-
+    
     const defaultBtn = () => {
-        document.getElementById("button").style = ''
+        document.getElementById("btn").style = ''
     }
 return (
 
@@ -61,66 +61,48 @@ return (
             </AppBar>
         </div><br /><br />
 
-        <div className={styles.btnContainer}>
-            <ButtonGroup className={styles.btnGrp}>
-                <button className={styles.button} id="button" onClick={defaultBtn}>Default</button>
-                <button className={styles.button} id="button">Hackerrank</button>
-                <button className={styles.button} id="button">New</button>
-            </ButtonGroup>
-            
-        </div>
+        
 
-        <div >
-            {/* <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
-                <Grid item xs={12} sm={6} className={styles.cardGrid}>
+        <div className={styles.cardContainer}>
+            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
+                <Grid item xs={12} md={4} sm={12} className={styles.cardGrid}>
                     <Card className={styles.adminCard}>
-                        <CardContent> 
-                            <h3 style={{textAlign:"center", color: "GrayText"}}>Event Details</h3>
-                            <EdiText buttonsAlign='before' type="text"  value={sessionTopic.pylampSession} onSave={handleSave} /><hr />
-                            <EdiText buttonsAlign='before' type="text"  value={aboutSession.pylampSession} onSave={handleSave} /><br />
-                            <button variant="contained" endIcon={<Send />} className={styles.cardBtn} onClick={() => setOpen(true)}>
-                                SET
-                            </button>                        
-                        </CardContent>
+                            <h1 className={styles.cardHeader}>Default Form</h1><br />
+                            
+                            <p className={styles.cardBody}>
+                                Default form is predefined form for instant use. We structure this template based upon your past 
+                                requirements. Eventhough you can edit this template.
+                            </p>
+
+                            <Button style={{fontSize:"1rem",color:"grey",float:"right",margin:"0.5rem",}}>USE 🎯</Button>
                     </Card>
                 </Grid>
-                <Grid item xs={12} sm={6} className={styles.cardGrid}>
+                <Grid item xs={12} md={4} sm={12} className={styles.cardGrid}>
                     <Card className={styles.adminCard}>
-                        <CardContent>
-                            <h3 style={{textAlign:"center", color: "GrayText"}}>Event Details</h3>
-                            <EdiText buttonsAlign='before' type="text"  value={sessionTopic.solveMe} onSave={handleSave} /><hr />
-                            <EdiText buttonsAlign='before' type="text"  value={aboutSession.solveMe} onSave={handleSave} /><br />
-                            <button variant="contained" endIcon={<Send />} className={styles.cardBtn} onClick={() => setOpen(true)}>
-                                SET
-                            </button>
-                        </CardContent>
+                            <h1 className={styles.cardHeader}>Hackerrank</h1><br />
+                            
+                            <p className={styles.cardBody}>
+                                Hackerrank template is used to scrab event result data from Hackerrank site. This feature simplify 
+                                your work, no need to maintain attendance manually for hackerrank.
+                            </p>
+
+                            <Button style={{fontSize:"1rem",color:"grey",float:"right",margin:"0.5rem",}}>USE 🎯</Button>
                     </Card>
                 </Grid>
-                <Grid item xs={12} sm={6} className={styles.cardGrid}>
+                <Grid item xs={12} md={4} sm={12} className={styles.cardGrid}>
                     <Card className={styles.adminCard}>
-                        <CardContent>
-                            <h3 style={{textAlign:"center", color: "GrayText"}}>Event Details</h3>
-                            <EdiText buttonsAlign='before' type="text"  value={sessionTopic.hackerRank} onSave={handleSave} /><hr />
-                            <EdiText buttonsAlign='before' type="text"  value={aboutSession.hackerRank} onSave={handleSave} /><br />
-                            <button variant="contained" endIcon={<Send />} className={styles.cardBtn} onClick={() => setOpen(true)}>
-                                SET
-                            </button>
-                        </CardContent>
+                        
+                            <h1 className={styles.cardHeader}>New Form</h1><br />
+                            
+                            <p className={styles.cardBody}>
+                                New form template is for your own creation of your form. Any other prefefined content was not placed in this 
+                                template. Create your form from Scratch!
+                            </p>
+
+                            <Button style={{fontSize:"1rem",color:"grey",float:"right",margin:"0.5rem",}}>USE 🎯</Button>
                     </Card>
                 </Grid>
-                <Grid item xs={12} sm={6} className={styles.cardGrid}>
-                    <Card className={styles.adminCard}>
-                        <CardContent>
-                            <h3 style={{textAlign:"center", color: "GrayText"}}>Event Details</h3>
-                            <EdiText buttonsAlign='before' type="text" value={sessionTopic.signatureEvent} onSave={handleSave} /><hr />
-                            <EdiText buttonsAlign='before' type="text"  value={aboutSession.signatureEvent} onSave={handleSave} /><br />
-                            <button variant="contained" endIcon={<Send />} className={styles.cardBtn} onClick={() => setOpen(true)}>
-                                SET
-                            </button>
-                        </CardContent>
-                    </Card>
-                </Grid>
-            </Grid> */}
+            </Grid>
 
             <Dialog
                 open={open}

@@ -4,11 +4,19 @@ import { useState } from "react";
 import styles from '../styles/Home.module.css';
 import Logo from "../public/pylampLogo.png";
 import Image from 'next/image';
+import { useRouter } from 'next/dist/client/router';
+import cogoToast from 'cogo-toast';
 
 export default function Layout({children}){
 
     const [isOpen,setIsOpen] = useState(false);
     const openMenu= ()=> setIsOpen(!isOpen);
+    const router = useRouter();
+    const routeAdmin = () =>
+    {
+        const promtValue = prompt("Pylamp Password",null);
+        (promtValue == "Pylamp@vcet")? router.push("/AdminPage"): cogoToast.error("Enter Valid Password");
+    }
     return <> 
             <div className={styles.NavDiv}>
             <nav className={styles.navbar}>
@@ -19,7 +27,7 @@ export default function Layout({children}){
                 <ul className={isOpen === false ? 
                         styles.navmenu : styles.navmenu +' '+ styles.active}>
                     <li className={styles.navitem}>
-                        <Button>Admin</Button>
+                        <Button onClick={routeAdmin}>Admin</Button>
                     </li>
                     <li className={styles.navitem}>
                         <Button>Events</Button>

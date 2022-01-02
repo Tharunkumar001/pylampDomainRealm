@@ -49,13 +49,20 @@ return (
     </Head>
 
     <main className={styles.adminMain}>
+        <div>
+            <AppBar>
+                <Toolbar>
+                    <Navbar />
+                </Toolbar>
+            </AppBar>
+        </div><br /><br />
+
         <div className={styles.mainContent}>
-            <Image src={Logo} alt="logo" width="150rem" height="150rem" />
             <h1>We Are Here For You!!</h1>
         </div>
 
         <div >
-            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
+            {/* <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
                 <Grid item xs={12} sm={6} className={styles.cardGrid}>
                     <Card className={styles.adminCard}>
                         <CardContent> 
@@ -104,7 +111,7 @@ return (
                         </CardContent>
                     </Card>
                 </Grid>
-            </Grid>
+            </Grid> */}
 
             <Dialog
                 open={open}

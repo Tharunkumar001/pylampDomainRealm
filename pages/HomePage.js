@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
@@ -9,7 +10,7 @@ import Instagram from "@material-ui/icons/Instagram";
 import { Router, useRouter } from 'next/dist/client/router';
 
 import Navbar from './Navbar';
-import { AppBar, Toolbar } from '@material-ui/core';
+import { AppBar, Grid, Toolbar } from '@material-ui/core';
 
 export default function AdminPage() {
     const router = useRouter();
@@ -42,11 +43,33 @@ return (
     </Head>
 
     <main className={styles.adminMain}>
+        <div>
         <AppBar>
-            <Toolbar>
-                <Navbar />
-            </Toolbar>
-        </AppBar>
+                <Toolbar>
+                    <Navbar />
+                </Toolbar>
+            </AppBar>
+        </div><br /><br />
+            
+
+        <div className={styles.pagContent}>
+            <Grid container spacing={2} className={styles.contentPart1}>
+                <Grid item xs={7}>
+                    
+                </Grid>
+                <Grid item xs={5} >
+                    <ul style={{listStyle:"none",margin: "0.5rem",paddingTop: "10%",fontWeight:"bold",fontSize: "1.5rem"}}>
+                        <li style={{float: "left",paddingBottom: "1rem"}}>📍Weekly Session</li><br /><br />
+                        <li style={{float: "right", }}>📍Domain Realm</li><br /><br />
+                        <li style={{float: "left", }}>📍Java Rover</li><br /><br />
+                        <li style={{float: "right", }}>📍Solve Me</li><br /><br />
+                        <li style={{float: "left", }}>📍Problem Solving</li><br /><br />
+                        <li style={{float: "right", }}>📍Hackerrank Contest</li>
+                    </ul>
+                </Grid>
+            </Grid>
+        </div>
+
     </main>
 
     <footer className={styles.homeFotter}>

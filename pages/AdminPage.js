@@ -6,7 +6,7 @@ import { useState } from 'react';
 import YouTube from "@material-ui/icons/YouTube";
 import LinkedIn from "@material-ui/icons/LinkedIn";
 import Instagram from "@material-ui/icons/Instagram";
-import { Button, Card, CardContent, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Typography } from '@material-ui/core';
+import { button, ButtonGroup, buttonGroup, Card, CardContent, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Typography } from '@material-ui/core';
 import { Router, useRouter } from 'next/dist/client/router';
 import axios from 'axios';
 import cogoToast from 'cogo-toast';
@@ -39,6 +39,10 @@ export default function AdminPage() {
     const handleSave = (val) => {
         console.log(val);
     }
+
+    const defaultBtn = () => {
+        document.getElementById("button").style = ''
+    }
 return (
 
 <div className={styles.adminContainer}>
@@ -57,8 +61,13 @@ return (
             </AppBar>
         </div><br /><br />
 
-        <div className={styles.mainContent}>
-            <h1>We Are Here For You!!</h1>
+        <div className={styles.btnContainer}>
+            <ButtonGroup className={styles.btnGrp}>
+                <button className={styles.button} id="button" onClick={defaultBtn}>Default</button>
+                <button className={styles.button} id="button">Hackerrank</button>
+                <button className={styles.button} id="button">New</button>
+            </ButtonGroup>
+            
         </div>
 
         <div >
@@ -69,9 +78,9 @@ return (
                             <h3 style={{textAlign:"center", color: "GrayText"}}>Event Details</h3>
                             <EdiText buttonsAlign='before' type="text"  value={sessionTopic.pylampSession} onSave={handleSave} /><hr />
                             <EdiText buttonsAlign='before' type="text"  value={aboutSession.pylampSession} onSave={handleSave} /><br />
-                            <Button variant="contained" endIcon={<Send />} className={styles.cardBtn} onClick={() => setOpen(true)}>
+                            <button variant="contained" endIcon={<Send />} className={styles.cardBtn} onClick={() => setOpen(true)}>
                                 SET
-                            </Button>                        
+                            </button>                        
                         </CardContent>
                     </Card>
                 </Grid>
@@ -81,9 +90,9 @@ return (
                             <h3 style={{textAlign:"center", color: "GrayText"}}>Event Details</h3>
                             <EdiText buttonsAlign='before' type="text"  value={sessionTopic.solveMe} onSave={handleSave} /><hr />
                             <EdiText buttonsAlign='before' type="text"  value={aboutSession.solveMe} onSave={handleSave} /><br />
-                            <Button variant="contained" endIcon={<Send />} className={styles.cardBtn} onClick={() => setOpen(true)}>
+                            <button variant="contained" endIcon={<Send />} className={styles.cardBtn} onClick={() => setOpen(true)}>
                                 SET
-                            </Button>
+                            </button>
                         </CardContent>
                     </Card>
                 </Grid>
@@ -93,9 +102,9 @@ return (
                             <h3 style={{textAlign:"center", color: "GrayText"}}>Event Details</h3>
                             <EdiText buttonsAlign='before' type="text"  value={sessionTopic.hackerRank} onSave={handleSave} /><hr />
                             <EdiText buttonsAlign='before' type="text"  value={aboutSession.hackerRank} onSave={handleSave} /><br />
-                            <Button variant="contained" endIcon={<Send />} className={styles.cardBtn} onClick={() => setOpen(true)}>
+                            <button variant="contained" endIcon={<Send />} className={styles.cardBtn} onClick={() => setOpen(true)}>
                                 SET
-                            </Button>
+                            </button>
                         </CardContent>
                     </Card>
                 </Grid>
@@ -105,9 +114,9 @@ return (
                             <h3 style={{textAlign:"center", color: "GrayText"}}>Event Details</h3>
                             <EdiText buttonsAlign='before' type="text" value={sessionTopic.signatureEvent} onSave={handleSave} /><hr />
                             <EdiText buttonsAlign='before' type="text"  value={aboutSession.signatureEvent} onSave={handleSave} /><br />
-                            <Button variant="contained" endIcon={<Send />} className={styles.cardBtn} onClick={() => setOpen(true)}>
+                            <button variant="contained" endIcon={<Send />} className={styles.cardBtn} onClick={() => setOpen(true)}>
                                 SET
-                            </Button>
+                            </button>
                         </CardContent>
                     </Card>
                 </Grid>
@@ -128,12 +137,12 @@ return (
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button autoFocus>
+                    <button autoFocus>
                         Launch🚀
-                    </Button>
-                    <Button onClick={handleClose} autoFocus>
+                    </button>
+                    <button onClick={handleClose} autoFocus>
                         Close
-                    </Button>
+                    </button>
                 </DialogActions>
             </Dialog>
         </div>

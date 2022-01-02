@@ -345,16 +345,30 @@
   float: right;
 }
 
-.mainContent{
+.btnContainer{
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  background: #4e54c8;  
-  background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
+  flex-direction: row;
+  /* background: #4e54c8;  
+  background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);   */
   width: 100%;
   height:max-content;
-  padding-top: 1.5rem;
+  padding-top: 3.5rem;
+  gap: 2rem;
+}
+/* 
+.btnGrp{
+  border: 0.2rem solid grey;
+  border-radius: 1.5rem;
+  padding: 1rem;
+
+} */
+
+.button{
+  border: 0.2rem solid grey;
+  border-radius: 1.5rem;
+  padding: 1rem;
 }
 
 .custom-edit-button{

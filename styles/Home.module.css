@@ -321,6 +321,7 @@
 .cardContainer{
   padding-top: 5rem;
   width: 100%;
+  background-color: rgba(245, 225, 225, 0.945);
 }
 
 .adminCard{
@@ -495,7 +496,19 @@
 
 /* DefaultForm */
 
+.defaultForm{
+  width: 80%;
+  border: 0.1rem solid grey;
+  margin-left: auto;
+  margin-right: auto;
+}
 
+.textContent{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 /* homePage */
 

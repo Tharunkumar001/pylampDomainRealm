@@ -321,18 +321,13 @@
 .cardContainer{
   padding-top: 5rem;
   width: 100%;
-  background-color: gray;
-
-}
-
-.custom-edit-button{
-  border: none;
-  color: #0070f3;
 }
 
 .adminCard{
-  width: 80%;
-  height: 50vh;
+  width: 60%;
+  height: 60vh;
+  background: linear-gradient(135deg, rgba(186, 39, 55, 1) 0%, rgba(186, 39, 55, 1) 51%, rgba(239, 197, 202, 1) 51%, rgba(239, 197, 202, 1) 100%);
+
 
 }
 
@@ -349,7 +344,7 @@
   font-weight: bold;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: large;
-  color: purple;
+  color: rgb(71, 74, 218);
   float: left;
   margin: 0.5rem;
 }
@@ -429,8 +424,6 @@
   color: white;
 }
 
-
-
 .navlink{
   font-size: 2rem;
   font-weight: 400;
@@ -499,6 +492,10 @@
   gap: 2rem;
   background-color: black;
 }
+
+/* DefaultForm */
+
+
 
 /* homePage */
 

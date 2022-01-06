@@ -17,6 +17,7 @@ import RefreshIcon from "@material-ui/icons/Refresh";
 import { AppBar } from '@material-ui/core';
 import { Toolbar } from '@material-ui/core';
 import Navbar from './Navbar';
+import DefaultForm from "./FormContainer/DefaultForm";
 
 export default function AdminPage() {
     const router = useRouter();
@@ -43,6 +44,10 @@ export default function AdminPage() {
     const defaultBtn = () => {
         document.getElementById("btn").style = ''
     }
+
+    const clickHandler = () => {
+        const flipDiv = window.location='#formContainers';
+    }
 return (
 
 <div className={styles.adminContainer}>
@@ -64,6 +69,7 @@ return (
         
 
         <div className={styles.cardContainer}>
+   
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
                 <Grid item xs={12} md={4} sm={12} className={styles.cardGrid}>
                     <Card className={styles.adminCard}>
@@ -74,7 +80,7 @@ return (
                                 requirements. Eventhough you can edit this template.
                             </p>
 
-                            <Button style={{fontSize:"1rem",color:"grey",float:"right",margin:"0.5rem",}}>USE 🎯</Button>
+                            <Button style={{fontSize:"1rem",color:"grey",float:"right",}} onClick={clickHandler}>USE 🎯</Button>
                     </Card>
                 </Grid>
                 <Grid item xs={12} md={4} sm={12} className={styles.cardGrid}>
@@ -86,7 +92,7 @@ return (
                                 your work, no need to maintain attendance manually for hackerrank.
                             </p>
 
-                            <Button style={{fontSize:"1rem",color:"grey",float:"right",margin:"0.5rem",}}>USE 🎯</Button>
+                            <Button style={{fontSize:"1rem",color:"grey",float:"right",}} onClick={clickHandler}>USE 🎯</Button>
                     </Card>
                 </Grid>
                 <Grid item xs={12} md={4} sm={12} className={styles.cardGrid}>
@@ -99,10 +105,10 @@ return (
                                 template. Create your form from Scratch!
                             </p>
 
-                            <Button style={{fontSize:"1rem",color:"grey",float:"right",margin:"0.5rem",}}>USE 🎯</Button>
+                            <Button style={{fontSize:"1rem",color:"grey",float:"right"}} onClick={clickHandler}>USE 🎯</Button>
                     </Card>
                 </Grid>
-            </Grid>
+            </Grid><hr style={{width:"50%",alignContent:"center"}}/>
 
             <Dialog
                 open={open}
@@ -127,6 +133,10 @@ return (
                     </button>
                 </DialogActions>
             </Dialog>
+        </div>
+
+        <div className={styles.formContainer} id="formContainers">
+            <DefaultForm />
         </div>
     </main>
 

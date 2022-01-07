@@ -8,17 +8,12 @@ import { useState } from 'react';
 import YouTube from "@material-ui/icons/YouTube";
 import LinkedIn from "@material-ui/icons/LinkedIn";
 import Instagram from "@material-ui/icons/Instagram";
-
+import { Button } from '@material-ui/core';
+import { SendOutlined } from '@material-ui/icons';
 export default function Final() {
     const [data, setData] = useState({ name: "", rollNo: "", class: "NA" });
-
-    const date =  new Date();
-    date.toISOString()
     const [editContent, setValue] = useState({header:"Event Name",about:"About",period:"Enter Date"});
 
-    const handleSave = () => {
-        console.log(editContent)
-    };
 
 return (
     <div className={styles.defaultForm}>
@@ -32,17 +27,17 @@ return (
 
             <div className={styles.rowBtn} >
               <h4 className={styles.period}>
-                <EdiText type="text" value={editContent.header} onSave={handleSave} />
+                <EdiText type="text" value={editContent.header} onSave={(e) => setValue({...editContent, header: e})} />
               </h4>
 
               
               <h4 className={styles.period}>
-                <EdiText type="text" value={editContent.period} onSave={handleSave} />
+                <EdiText type="text" value={editContent.period} onSave={(e) => setValue({...editContent, period: e})} />
               </h4>
 
             </div>
-            <h4 className={styles.period}>
-                <EdiText type="text" value={editContent.about} onSave={handleSave} />
+              <h4 className={styles.period}>
+                <EdiText type="text" value={editContent.about} onSave={(e) => setValue({...editContent, about: e})} />
               </h4>
 
         <div className={styles.form}>
@@ -73,6 +68,10 @@ return (
             </form>
           </label>
         </div>
+
+          <Button variant="contained" endIcon={<SendOutlined />} className={styles.setBtn}>
+                  SET
+          </Button>        
         </div>
 
         <footer className={styles.homeFotter}>

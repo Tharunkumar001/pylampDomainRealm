@@ -597,7 +597,11 @@
     }
   }
 
-
+  .setBtn{
+    float: right;
+    margin: 1rem;
+    
+  }
 /* homePage */
 
 .pagContent{

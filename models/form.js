@@ -9,6 +9,6 @@ const DefaultSchema = new mongoose.Schema({
 
 mongoose.models = {};
 
-var Default = mongoose.model('User', DefaultSchema);
+var Default = mongoose.model('Default', DefaultSchema);
 
 export default Default;

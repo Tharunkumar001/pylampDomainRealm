@@ -9,6 +9,9 @@ import LinkedIn from "@material-ui/icons/LinkedIn";
 import Instagram from "@material-ui/icons/Instagram";
 import {Button,CircularProgress,Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,} from '@material-ui/core';
 import axios from "axios";
+import { useRouter } from 'next/dist/client/router';
+import CopyIcon from "@material-ui/icons/FileCopyOutlined";
+import cogoToast from 'cogo-toast';
 
 export default function Final() {
     const [data, setData] = useState({ name: "", rollNo: "", class: "NA" });
@@ -16,6 +19,7 @@ export default function Final() {
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
 
+    const router = useRouter();
     const handleClose = () => {
         setOpen(false);
     }
@@ -24,13 +28,21 @@ export default function Final() {
         setOpen(true);
     }
 
+    const copyText = () => {
+      var copyText = document.getElementById("pageId").innerText;
+
+      navigator.clipboard.writeText(copyText);
+      cogoToast.info("Text Copied to Clipboard");
+    }
+
     const handleLaunch = async() => {
       setLoading(true);
-      const res = await axios.post("https://pylamp-domain-realm.vercel.app/api/setForm",{eventDetails: eventDetails});
+      const res = await axios.post("http://localhost:3000/api/setForm",{eventDetails: eventDetails});
+      console.log(res.data)
       setTimeout(() => {
         setLoading(false);
-        setOpen(false);
-      },2000)
+        document.getElementById("pageId").innerHTML = res.data;
+      },3000)
     }
 
 return (
@@ -100,6 +112,11 @@ return (
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">
                         Are You Sure Ready For The Launch of Default Form
+                    </DialogContentText>
+
+                    <DialogContentText>
+                      <span id="pageId"></span>
+                      <label><Button onClick={copyText}><CopyIcon /></Button></label>
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>

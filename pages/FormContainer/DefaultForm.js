@@ -7,13 +7,14 @@ import { useState } from 'react';
 import YouTube from "@material-ui/icons/YouTube";
 import LinkedIn from "@material-ui/icons/LinkedIn";
 import Instagram from "@material-ui/icons/Instagram";
-import {Button,Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,} from '@material-ui/core';
+import {Button,CircularProgress,Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,} from '@material-ui/core';
 import axios from "axios";
 
 export default function Final() {
     const [data, setData] = useState({ name: "", rollNo: "", class: "NA" });
     const [eventDetails, setValue] = useState({header:"Event Name",about:"About",period:"Enter Date"});
     const [open, setOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const handleClose = () => {
         setOpen(false);
@@ -24,8 +25,12 @@ export default function Final() {
     }
 
     const handleLaunch = async() => {
-      const res = await axios.post("http://localhost:3000/api/setForm",{eventDetails: eventDetails});
-      
+      setLoading(true);
+      const res = await axios.post("https://pylamp-domain-realm.vercel.app/api/setForm",{eventDetails: eventDetails});
+      setTimeout(() => {
+        setLoading(false);
+        setOpen(false);
+      },2000)
     }
 
 return (
@@ -98,6 +103,7 @@ return (
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
+                    {(loading)? <CircularProgress />: null}
                     <Button autoFocus onClick={handleLaunch}>
                         Launch🚀
                     </Button>

@@ -2,22 +2,36 @@
 import Image from 'next/image';
 import styles from '../../styles/Home.module.css';
 import Logo from "../../public/pylampLogo.png";
-import Cover from "../../public/cover.jpg";
 import EdiText from 'react-editext';
 import { useState } from 'react';
 import YouTube from "@material-ui/icons/YouTube";
 import LinkedIn from "@material-ui/icons/LinkedIn";
 import Instagram from "@material-ui/icons/Instagram";
-import { Button } from '@material-ui/core';
-import { SendOutlined } from '@material-ui/icons';
+import {Button,Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,} from '@material-ui/core';
+import axios from "axios";
+
 export default function Final() {
     const [data, setData] = useState({ name: "", rollNo: "", class: "NA" });
-    const [editContent, setValue] = useState({header:"Event Name",about:"About",period:"Enter Date"});
+    const [eventDetails, setValue] = useState({header:"Event Name",about:"About",period:"Enter Date"});
+    const [open, setOpen] = useState(false);
 
+    const handleClose = () => {
+        setOpen(false);
+    }
+    
+    const handleOpen = () => {
+        setOpen(true);
+    }
+
+    const handleLaunch = async() => {
+      const res = await axios.post("http://localhost:3000/api/setForm",{eventDetails: eventDetails});
+      
+    }
 
 return (
     <div className={styles.defaultForm}>
         <h1 style={{textAlign:"center",color:"rgb(71, 74, 218)",}}>Default form</h1>
+        <button className={styles.setBtn} onClick={() => setOpen(true)}>SET</button>
 
         <div className={styles.formContainer}>
             <div className={styles.formHeader}>
@@ -27,17 +41,17 @@ return (
 
             <div className={styles.rowBtn} >
               <h4 className={styles.period}>
-                <EdiText type="text" value={editContent.header} onSave={(e) => setValue({...editContent, header: e})} />
+                <EdiText type="text" value={eventDetails.header} onSave={(e) => setValue({...eventDetails, header: e})} />
               </h4>
 
               
               <h4 className={styles.period}>
-                <EdiText type="text" value={editContent.period} onSave={(e) => setValue({...editContent, period: e})} />
+                <EdiText type="text" value={eventDetails.period} onSave={(e) => setValue({...eventDetails, period: e})} />
               </h4>
 
             </div>
               <h4 className={styles.period}>
-                <EdiText type="text" value={editContent.about} onSave={(e) => setValue({...editContent, about: e})} />
+                <EdiText type="text" value={eventDetails.about} onSave={(e) => setValue({...eventDetails, about: e})} />
               </h4>
 
         <div className={styles.form}>
@@ -69,9 +83,29 @@ return (
           </label>
         </div>
 
-          <Button variant="contained" endIcon={<SendOutlined />} className={styles.setBtn}>
-                  SET
-          </Button>        
+            <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle className={styles.alertDialogTitle}>
+                    Comfirmative dialog!!
+                </DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                        Are You Sure Ready For The Launch of Default Form
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button autoFocus onClick={handleLaunch}>
+                        Launch🚀
+                    </Button>
+                    <Button onClick={handleClose} autoFocus>
+                        Close
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </div>
 
         <footer className={styles.homeFotter}>

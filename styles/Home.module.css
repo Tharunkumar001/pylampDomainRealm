@@ -326,7 +326,7 @@
 
 .adminCard{
   width: 60%;
-  height: 60vh;
+  height: fit-content;
   background: linear-gradient(135deg, rgba(186, 39, 55, 1) 0%, rgba(186, 39, 55, 1) 51%, rgba(239, 197, 202, 1) 51%, rgba(239, 197, 202, 1) 100%);
 
 
@@ -338,7 +338,6 @@
   justify-content: center;
   align-items: center;
   padding-bottom: 1rem;
-
 }
 
 .cardHeader{
@@ -597,11 +596,28 @@
     }
   }
 
-  .setBtn{
-    float: right;
-    margin: 1rem;
-    
+  
+  .setBtn {background-image: linear-gradient(to right, #474ada 0%, #0072ff  51%, #00c6ff  100%)}
+  .setBtn {
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+    font-weight: bold;
   }
+
+  .setBtn:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
+
 /* homePage */
 
 .pagContent{

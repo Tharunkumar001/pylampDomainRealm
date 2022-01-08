@@ -13,7 +13,7 @@ import { useRouter } from 'next/dist/client/router';
 import CopyIcon from "@material-ui/icons/FileCopyOutlined";
 import cogoToast from 'cogo-toast';
 
-export default function Final() {
+export default function DefaultForm() {
     const [data, setData] = useState({ name: "", rollNo: "", class: "NA" });
     const [eventDetails, setValue] = useState({header:"Event Name",about:"About",period:"Enter Date"});
     const [open, setOpen] = useState(false);
@@ -33,6 +33,10 @@ export default function Final() {
 
       navigator.clipboard.writeText(copyText);
       cogoToast.info("Text Copied to Clipboard");
+
+      setTimeout(() => {
+        router.push("/FormPage")
+      },1000)
     }
 
     const handleLaunch = async() => {
@@ -42,7 +46,7 @@ export default function Final() {
       setTimeout(() => {
         setLoading(false);
         document.getElementById("pageId").innerHTML = res.data;
-      },3000)
+      },3000);
     }
 
 return (

@@ -15,8 +15,8 @@ const formHandler = async(req, res)=> {
         defaultForm.save();
         console.log(defaultForm._id)
         res.status(200).send(defaultForm._id);
-    }else{
-        console.log("other method")
+    }else if(req.method === "GET"){
+        
     }}
 
 export default connectDB(formHandler);

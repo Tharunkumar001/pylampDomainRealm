@@ -138,7 +138,7 @@ export default function Home() {
         </DialogActions>
       </Dialog>
 
-      <ul className={styles.circles}>
+      {/* <ul className={styles.circles}>
         <li></li>
         <li></li>
         <li></li>
@@ -149,7 +149,7 @@ export default function Home() {
         <li></li>
         <li></li>
         <li></li>
-      </ul>
+      </ul> */}
     </div>
   )
 }

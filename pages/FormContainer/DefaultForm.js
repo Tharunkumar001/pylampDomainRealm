@@ -44,7 +44,7 @@ export default function DefaultForm() {
     const handleLaunch = async() => {
       
       setLoading(true);
-      const res = await axios.post("http://localhost:3000/api/setForm",{eventDetails: eventDetails});
+      const res = await axios.post("https://pylamp-domain-realm.vercel.app/api/setForm",{eventDetails: eventDetails});
       
       setTimeout(() => {
         setLoading(false);

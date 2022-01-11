@@ -11,7 +11,8 @@ const handler = (req, res)=> {
               const userData  = new User({
                   name: req.body.name,
                   rollNo: req.body.rollNo,
-                  class: req.body.class
+                  class: req.body.class,
+                  event: req.body.event
               })
               userData.save();
       

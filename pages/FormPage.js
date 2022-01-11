@@ -17,50 +17,66 @@ import Instagram from "@material-ui/icons/Instagram";
 import Logo from "../public/pylampLogo.png";
 import Navbar from "../pages/Navbar";
 import { AppBar, Toolbar } from '@material-ui/core';
+import cogoToast from 'cogo-toast';
 
 const FormPage = (props) => {
-    const [data, setData] = useState({ name: "", rollNo: "", class: "NA" });
-    const [eventDetails, setValue] = useState({header:"Event Name",about:"About",period:"Enter Date"});
+    const [eventDetails, setValue] = useState({header:"Undefined",about:"Undefined",period:"Undefined"});
+    const [data, setData] = useState({ name: "", rollNo: "", class: "NA", event:eventDetails.header });
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState();
 
     useEffect(() => {
         (async () => {
-            const api = await axios.get("http://localhost:3000/api/setForm")
+            const formId = localStorage.getItem("currentFormId");
+            const api = await axios.put("http://localhost:3000/api/setForm",{formId:formId});
             
+            if(api.status === 200){
+                setValue({...eventDetails, header: api.data[0].eventName, 
+                    about: api.data[0].about, period: api.data[0].period
+                });
+            }else{
+                cogoToast.error("Something Went Wrong");
+            }
         })()
-    
-        return () => {
-          unsubscribeOrRemoveEventHandler() // 👍 
+    },[]);
+
+    const submitHandler = (e) => {
+        e.preventDefault()
+        console.log(data);
+        let rollNoLength = data.rollNo.length;
+
+    const validateRollNo = (rollNoLength === 8) ? false : true;
+    const validateclass = (data.class !== "NA") ? false : true;
+
+    if (!validateRollNo && !validateclass) {
+        axios.post("http://localhost:3000/api/formHandler", data).then((res) => {
+        //https://pylamp-domain-realm.vercel.app/  
+        setLoading(true);
+        if (res.data == false) {
+            setLoading(false);
+            cogoToast.info("already you marked your attendance", { position: 'bottom-center' });
+
+            setTimeout(() => {
+                handleOpen();
+            }, 3000);
+
+        } else {
+            setLoading(false);
+            handleOpen();
         }
-    },[])
+    })
+    } else {
+        cogoToast.info("Enter valid RollNo or Class");
+    }
+}
+
     const handleClose = () => {
         setOpen(false);
     }
     
     const handleOpen = () => {
         setOpen(true);
-    }
-
-    const copyText = () => {
-      var copyText = document.getElementById("pageId").innerText;
-
-      navigator.clipboard.writeText(copyText);
-      cogoToast.info("Text Copied to Clipboard");
-
-      setTimeout(() => {
-        router.push("/FormPage")
-      },1000)
-    }
-
-    const handleLaunch = async() => {
-      setLoading(true);
-      const res = await axios.post("http://localhost:3000/api/setForm",{eventDetails: eventDetails});
-      console.log(res.data)
-      setTimeout(() => {
-        setLoading(false);
-        document.getElementById("pageId").innerHTML = res.data;
-      },3000);
     }
 return (
     <div className={styles.formPage} style={{paddingTop:"1rem"}}>
@@ -73,77 +89,67 @@ return (
 
         <div className={styles.rowBtn} >
             <h4 className={styles.period}>
-                <h3>Event Name</h3>
+                <h3>{eventDetails.header}</h3>
             </h4>
 
             
             <h4 className={styles.period}>
-            <h3>Event period</h3>
+                <h3>{eventDetails.period}</h3>
             </h4>
+        </div>
 
-            </div>
             <h4 className={styles.period}>
-            <h3>Event about</h3>
+                <h3>{eventDetails.about}</h3>
             </h4>
 
         <div className={styles.form}>
         <label>
         <h2>🎯</h2>
 
-            <form className={styles.formLabel}>
+            <form className={styles.formLabel} onSubmit={submitHandler}>
 
-            <input placeholder="Name" autoComplete="off" value={data.name.trim()} type="text" name="inputForName" required className={styles.input}
-                onChange={e => setData({ ...data, name: e.target.value })}
-            /><br />
+                <input placeholder="Name" autoComplete="off" value={data.name.trim()} type="text" name="inputForName" required className={styles.input}
+                    onChange={e => setData({ ...data, name: e.target.value })}
+                /><br />
 
-            <input placeholder="RollNo" autoComplete="off" value={data.rollNo.trim()} type="text" name="inputForName" required className={styles.input}
-                onChange={e => setData({ ...data, rollNo: e.target.value })}
-            /><br />
-            {/* {error && <span>Enter your Full Pattern</span>} */}
-            <select className={styles.input}
-                onChange={e => setData({ ...data, class: e.target.value })} required>
-                <option value="NA">CLASS</option>
-                <option value="CSE3A">CSE3A</option>
-                <option value="CSE3B">CSE3B</option>
-                <option value="CSE5A">CSE5A</option>
-                <option value="CSE5B">CSE5B</option>
-            </select>
-            <br />
+                <input placeholder="RollNo" autoComplete="off" value={data.rollNo.trim()} type="text" name="inputForName" required className={styles.input}
+                    onChange={e => setData({ ...data, rollNo: e.target.value })}
+                /><br />
+                {/* {error && <span>Enter your Full Pattern</span>} */}
+                <select className={styles.input}
+                    onChange={e => setData({ ...data, class: e.target.value })} required>
+                    <option value="NA">CLASS</option>
+                    <option value="CSE3A">CSE3A</option>
+                    <option value="CSE3B">CSE3B</option>
+                    <option value="CSE5A">CSE5A</option>
+                    <option value="CSE5B">CSE5B</option>
+                </select>
+                <br />
 
-            <button type="submit" className={styles.defaultBtn}>Submit <code>🏏</code></button>
+                <button type="submit" className={styles.defaultBtn}>Submit <code>🏏</code></button>
             </form>
         </label>
         </div>
-
         <Dialog
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
         >
-            <DialogTitle className={styles.alertDialogTitle}>
-                Comfirmative dialog!!
-            </DialogTitle>
-            <DialogContent>
-                <DialogContentText id="alert-dialog-description">
-                    Are You Sure Ready For The Launch of Default Form
-                </DialogContentText>
-
-                <DialogContentText>
-                    <span id="pageId"></span>
-                </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-                {(loading)? <CircularProgress />: null}
-                <Button autoFocus onClick={handleLaunch}>
-                    Launch🚀
-                </Button>
-                <Button onClick={handleClose} autoFocus>
-                    Close
-                </Button>
-            </DialogActions>
-        </Dialog>
-        
+        <DialogTitle className={styles.alertDialogTitle}>
+            Well Done Folks!!!!
+        </DialogTitle>
+        <DialogContent>
+        <DialogContentText id="alert-dialog-description">
+            Successfully your attendance marked..
+        </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+            <Button onClick={handleClose} autoFocus>
+                Close
+            </Button>
+        </DialogActions>
+    </Dialog>
     </div>
 
     <footer className={styles.homeFotter}>

@@ -16,6 +16,7 @@ import cogoToast from 'cogo-toast';
 export default function DefaultForm() {
     const [data, setData] = useState({ name: "", rollNo: "", class: "NA" });
     const [eventDetails, setValue] = useState({header:"Event Name",about:"About",period:"Enter Date"});
+    const [formId, setFormId] = useState();
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
 
@@ -35,17 +36,20 @@ export default function DefaultForm() {
       cogoToast.info("Text Copied to Clipboard");
 
       setTimeout(() => {
+        localStorage.setItem("currentFormId",formId);
         router.push("/FormPage")
       },1000)
     }
 
     const handleLaunch = async() => {
+      
       setLoading(true);
       const res = await axios.post("http://localhost:3000/api/setForm",{eventDetails: eventDetails});
-      console.log(res.data)
+      
       setTimeout(() => {
         setLoading(false);
         document.getElementById("pageId").innerHTML = res.data;
+        setFormId(res.data);
       },3000);
     }
 

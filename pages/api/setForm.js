@@ -13,10 +13,12 @@ const formHandler = async(req, res)=> {
         });
 
         defaultForm.save();
-        console.log(defaultForm._id)
         res.status(200).send(defaultForm._id);
-    }else if(req.method === "GET"){
-        
+    }else if(req.method === "PUT"){
+        const getDefaultFormData = await Default.find({_id: req.body.formId});
+        if(getDefaultFormData !== null){
+            res.status(200).send(getDefaultFormData);
+        }
     }}
 
 export default connectDB(formHandler);

@@ -524,7 +524,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  
+  padding-top: 5rem;
 }
 
 .profileImg{
@@ -536,13 +536,13 @@
 }
 
 
-.period, .defaultBtn, .form {
+.period, .header, .defaultBtn, .form {
   background-image: linear-gradient(to right, #1F1C2C 0%, #928DAB  51%, #1F1C2C  100%);
 
 }
-.period, .defaultBtn {
+.header, .defaultBtn {
     margin: 10px;
-    padding: 15px 45px;
+    padding: 5px 45px;
     text-align: center;
     text-transform: uppercase;
     transition: 0.5s;
@@ -558,7 +558,11 @@
     width: max-content;
   }
 
-  .period:hover, .defaultBtn:hover, .form:hover {
+  .period{
+    
+  }
+
+  .header:hover, .defaultBtn:hover, .form:hover {
     background-position: right center; /* change the direction of the change here */
     color: #fff;
     text-decoration: none;
@@ -582,14 +586,15 @@
     width: max-content;
   }
 
-.rowBtn{
-  display: flex;
-  flex-direction: row;
-  gap: 0.5rem;
-  justify-content: center;
-  align-items: center;
-  padding-top: 5rem;
-}
+  .rowBtn{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: flex-end;
+    padding-top: 5rem;
+  }
+
   @media (max-width: 600px) {
     .rowBtn {
       display: flex;
@@ -598,7 +603,6 @@
     }
   }
 
-  
   .setBtn {background-image: linear-gradient(to right, #474ada 0%, #0072ff  51%, #00c6ff  100%)}
   .setBtn {
     margin: 10px;

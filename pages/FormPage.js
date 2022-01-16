@@ -29,7 +29,7 @@ const FormPage = (props) => {
     useEffect(() => {
         (async () => {
             const formId = localStorage.getItem("currentFormId");
-            const api = await axios.put("https://pylamp-domain-realm.vercel.app/api/setForm",{formId:formId});
+            const api = await axios.put("http://localhost:3000/api/setForm",{formId:formId});
             
             if(api.status === 200){
                 setValue({...eventDetails, header: api.data[0].eventName, 
@@ -50,7 +50,7 @@ const FormPage = (props) => {
     const validateclass = (data.class !== "NA") ? false : true;
 
     if (!validateRollNo && !validateclass) {
-        axios.post("https://pylamp-domain-realm.vercel.app/api/formHandler", data).then((res) => {
+        axios.post("http://localhost:3000/api/formHandler", data).then((res) => {
         //https://pylamp-domain-realm.vercel.app/  
         setLoading(true);
         if (res.data == false) {
@@ -86,21 +86,20 @@ return (
             </Toolbar>
         </AppBar>
     <div className={styles.formContainer}>
-
-        <div className={styles.rowBtn} >
-            <h4 className={styles.period}>
-                <h3>{eventDetails.header}</h3>
-            </h4>
-
             
-            <h4 className={styles.period}>
-                <h3>{eventDetails.period}</h3>
+
+        
+        <div className={styles.rowBtn} >
+            <h4 className={styles.header}>
+                <h3>{eventDetails.header}</h3>
+                <h3 className={styles.period}>{eventDetails.period}</h3>
+
             </h4>
+
+
         </div>
 
-            <h4 className={styles.period}>
-                <h3>{eventDetails.about}</h3>
-            </h4>
+
 
         <div className={styles.form}>
         <label>

@@ -536,13 +536,15 @@
 }
 
 
-.period, .header, .defaultBtn, .form {
+  .header, .defaultBtn, .form {
   background-image: linear-gradient(to right, #1F1C2C 0%, #928DAB  51%, #1F1C2C  100%);
 
 }
+
+
 .header, .defaultBtn {
     margin: 10px;
-    padding: 5px 45px;
+    padding: 15px 45px;
     text-align: center;
     text-transform: uppercase;
     transition: 0.5s;
@@ -559,7 +561,11 @@
   }
 
   .period{
-    
+    padding: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    float: right;
+    width: max-content;
   }
 
   .header:hover, .defaultBtn:hover, .form:hover {
@@ -588,7 +594,7 @@
 
   .rowBtn{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 0.5rem;
     justify-content: center;
     align-items: flex-end;

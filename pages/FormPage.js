@@ -86,14 +86,12 @@ return (
             </Toolbar>
         </AppBar>
     <div className={styles.formContainer}>
-            
 
-        
         <div className={styles.rowBtn} >
-            <h4 className={styles.header}>
-                <h3>{eventDetails.header}</h3>
-                <h3 className={styles.period}>{eventDetails.period}</h3>
+        {/* <h3 className={styles.period}>{eventDetails.period}</h3> */}
 
+            <h4 className={styles.header}>
+                <h3>{eventDetails.header}</h3><br />
             </h4>
 
 

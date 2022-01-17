@@ -30,7 +30,7 @@ export default function Layout({children}){
                         <Button onClick={routeAdmin}>Admin</Button>
                     </li>
                     <li className={styles.navitem}>
-                        <Button>Events</Button>
+                        <Button onClick = {() => router.push("/Events")}>Events</Button>
                     </li>
                     <li className={styles.navitem}>
                         <Button>Contact</Button>

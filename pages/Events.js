@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { DataGrid } from '@material-ui/data-grid';
-import { AppBar, Toolbar } from '@material-ui/core';
+import { AppBar, Button, Toolbar } from '@material-ui/core';
 import Navbar from "../pages/Navbar";
 import { useEffect, useState } from 'react';
-import FormPage from './FormPage';
+import FormPage from "../pages/FormPage";
 import axios from 'axios'
+import styles from '../styles/Home.module.css';
+import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
 
 const columns = [
 
@@ -13,6 +15,7 @@ const columns = [
     headerName: 'Event Name',
     width: 200,
     editable: true,
+    
   },
   {
     field: 'period',
@@ -23,7 +26,7 @@ const columns = [
   {
     field: 'details',
     headerName: 'Details',
-    width: 100,
+    width: 130,
     editable: true,
   },
 
@@ -32,8 +35,11 @@ const columns = [
 const EventPage = () => {
 
     const [row, setRow] = useState([]);
-        useEffect(() => {
+    const [open, setOpen] = useState(false);
+    const [dialog, setDialog] = useState({EventName:"", ExactDate:"", 
+    EventDate:"", About:"", EventId:"", EventType:""});
 
+    useEffect(() => {
         (async () => {
           var api = await axios.get("https://pylamp-domain-realm.vercel.app/api/setForm");
           var expRows = [];
@@ -42,13 +48,21 @@ const EventPage = () => {
 
           data.map((value,index) => {
             expRows.push(
-              { id: value._id, eventName: value.eventName, exactDate: value.exactDate, period: value.period, details: "Details"},
+              { id: value._id, eventName: value.eventName, exactDate: value.exactDate, 
+                period: value.period, about: value.about, formType: value.formType, details: "📝"},
             )           
           })
-          console.log(expRows)
           setRow(expRows);
       })()
       },[]);
+
+    const handleClose = () => {
+        setOpen(false);
+    }
+    
+    const handleOpen = () => {
+        setOpen(true);
+    }
 
   return (
     <div>
@@ -58,18 +72,55 @@ const EventPage = () => {
             </Toolbar>
         </AppBar>
 
-      <div style={{ height: 600, width: '100%',paddingTop:"6rem"}}>
+      <div className={styles.dataGrid}>
         <DataGrid
           rows={row}
           columns={columns}
           pageSize={5}
           rowsPerPageOptions={[5]}
-          checkboxSelection
           disableSelectionOnClick
+          autoHeight={true}
+          autoPageSize={true}
+          checkboxSelection={false}
+          onRowClick={(row) => {
+            handleOpen();
+            console.log(row.row.eventName)
+            setDialog({...dialog, EventName: row.row.eventName, ExactDate: row.row.exactDate, 
+              EventDate: row.row.period, About: row.row.about, EventType: row.row.formType, EventId: row.row.id});
+          }}
         />
       </div>
+
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        >
+        <DialogTitle className={styles.EventDialogTitle}>
+          <h1>{dialog.EventName}</h1>
+        </DialogTitle>
+        <DialogContent>
+        <DialogContentText id="alert-dialog-description">
+          <ul>
+            <li><label><h5>EventDate</h5></label> {dialog.EventDate}</li>
+            <li><label><h5>About</h5></label> {dialog.About}</li>
+            <li><label><h5>FormCreation</h5></label> {dialog.ExactDate}</li>
+            <li><label><h5>EventId</h5></label> {dialog.EventId}</li>
+            <li><label><h5>FormType</h5></label> {dialog.EventType}</li>
+          </ul>
+        </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+            <Button onClick={handleClose} autoFocus>
+                Export
+            </Button>
+            <Button onClick={handleClose} autoFocus>
+                Close
+            </Button>
+        </DialogActions>
+    </Dialog>
     </div>
-    
   );
 }
 

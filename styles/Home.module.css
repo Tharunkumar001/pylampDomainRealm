@@ -654,3 +654,19 @@
   background-image: linear-gradient(to right, #1F1C2C 0%, #928DAB  51%, #1F1C2C  100%);
 
 }
+
+/* Event Page */
+
+.dataGrid{
+  height: 600;
+  width: 80%;
+  padding-top:8rem;
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+.EventDialogTitle{
+  background-image: linear-gradient(to right, #74748f 0%, #0072ff  51%, #00c6ff  100%)
+}

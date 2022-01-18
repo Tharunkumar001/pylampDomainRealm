@@ -10,6 +10,7 @@ const formHandler = async(req, res)=> {
             period: req.body.eventDetails.period,
             about: req.body.eventDetails.about,
             exactDate: new Date().toString(),
+            formType: "Default"
         });
 
         defaultForm.save();

@@ -20,7 +20,7 @@ import { AppBar, Toolbar } from '@material-ui/core';
 import cogoToast from 'cogo-toast';
 
 const FormPage = (props) => {
-    const [eventDetails, setValue] = useState({header:"Undefined",about:"Undefined",period:"Undefined"});
+    const [eventDetails, setValue] = useState({header:"Undefined",about:"Undefined",period:"Undefined", formType: "Default"});
     const [data, setData] = useState({ name: "", rollNo: "", class: "NA", event:eventDetails.header });
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -29,7 +29,7 @@ const FormPage = (props) => {
     useEffect(() => {
         (async () => {
             const formId = localStorage.getItem("currentFormId");
-            const api = await axios.put("http://localhost:3000/api/setForm",{formId:formId});
+            const api = await axios.put("https://pylamp-domain-realm.vercel.app/api/setForm",{formId:formId});
             
             if(api.status === 200){
                 setValue({...eventDetails, header: api.data[0].eventName, 
@@ -50,7 +50,7 @@ const FormPage = (props) => {
     const validateclass = (data.class !== "NA") ? false : true;
 
     if (!validateRollNo && !validateclass) {
-        axios.post("http://localhost:3000/api/formHandler", data).then((res) => {
+        axios.post("https://pylamp-domain-realm.vercel.app/api/formHandler", data).then((res) => {
         //https://pylamp-domain-realm.vercel.app/  
         setLoading(true);
         if (res.data == false) {
@@ -93,11 +93,7 @@ return (
             <h4 className={styles.header}>
                 <h3>{eventDetails.header}</h3><br />
             </h4>
-
-
         </div>
-
-
 
         <div className={styles.form}>
         <label>

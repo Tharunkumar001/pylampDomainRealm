@@ -12,7 +12,8 @@ const handler = (req, res)=> {
                   name: req.body.name,
                   rollNo: req.body.rollNo,
                   class: req.body.class,
-                  event: req.body.event
+                  event: req.body.event,
+                  formType: req.body.formType
               })
               userData.save();
       

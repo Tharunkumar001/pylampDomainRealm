@@ -5,6 +5,7 @@ const DefaultSchema = new mongoose.Schema({
     period: String,
     about: String,
     exactDate: String,
+    formType: String
 })
 
 mongoose.models = {};

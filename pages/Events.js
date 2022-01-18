@@ -24,6 +24,12 @@ const columns = [
     editable: true,
   },
   {
+    field: 'id',
+    headerName: 'Event Id',
+    width: 200,
+    editable: true,
+  },
+  {
     field: 'details',
     headerName: 'Details',
     width: 130,

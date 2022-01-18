@@ -11,7 +11,7 @@ import { Router, useRouter } from 'next/dist/client/router';
 import { AppBar } from '@material-ui/core';
 import { Toolbar } from '@material-ui/core';
 import FormPage from "../pages/FormPage";
-import DefaultForm from "../FormContainer/DefaultForm";
+import DefaultForm from "../pages/FormContainer/DefaultForm";
 import Navbar from "../pages/Navbar";
 
 export default function AdminPage() {

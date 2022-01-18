@@ -1,8 +1,8 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 import Default from "../../models/form";
-import dbConnect from "../../middleware/mongodb";
 import connectDB from "../../middleware/mongodb";
+
 const formHandler = async(req, res)=> {
     if(req.method === "POST"){
         const defaultForm = new Default({

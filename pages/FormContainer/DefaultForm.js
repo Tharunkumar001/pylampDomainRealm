@@ -29,18 +29,6 @@ export default function DefaultForm() {
         setOpen(true);
     }
 
-    const copyText = () => {
-      var copyText = document.getElementById("pageId").innerText;
-
-      navigator.clipboard.writeText(copyText);
-      cogoToast.info("Text Copied to Clipboard");
-
-      setTimeout(() => {
-        localStorage.setItem("currentFormId",formId);
-        router.push("/FormPage")
-      },1000)
-    }
-
     const handleLaunch = async() => {
       
       setLoading(true);
@@ -48,8 +36,9 @@ export default function DefaultForm() {
       
       setTimeout(() => {
         setLoading(false);
-        document.getElementById("pageId").innerHTML = res.data;
         setFormId(res.data);
+        localStorage.setItem("currentFormId",formId);
+        router.push(`/FormPage`)
       },3000);
     }
 
@@ -65,18 +54,20 @@ return (
             </div>
 
             <div className={styles.rowBtn} >
-              <h4 className={styles.period}>
-                <EdiText type="text" value={eventDetails.header} onSave={(e) => setValue({...eventDetails, header: e})} />
+              <h4 className={styles.header}>
+                <EdiText type="text" value={eventDetails.header} 
+                onSave={(e) => setValue({...eventDetails, header: e})} />
               </h4>
 
-              
-              <h4 className={styles.period}>
-                <EdiText type="text" value={eventDetails.period} onSave={(e) => setValue({...eventDetails, period: e})} />
+              <h4 className={styles.header}>
+                <EdiText type="text" value={eventDetails.period} 
+                onSave={(e) => setValue({...eventDetails, period: e})} />
               </h4>
 
             </div>
-              <h4 className={styles.period}>
-                <EdiText type="text" value={eventDetails.about} onSave={(e) => setValue({...eventDetails, about: e})} />
+              <h4 className={styles.header}>
+                <EdiText type="text" value={eventDetails.about} 
+                onSave={(e) => setValue({...eventDetails, about: e})} />
               </h4>
 
         <div className={styles.form}>
@@ -120,11 +111,6 @@ return (
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">
                         Are You Sure Ready For The Launch of Default Form
-                    </DialogContentText>
-
-                    <DialogContentText>
-                      <span id="pageId"></span>
-                      <label><Button onClick={copyText}><CopyIcon /></Button></label>
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>

@@ -33,11 +33,10 @@ export default function DefaultForm() {
       
       setLoading(true);
       const res = await axios.post("https://pylamp-domain-realm.vercel.app/api/setForm",{eventDetails: eventDetails});
-      
+      console.log(res)
       setTimeout(() => {
         setLoading(false);
-        setFormId(res.data);
-        localStorage.setItem("currentFormId",formId);
+        localStorage.setItem("currentFormId",res.data);
         router.push(`/FormPage`)
       },3000);
     }

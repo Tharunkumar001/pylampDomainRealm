@@ -4,8 +4,9 @@ const UserSchema = new mongoose.Schema({
     name: String,
     rollNo: String,
     class: String,
-    event: String,
-    formType: String
+    eventName: String,
+    formType: String,
+    eventId: String,
 })
 
 mongoose.models = {};

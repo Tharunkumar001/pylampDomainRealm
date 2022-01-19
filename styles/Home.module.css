@@ -167,7 +167,7 @@
     height:max-content;
     z-index: 2;
 }
-
+/* 
 .circles{
     position: absolute;
     top: 0;
@@ -266,7 +266,7 @@
     animation-delay: 0s;
     animation-duration: 11s;
 }
-
+ */
 
 
 @keyframes animate {
@@ -290,6 +290,13 @@
   border-radius: 1.5rem;
   border-bottom:0.3rem solid #636f7c;
   text-align: center;
+  background-image: linear-gradient(to right, #353547 0%, #acb9c9  51%, #00c6ff  100%)
+}
+
+.AttendanceGrid{
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 .login1 {
@@ -297,7 +304,7 @@
 }
 
 .countBar{
-  background: #456BD9;
+  background: #00c8ff81;
   border: 0.1875em solid #0F1C3F;
   border-radius: 50%;
   box-shadow: 0.375em 0.375em 0 0 rgba(15, 28, 63, 0.125);

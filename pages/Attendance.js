@@ -8,8 +8,7 @@ import BoxIcon from "@material-ui/icons/AddBoxOutlined"
 import ListIcon from "@material-ui/icons/ListAltOutlined";
 import DeleteIcon from "@material-ui/icons/Delete";
 import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
-import { CircularProgress } from '@material-ui/core';
-
+import cogoToast from 'cogo-toast';
 
 const delFunction = async(x) => {
     var rollNo = x;
@@ -30,14 +29,14 @@ const TableData = (props) => {
                     <ListItem>{props.section}</ListItem>
                 </Grid>
                 <Grid item xs={2}>
-                    <ListItem ><DeleteIcon /></ListItem>
+                    <ListItem >{props.roll}</ListItem>
                 </Grid>
             </Grid>
     )
     
 }
 
-export default function Attendance() {
+export default function Attendance(props) {
     const [data,setData] = useState([]);
     const [view,setView] = useState("grid");
     const [open, setOpen] = useState(false);
@@ -45,12 +44,17 @@ export default function Attendance() {
     var bool = false;
 
     useEffect(() => {
-        axios.get("https://pylamp-domain-realm.vercel.app/api/formHandler").then((res) => {
+        axios.put("https://pylamp-domain-realm.vercel.app/api/attendanceHandler",{eventId: localStorage.getItem("eventId")}).then((res) => {
             //https://pylamp-domain-realm.vercel.app
-            var arrayOfData = res.data;
-            var count = setCount(res.data.length);
-            var sortedArray = arrayOfData.sort((a,b) => (a.class > b.class) ? 1 : ((b.class > a.class) ? -1 : 0))
-            setData(sortedArray)
+            if(res.data === false){
+                cogoToast.info("Event was not found")
+            }else{
+                var arrayOfData = res.data;
+                var count = setCount(res.data.length);
+                var sortedArray = arrayOfData.sort((a,b) => (a.class > b.class) ? 1 : ((b.class > a.class) ? -1 : 0))
+                setData(sortedArray)
+            }
+            
     });
     },[]);
 
@@ -82,7 +86,7 @@ return (
             </Button>
         </div><br />
         
-            {(view == "grid")? <Grid container rowSpacing={1} spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+            {(view == "grid")? <Grid container className={styles.AttendanceGrid} rowSpacing={1} spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                     {data.map((ele,ind) => (
                             <Grid item xs={6} sm={4} md={4} key={ind} className={styles.AttendanceCard}>
                                 <h5>{ele.name}</h5>

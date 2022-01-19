@@ -7,6 +7,8 @@ import FormPage from "../pages/FormPage";
 import axios from 'axios'
 import styles from '../styles/Home.module.css';
 import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
+import Attendance from './Attendance';
+import { useRouter } from 'next/dist/client/router';
 
 const columns = [
 
@@ -39,7 +41,7 @@ const columns = [
 ];
 
 const EventPage = () => {
-
+    const router = useRouter();
     const [row, setRow] = useState([]);
     const [open, setOpen] = useState(false);
     const [dialog, setDialog] = useState({EventName:"", ExactDate:"", 
@@ -70,6 +72,11 @@ const EventPage = () => {
         setOpen(true);
     }
 
+    const handleView = () => {
+        localStorage.setItem("eventId", dialog.EventId);
+        router.push("/Attendance");
+    }
+
   return (
     <div>
         <AppBar>
@@ -90,7 +97,6 @@ const EventPage = () => {
           checkboxSelection={false}
           onRowClick={(row) => {
             handleOpen();
-            console.log(row.row.eventName)
             setDialog({...dialog, EventName: row.row.eventName, ExactDate: row.row.exactDate, 
               EventDate: row.row.period, About: row.row.about, EventType: row.row.formType, EventId: row.row.id});
           }}
@@ -118,8 +124,8 @@ const EventPage = () => {
         </DialogContentText>
         </DialogContent>
         <DialogActions>
-            <Button onClick={handleClose} autoFocus>
-                Export
+            <Button onClick={handleView} autoFocus>
+                View
             </Button>
             <Button onClick={handleClose} autoFocus>
                 Close

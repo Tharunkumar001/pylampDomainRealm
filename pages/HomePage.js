@@ -18,7 +18,7 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 
 export default function AdminPage() {
-    
+
     useEffect(() => {
         Aos.init({
             duration:2000,
@@ -70,7 +70,7 @@ return (
 
         <ScrollAnimation animateIn="fadeIn">
         <div className={styles.clubPostionDiv} data-aos="fade-up">
-            <h1 style={{textAlign:"center"}}>CLUB POSITIONS</h1>
+            <h1 style={{textAlign:"center", color:"white"}}>CLUB POSITIONS📝</h1>
             <Grid container spacing={2} className={styles.homeGrid}>
                 <Grid p xs={12} md={4} sm={4}>
                     <ScrollAnimation animateIn="fadeIn">
@@ -88,7 +88,10 @@ return (
                         <Card className={styles.adminCard}  data-aos="fade-right">
                             <h2 style={{margin:"0.5rem"}}>PYMENTOR</h2>
 
-                            <h3 className={styles.cardHeader}>K. VIJAYA</h3><br />
+                            <h3 className={styles.cardHeader}>
+                                HariHaran & Ruban & Sowbarnika & Harinisha & 
+                                Sharmatha & Gokul & Tamilanjali
+                            </h3><br />
 
                             <p className={styles.cardBody}>
                                 The members who top the Eligibility test will be assigned as PyMentors

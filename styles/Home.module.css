@@ -1,3 +1,64 @@
+/* home page */
+
+.firstDiv{
+  padding-top: 6rem;
+  background-image: url("../public//education.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100hv;
+  padding-bottom: 1rem;
+}
+
+.quote{
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+  color: rgb(73, 71, 190);
+
+}
+
+.motoDiv{
+  margin: 0.5rem;
+  text-align: center;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-style: italic;
+  text-indent: 0.5rem;
+  font-weight: bolder;
+}
+
+.homeGrid{
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.clubPostionDiv{
+  width: 100%;
+  height: max-content;
+  padding-top: 2rem;
+  margin-top: 2rem;
+  background-image: linear-gradient(to right, #72728a 0%, #4e535a  51%, #181b1b  100%)
+}
+.headerDiv{
+  color:black;
+  font-weight: bold;
+  font-size: 2rem;
+  margin: 10px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.homeMain{
+
+}
+
 .container {
   padding: 0 2rem;
 }
@@ -23,7 +84,7 @@
   flex-direction: row;
   row-gap: 2rem;
   z-index: 200;
-  /* background-color: grey; */
+  background-color: black;
 }
 
 .footer a {
@@ -336,8 +397,8 @@
   width: 60%;
   height: fit-content;
   background: linear-gradient(135deg, rgba(186, 39, 55, 1) 0%, rgba(186, 39, 55, 1) 51%, rgba(239, 197, 202, 1) 51%, rgba(239, 197, 202, 1) 100%);
-
-
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .cardGrid{

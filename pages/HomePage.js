@@ -18,11 +18,7 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 
 export default function AdminPage() {
-    const router = useRouter();
-
     
-    const [open, setOpen] = useState(false);
-
     useEffect(() => {
         Aos.init({
             duration:2000,
@@ -30,35 +26,16 @@ export default function AdminPage() {
         })
     },[]);
 
-    const handleClose = () => {
-        setOpen(false);
-    }
-    
-    const handleOpen = () => {
-        setOpen(true);
-    }
-
-    const handleSave = (val) => {
-        console.log(val);
-    }
-    
-    const defaultBtn = () => {
-        document.getElementById("btn").style = ''
-    }
-
-    const clickHandler = () => {
-        const flipDiv = window.location='#formContainers';
-    }
 return (
 
-<div className={styles.adminContainer}>
+<div className={styles.homeContainer}>
     <Head>
         <title>Domain Realm</title>
         <meta name="description" content="Web development session" />
         <link rel="icon" href="/pylampLogo.png" />
     </Head>
 
-    <main className={styles.adminMain}>
+    <main className={styles.homeMain}>
         <div>
             <AppBar>
                 <Toolbar>

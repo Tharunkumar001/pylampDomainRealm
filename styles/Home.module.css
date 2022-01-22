@@ -2,7 +2,9 @@
 
 .firstDiv{
   padding-top: 6rem;
-  background-image: url("../public//education.jpg");
+  /* background-image: url("../public//education.jpg"); */
+  background-color: black;
+  color:white;
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
@@ -16,6 +18,34 @@
   text-align: center;
   color: rgb(73, 71, 190);
 
+}
+
+.eventCard{
+  width: 80%;
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  background-image: linear-gradient(to right, #72728a 0%, #4e535a  51%, #181b1b  100%)
+
+}
+
+.eventCard:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+
+}
+
+.cardHead{
+
+}
+
+.eventDiv{
+  padding-top: 5rem;
 }
 
 .motoDiv{
@@ -43,7 +73,7 @@
   background-image: linear-gradient(to right, #72728a 0%, #4e535a  51%, #181b1b  100%)
 }
 .headerDiv{
-  color:black;
+  color:white;
   font-weight: bold;
   font-size: 2rem;
   margin: 10px;

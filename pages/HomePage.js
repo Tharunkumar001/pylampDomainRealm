@@ -188,6 +188,36 @@ return (
             </Grid>
         </div>
         </ScrollAnimation>
+
+        <div className={styles.eventDiv}>
+            <h1 style={{textAlign:"center"}}>PYLAMP EVENTS 🎉</h1>
+        <Grid container spacing={2} className={styles.homeGrid}>
+                <Grid p xs={12} md={6} sm={6}>
+                    <ScrollAnimation animateIn="fadeIn">
+                        <Card className={styles.eventCard}  data-aos="fade-left">
+                            <h2 className={styles.cardHead}>Weekly Session</h2>
+                        </Card><br />
+                        <Card className={styles.eventCard}  data-aos="fade-right">
+                            <h2 className={styles.cardHead}>Solve Me</h2>
+                        </Card><br />
+                    </ScrollAnimation>
+
+                    
+                </Grid>
+                <Grid p xs={12} md={6} sm={6}>
+                    <ScrollAnimation animateIn="fadeIn">
+                        <Card className={styles.eventCard} data-aos="fade-left">
+                            <h2 className={styles.cardHead}>Java Rover</h2>
+                        </Card><br />
+                        
+                        <Card className={styles.eventCard} data-aos="fade-right">
+                            <h2 className={styles.cardHead}>Domain Realm</h2>
+                        </Card><br />
+                    </ScrollAnimation>
+                
+                </Grid>
+            </Grid>
+        </div>
         
     </main>
 

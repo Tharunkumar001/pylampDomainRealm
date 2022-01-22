@@ -74,7 +74,6 @@ return (
             Welcome to Pylamp!
         </h1>
 
-        <h3>Domain Realm Attendance</h3>
         <h4 className={styles.countBar}>{count}</h4>
         <div>
             <Button variant="contained" startIcon={<BoxIcon />} onClick={() => setView("grid")}>

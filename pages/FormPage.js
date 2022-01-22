@@ -31,6 +31,7 @@ const FormPage = (props) => {
     useEffect(() => {
         (async () => {
             const formId  = await prompt("Enter Event Id", localStorage.getItem("currentFormId"));
+            
             try {
                 const api = await axios.put("https://pylamp-domain-realm.vercel.app/api/setForm",{formId:formId});
 

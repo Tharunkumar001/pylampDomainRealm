@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DataGrid } from '@material-ui/data-grid';
+import { DataGrid, GridToolbarContainer, GridToolbarExport  } from '@material-ui/data-grid';
 import { AppBar, Button, Toolbar } from '@material-ui/core';
 import Navbar from "../pages/Navbar";
 import { useEffect, useState } from 'react';
@@ -10,6 +10,14 @@ import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } f
 import Attendance from './Attendance';
 import { useRouter } from 'next/dist/client/router';
 
+function CustomToolbar() {
+  return (
+    <GridToolbarContainer>
+      <GridToolbarExport />
+    </GridToolbarContainer>
+  );
+}
+
 const columns = [
 
   {
@@ -17,7 +25,12 @@ const columns = [
     headerName: 'Event Name',
     width: 200,
     editable: true,
-    
+  },
+  {
+    field: 'about',
+    headerName: 'About',
+    width: 130,
+    editable: true,
   },
   {
     field: 'period',
@@ -32,9 +45,9 @@ const columns = [
     editable: true,
   },
   {
-    field: 'details',
-    headerName: 'Details',
-    width: 130,
+    field: 'formType',
+    headerName: 'Form Type',
+    width: 200,
     editable: true,
   },
 
@@ -49,7 +62,7 @@ const EventPage = () => {
 
     useEffect(() => {
         (async () => {
-          var api = await axios.get("https://pylamp-domain-realm.vercel.app/api/setForm");
+          var api = await axios.get("https://pylamp-domain-realm.vercel.app/ api/setForm");
           var expRows = [];
 
           var data = api.data;
@@ -57,10 +70,10 @@ const EventPage = () => {
           data.map((value,index) => {
             expRows.push(
               { id: value._id, eventName: value.eventName, exactDate: value.exactDate, 
-                period: value.period, about: value.about, formType: value.formType, details: "📝"},
+                period: value.period, about: value.about, formType: value.formType,},
             )           
           })
-          setRow(expRows);
+          setRow(expRows.reverse());
       })()
       },[]);
 
@@ -87,6 +100,9 @@ const EventPage = () => {
 
       <div className={styles.dataGrid}>
         <DataGrid
+          components={{
+            Toolbar: CustomToolbar,
+          }}
           rows={row}
           columns={columns}
           pageSize={5}

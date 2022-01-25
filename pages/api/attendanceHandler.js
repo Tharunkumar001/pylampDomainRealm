@@ -13,6 +13,13 @@ const handler = async(req, res)=> {
         }else{
             res.status(200).send(false);
         }
+    }else if(req.method === "POST"){
+        console.log(req.body)
+        if(req.body.promtValue === process.env.Pylamp_Password){
+            res.send(true)
+        }else{
+            res.send(false)
+        }
     }}
 
 export default connectDB(handler);

@@ -1,5 +1,11 @@
 /* home page */
-
+.load{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
 .firstDiv{
   padding-top: 6rem;
   /* background-image: url("../public//education.jpg"); */

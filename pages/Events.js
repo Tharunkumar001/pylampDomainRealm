@@ -3,13 +3,11 @@ import { DataGrid, GridToolbarContainer, GridToolbarExport  } from '@material-ui
 import { AppBar, Button, Toolbar } from '@material-ui/core';
 import Navbar from "../pages/Navbar";
 import { useEffect, useState } from 'react';
-import FormPage from "../pages/FormPage";
 import axios from 'axios'
 import styles from '../styles/Home.module.css';
 import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
-import Attendance from './Attendance';
 import { useRouter } from 'next/dist/client/router';
-
+import { CircularProgress } from '@material-ui/core';
 function CustomToolbar() {
   return (
     <GridToolbarContainer>
@@ -59,12 +57,14 @@ const EventPage = () => {
     const [open, setOpen] = useState(false);
     const [dialog, setDialog] = useState({EventName:"", ExactDate:"", 
     EventDate:"", About:"", EventId:"", EventType:""});
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         (async () => {
+
           var api = await axios.get("https://pylamp-domain-realm.vercel.app/api/setForm");
           var expRows = [];
-
+          setLoading(false)
           var data = api.data;
 
           data.map((value,index) => {
@@ -91,7 +91,8 @@ const EventPage = () => {
     }
 
   return (
-    <div>
+      <div>
+
         <AppBar>
             <Toolbar>
                 <Navbar />
@@ -118,7 +119,9 @@ const EventPage = () => {
           }}
         />
       </div>
-
+      {(loading)? <div className={styles.load}>
+          <CircularProgress />
+        </div> : null }
       <Dialog
         open={open}
         onClose={handleClose}

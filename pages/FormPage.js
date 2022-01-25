@@ -2,19 +2,11 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Button, Card, IconButton, ListItem, Tab, Table } from '@material-ui/core';
-import { Grid } from '@material-ui/core';
-import BoxIcon from "@material-ui/icons/AddBoxOutlined"
-import ListIcon from "@material-ui/icons/ListAltOutlined";
-import DeleteIcon from "@material-ui/icons/Delete";
+import { Button} from '@material-ui/core';
 import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
-import { CircularProgress } from '@material-ui/core';
-import Image from 'next/image';
-import DefaultForm from "../pages/FormContainer/DefaultForm";
 import YouTube from "@material-ui/icons/YouTube";
 import LinkedIn from "@material-ui/icons/LinkedIn";
 import Instagram from "@material-ui/icons/Instagram";
-import Logo from "../public/pylampLogo.png";
 import Navbar from "../pages/Navbar";
 import { AppBar, Toolbar } from '@material-ui/core';
 import cogoToast from 'cogo-toast';
@@ -48,7 +40,7 @@ const FormPage = (props) => {
             }
             
         })()
-    },[]);
+    },[data, eventDetails]);
 
     const submitHandler = (e) => {
         e.preventDefault()

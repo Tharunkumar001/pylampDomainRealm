@@ -1,23 +1,18 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import styles from '../styles/Home.module.css';
-import Logo from "../public/pylampLogo.png";
-import { useEffect, useState } from 'react';
+import { useEffect,} from 'react';
 import YouTube from "@material-ui/icons/YouTube";
 import LinkedIn from "@material-ui/icons/LinkedIn";
 import Instagram from "@material-ui/icons/Instagram";
-import { Button, Card,Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Typography } from '@material-ui/core';
-import { Router, useRouter } from 'next/dist/client/router';
+import { Card, Grid,} from '@material-ui/core';
 import { AppBar } from '@material-ui/core';
 import { Toolbar } from '@material-ui/core';
-import FormPage from "../pages/FormPage";
-import DefaultForm from "../pages/FormContainer/DefaultForm";
 import Navbar from "../pages/Navbar";
 import ScrollAnimation from 'react-animate-on-scroll';
 import Aos from "aos";
 import "aos/dist/aos.css";
 
-export default function AdminPage() {
+export default function HomePage() {
 
     useEffect(() => {
         Aos.init({
@@ -72,7 +67,7 @@ return (
         <div className={styles.clubPostionDiv} data-aos="fade-up">
             <h1 style={{textAlign:"center", color:"white"}}>CLUB POSITIONS📝</h1>
             <Grid container spacing={2} className={styles.homeGrid}>
-                <Grid p xs={12} md={4} sm={4}>
+                <Grid xs={12} md={4} sm={4}>
                     <ScrollAnimation animateIn="fadeIn">
                         <Card className={styles.adminCard}  data-aos="fade-left">
                             <h2 style={{margin:"0.5rem"}}>CLUB ADVISER</h2>
@@ -115,7 +110,7 @@ return (
 
                     
                 </Grid>
-                <Grid p xs={12} md={4} sm={4}>
+                <Grid xs={12} md={4} sm={4}>
                     <ScrollAnimation animateIn="fadeIn">
                         <Card className={styles.adminCard} data-aos="fade-left">
                             <h2 style={{margin:"0.5rem"}}>GRAND MASTER</h2>
@@ -152,7 +147,7 @@ return (
                     </ScrollAnimation>
                 
                 </Grid>
-                <Grid p xs={12} md={4} sm={4} >
+                <Grid xs={12} md={4} sm={4} >
                     <ScrollAnimation animateIn="fadeIn">
                         <Card className={styles.adminCard} data-aos="fade-left">
                             <h2 style={{margin:"0.5rem"}}>TECH CHAMP</h2>

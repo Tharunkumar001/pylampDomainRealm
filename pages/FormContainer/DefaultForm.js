@@ -10,8 +10,6 @@ import Instagram from "@material-ui/icons/Instagram";
 import {Button,CircularProgress,Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,} from '@material-ui/core';
 import axios from "axios";
 import { useRouter } from 'next/dist/client/router';
-import CopyIcon from "@material-ui/icons/FileCopyOutlined";
-import cogoToast from 'cogo-toast';
 
 export default function DefaultForm() {
     const [data, setData] = useState({ name: "", rollNo: "", class: "NA" });

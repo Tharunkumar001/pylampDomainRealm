@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import Logo from "../public/pylampLogo.png";
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import YouTube from "@material-ui/icons/YouTube";
 import LinkedIn from "@material-ui/icons/LinkedIn";
 import Instagram from "@material-ui/icons/Instagram";
@@ -13,6 +13,9 @@ import { Toolbar } from '@material-ui/core';
 import FormPage from "../pages/FormPage";
 import DefaultForm from "../pages/FormContainer/DefaultForm";
 import Navbar from "../pages/Navbar";
+import ScrollAnimation from 'react-animate-on-scroll';
+import Aos from "aos";
+import cookie from 'react-cookies'
 
 export default function AdminPage() {
     const router = useRouter();
@@ -24,6 +27,17 @@ export default function AdminPage() {
     
     const [open, setOpen] = useState(false);
 
+
+    useEffect(() => {
+        Aos.init({
+            duration:2000,
+            throttleDelay: 99,
+        });
+        var verify = cookie.load("adminAllow");
+        
+        (!verify)? router.push("/"): null;
+    },[]);
+    
     const handleClose = () => {
         setOpen(false);
     }
@@ -41,7 +55,7 @@ export default function AdminPage() {
     }
 
     const clickHandler = () => {
-        const flipDiv = window.location='#formContainers';
+        const flipDiv = window.location.href='#formContainers';
     }
 return (
 
@@ -64,21 +78,25 @@ return (
         
 
         <div className={styles.cardContainer}>
-            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
+            <Grid container columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
                 <Grid item xs={12} md={4} sm={12} className={styles.cardGrid}>
-                    <Card className={styles.adminCard}>
-                            <h1 className={styles.cardHeader}>Default Form</h1><br />
-                            
-                            <p className={styles.cardBody}>
-                                Default form is predefined form for instant use. We structure this template based upon your past 
-                                requirements. Eventhough you can edit this template.
-                            </p>
+                <ScrollAnimation animateIn="fadeIn">
+                    <Card className={styles.adminCard} data-aos="fade-left">
+                        <h1 className={styles.cardHeader}>Default Form</h1><br />
+                        
+                        <p className={styles.cardBody}>
+                            Default form is predefined form for instant use. We structure this template based upon your past 
+                            requirements. Eventhough you can edit this template.
+                        </p>
 
-                            <Button style={{fontSize:"1rem",color:"grey",float:"right",}} onClick={clickHandler}>USE 🎯</Button>
+                        <Button style={{fontSize:"1rem",color:"grey",float:"right",}} onClick={clickHandler}>USE 🎯</Button>
                     </Card>
+                </ScrollAnimation>
+                    
                 </Grid>
                 <Grid item xs={12} md={4} sm={12} className={styles.cardGrid}>
-                    <Card className={styles.adminCard}>
+                <ScrollAnimation animateIn="fadeIn">
+                    <Card className={styles.adminCard} data-aos="fade-right">
                             <h1 className={styles.cardHeader}>Hackerrank</h1><br />
                             
                             <p className={styles.cardBody}>
@@ -88,19 +106,22 @@ return (
 
                             <Button style={{fontSize:"1rem",color:"grey",float:"right",}} onClick={clickHandler}>USE 🎯</Button>
                     </Card>
+                </ScrollAnimation>
+                    
                 </Grid>
                 <Grid item xs={12} md={4} sm={12} className={styles.cardGrid}>
-                    <Card className={styles.adminCard}>
+                <ScrollAnimation animateIn="fadeIn">
+                    <Card className={styles.adminCard} data-aos="fade-right">
+                        <h1 className={styles.cardHeader}>New Form</h1><br />
                         
-                            <h1 className={styles.cardHeader}>New Form</h1><br />
-                            
-                            <p className={styles.cardBody}>
-                                New form template is for your own creation of your form. Any other prefefined content was not placed in this 
-                                template. Create your form from Scratch!
-                            </p>
+                        <p className={styles.cardBody}>
+                            New form template is for your own creation of your form. Any other prefefined content was not placed in this 
+                            template. Create your form from Scratch!
+                        </p>
 
-                            <Button style={{fontSize:"1rem",color:"grey",float:"right"}} onClick={clickHandler}>USE 🎯</Button>
+                        <Button style={{fontSize:"1rem",color:"grey",float:"right"}} onClick={clickHandler}>USE 🎯</Button>
                     </Card>
+                </ScrollAnimation>
                 </Grid>
             </Grid><hr style={{width:"50%",alignContent:"center"}}/>
 

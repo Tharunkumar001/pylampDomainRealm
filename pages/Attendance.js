@@ -41,20 +41,21 @@ export default function Attendance(props) {
     const [view,setView] = useState("grid");
     const [open, setOpen] = useState(false);
     const [count, setCount] = useState(0);
+    const [eventDetails, setDetails] = useState({eventName:"", eventId:""})
     var bool = false;
 
     useEffect(() => {
         axios.put("https://pylamp-domain-realm.vercel.app/api/attendanceHandler",{eventId: localStorage.getItem("eventId")}).then((res) => {
             //https://pylamp-domain-realm.vercel.app
             if(res.data === false){
-                cogoToast.info("Event was not found")
+                cogoToast.info("Empty Responses!!")
             }else{
+                setDetails({...eventDetails, eventName: res.data[0].eventName, eventId: res.data[0].eventId});
                 var arrayOfData = res.data;
                 var count = setCount(res.data.length);
                 var sortedArray = arrayOfData.sort((a,b) => (a.class > b.class) ? 1 : ((b.class > a.class) ? -1 : 0))
                 setData(sortedArray)
             }
-            
     });
     },[]);
 
@@ -73,6 +74,11 @@ return (
         <h1 className={styles.title}>
             Welcome to Pylamp!
         </h1>
+        
+        <div style={{display:"flex", justifyContent:"center", alignItems:"center", flexDirection:"row", gap:"0.2rem"}}>
+            <h4>{eventDetails.eventName}</h4><hr />
+            <h4>{eventDetails.eventId}</h4>
+        </div>
 
         <h4 className={styles.countBar}>{count}</h4>
         <div>

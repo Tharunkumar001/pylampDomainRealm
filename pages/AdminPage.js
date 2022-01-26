@@ -75,8 +75,6 @@ return (
             </AppBar>
         </div><br /><br />
 
-        
-
         <div className={styles.cardContainer}>
             <Grid container columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
                 <Grid item xs={12} md={4} sm={12} className={styles.cardGrid}>

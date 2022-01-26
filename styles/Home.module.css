@@ -432,7 +432,13 @@
 .cardContainer{
   padding-top: 5rem;
   width: 100%;
-  background-color: rgba(245, 225, 225, 0.945);
+  background-image: url("../public//grunge-paint-background_1409-1337.jpg");
+  /* background-color: black; */
+  color:black;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100hv;
 }
 
 .adminCard{
@@ -467,7 +473,6 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-style: italic;
 }
-
 
 /*HomePage CSS*/
 

@@ -3,6 +3,8 @@
 
 import connectDB from "../../middleware/mongodb";
 import User from "../../models/user";
+import dotenv from "dotenv";
+dotenv.config();
 
 const handler = async(req, res)=> {
     if(req.method === "PUT"){
@@ -14,8 +16,7 @@ const handler = async(req, res)=> {
             res.status(200).send(false);
         }
     }else if(req.method === "POST"){
-        console.log(req.body)
-        if(req.body.promtValue === process.env.Pylamp_Password){
+        if(req.body.promtValue === 'Pylamp@vcet'){
             res.send(true)
         }else{
             res.send(false)

@@ -39,14 +39,16 @@ return (
             </AppBar>
         </div><br /><br />
 
-        <div className={styles.firstDiv}  data-aos="fade-up">
-                <h1 className={styles.headerDiv} >LOGIC && LANGUAGE</h1>
-                <p className={styles.motoDiv} >
-                    `Logic programming is a programming paradigm that is based on logic. 
-                    This means that a logic programming language has sentences that follow logic, so that they express facts and rules.
-                    Computation using logic programming is done by making logical inferences based on all available data.`
-                </p>
-        </div>
+        <ScrollAnimation animateIn="fadeIn">
+            <div className={styles.firstDiv}  data-aos="fade-up">
+                    <h1 className={styles.headerDiv} >LOGIC && LANGUAGE</h1>
+                    <p className={styles.motoDiv} >
+                        `Logic programming is a programming paradigm that is based on logic. 
+                        This means that a logic programming language has sentences that follow logic, so that they express facts and rules.
+                        Computation using logic programming is done by making logical inferences based on all available data.`
+                    </p>
+            </div>
+            </ScrollAnimation>
         <ScrollAnimation animateIn="fadeIn">
             <div className={styles.motoDiv} data-aos="fade-left" >
                     <h1 >About Pylamp!!</h1>
@@ -89,21 +91,16 @@ return (
                             </h3><br />
 
                             <p className={styles.cardBody}>
-                                The members who top the Eligibility test will be assigned as PyMentors
-                                for the whole academic year.
-                                Their role involves:
-                                ❖ Maintaining the integrity of the members in their respective
-                                classes.
-                                ❖ Acts as bridge between their class and the club
-                                ❖ Have rights to hammer any suggestions and opinions during
-                                the discussion meet
-                                ❖ Respect the advice on content, club maintenance and decisions
-                                of the Governing Committee.
-                                ❖ Handle and maintain the attendance of their class’s PYLAMP
-                                members
-                                ❖ Circulate the event information to their class members
-                                Answerable to the Faculty Advisor, Grand Master, Tech Champ and
-                                Senior PyMentors.
+                                ■ PyMentors pursuing their final year of study will be upgraded to the
+                                position of Senior PyMentor from PyMentor.
+                                ■ Guide, assist and coordinate all the PyMentors of the club.
+                                ■ Have rights to hammer any suggestions and opinions during the
+                                discussion meet
+                                ■ Ensure whether all PyMentors have a good hold on their
+                                responsibilities.
+                                ■ Respect the advice on content, club maintenance and decisions of the
+                                Governing Committee.
+                                ■ Answerable to the faculty Advisor, Grand Master and Tech Champ
                             </p>
                         </Card><br />
                     </ScrollAnimation>

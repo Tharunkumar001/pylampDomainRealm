@@ -8,9 +8,9 @@
 }
 .firstDiv{
   padding-top: 6rem;
-  /* background-image: url("../public//education.jpg"); */
-  background-color: black;
-  color:white;
+  background-image: url("../public//grunge-paint-background_1409-1337.jpg");
+  /* background-color: black; */
+  color:black;
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
@@ -76,10 +76,16 @@
   height: max-content;
   padding-top: 2rem;
   margin-top: 2rem;
+  /* background-image: url("../public//patternBack.jpg");
+  /* background-color: black; 
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100hv; */
   background-image: linear-gradient(to right, #72728a 0%, #4e535a  51%, #181b1b  100%)
 }
 .headerDiv{
-  color:white;
+  color:black;
   font-weight: bold;
   font-size: 2rem;
   margin: 10px;

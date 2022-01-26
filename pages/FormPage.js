@@ -10,8 +10,10 @@ import Instagram from "@material-ui/icons/Instagram";
 import Navbar from "../pages/Navbar";
 import { AppBar, Toolbar } from '@material-ui/core';
 import cogoToast from 'cogo-toast';
+import { useRouter } from 'next/dist/client/router';
 
 const FormPage = (props) => {
+    const router = useRouter();
     const [eventDetails, setValue] = useState({header:"Undefined",about:"Undefined",
         period:"Undefined", formType: "Default",});
     const [data, setData] = useState({ name: "", rollNo: "", class: "NA", eventName:eventDetails.header, 
@@ -32,15 +34,17 @@ const FormPage = (props) => {
                         about: api.data[0].about, period: api.data[0].period
                     });
                     setData({...data, eventId: formId, eventName: api.data[0].eventName});
-                }else{
+                }else if(api.data === false){
                     cogoToast.error("Something Went Wrong");
                 }
             } catch (error) {
-                cogoToast.error("Enter Valid Event Id")
+                await cogoToast.error("Enter Valid Event Id");
+                setTimeout(() => {
+                    window.location.reload();
+                },1000)
             }
-            
         })()
-    },[data, eventDetails]);
+    },[]);
 
     const submitHandler = (e) => {
         e.preventDefault()
@@ -100,7 +104,7 @@ return (
         <label>
         <h2>🎯</h2>
 
-            <form className={styles.formLabel} onSubmit={submitHandler}>
+            <form className={styles.formLabel} onSubmit={submitHandler} >
 
                 <input placeholder="Name" autoComplete="off" value={data.name.trim()} type="text" name="inputForName" required className={styles.input}
                     onChange={e => setData({ ...data, name: e.target.value })}
@@ -123,7 +127,7 @@ return (
                 <button type="submit" className={styles.defaultBtn}>Submit <code>🏏</code></button>
             </form>
         </label>
-        </div>
+        </div><br />
         <Dialog
         open={open}
         onClose={handleClose}

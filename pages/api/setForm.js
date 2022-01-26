@@ -20,6 +20,8 @@ const formHandler = async(req, res)=> {
         const getDefaultFormData = await Default.find({_id: req.body.formId});
         if(getDefaultFormData !== null){
             res.status(200).send(getDefaultFormData);
+        }else{
+            res.send(false);
         }
     }
     else if(req.method == "GET"){

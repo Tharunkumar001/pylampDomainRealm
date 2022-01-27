@@ -432,7 +432,7 @@
 .cardContainer{
   padding-top: 5rem;
   width: 100%;
-  background-image: url("../public//grunge-paint-background_1409-1337.jpg");
+  /* background-image: url("../public//grunge-paint-background_1409-1337.jpg"); */
   /* background-color: black; */
   color:black;
   background-size: cover;

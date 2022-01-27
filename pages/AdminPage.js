@@ -104,22 +104,31 @@ return (
 
                         <Button style={{fontSize:"1rem",color:"grey",float:"right",}} onClick={clickHandler}>USE 🎯</Button>
                     </Card> */}
-                    <DynamicCard mainContent= {DefaultFormContent} 
-                    data-aos="fade-left" />
+                    <DynamicCard 
+                        mainContent= {DefaultFormContent}
+                        header = "Default Form"
+                        avatar = "D"
+                        data-aos="fade-left" />
                 </ScrollAnimation>
                     
                 </Grid>
                 <Grid item xs={12} md={4} sm={12} className={styles.cardGrid}>
                 <ScrollAnimation animateIn="fadeIn">
-                    <DynamicCard mainContent= {HackerrankContent} 
-                            data-aos="fade-left" />
+                    <DynamicCard 
+                        mainContent= {HackerrankContent}
+                        header = "HackerRank"
+                        avatar = "H"
+                        data-aos="fade-left" />
                 </ScrollAnimation>
                     
                 </Grid>
                 <Grid item xs={12} md={4} sm={12} className={styles.cardGrid}>
                 <ScrollAnimation animateIn="fadeIn">
-                    <DynamicCard mainContent= {NewFormContent} 
-                            data-aos="fade-left" />
+                    <DynamicCard 
+                        mainContent= {NewFormContent} 
+                        header = "NewForm"
+                        avatar = "N"
+                        data-aos="fade-left" />
                 </ScrollAnimation>
                 </Grid>
             </Grid><hr style={{width:"50%",alignContent:"center"}}/>

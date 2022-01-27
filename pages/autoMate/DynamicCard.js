@@ -17,7 +17,7 @@ export default function DynamicCard(props) {
             <CardHeader
                 avatar={
                     <Avatar aria-label="recipe">
-                        D
+                        {props.avatar}
                     </Avatar>
                 }
                 action={
@@ -26,7 +26,7 @@ export default function DynamicCard(props) {
                     </IconButton>
                 }
                 
-                title="Standard Default Form"
+                title={props.header}
             />
             <CardContent>
                 <Typography variant="body2" color="text.secondary">

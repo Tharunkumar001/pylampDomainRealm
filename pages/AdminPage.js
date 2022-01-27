@@ -16,6 +16,7 @@ import Navbar from "../pages/Navbar";
 import ScrollAnimation from 'react-animate-on-scroll';
 import Aos from "aos";
 import cookie from 'react-cookies'
+import DynamicCard from './autoMate/DynamicCard';
 
 export default function AdminPage() {
     const router = useRouter();
@@ -34,7 +35,6 @@ export default function AdminPage() {
             throttleDelay: 99,
         });
         var verify = cookie.load("adminAllow");
-        
         (!verify)? router.push("/"): null;
     },[]);
     
@@ -57,6 +57,21 @@ export default function AdminPage() {
     const clickHandler = () => {
         const flipDiv = window.location.href='#formContainers';
     }
+
+    const DefaultFormContent = `
+        Default form is predefined form for instant use. We structure this template based upon your past 
+        requirements. Eventhough you can edit this template.
+    `
+
+    const HackerrankContent =  `
+        Hackerrank template is used to scrab event result data from Hackerrank site. This feature simplify 
+        your work, no need to maintain attendance manually for hackerrank.
+    `
+
+    const NewFormContent = `
+        New form template is for your own creation of your form. Any other prefefined content was not placed in this 
+        template. Create your form from Scratch!
+    `
 return (
 
 <div className={styles.adminContainer}>
@@ -79,7 +94,7 @@ return (
             <Grid container columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
                 <Grid item xs={12} md={4} sm={12} className={styles.cardGrid}>
                 <ScrollAnimation animateIn="fadeIn">
-                    <Card className={styles.adminCard} data-aos="fade-left">
+                    {/* <Card className={styles.adminCard} data-aos="fade-left">
                         <h1 className={styles.cardHeader}>Default Form</h1><br />
                         
                         <p className={styles.cardBody}>
@@ -88,37 +103,23 @@ return (
                         </p>
 
                         <Button style={{fontSize:"1rem",color:"grey",float:"right",}} onClick={clickHandler}>USE 🎯</Button>
-                    </Card>
+                    </Card> */}
+                    <DynamicCard mainContent= {DefaultFormContent} 
+                    data-aos="fade-left" />
                 </ScrollAnimation>
                     
                 </Grid>
                 <Grid item xs={12} md={4} sm={12} className={styles.cardGrid}>
                 <ScrollAnimation animateIn="fadeIn">
-                    <Card className={styles.adminCard} data-aos="fade-right">
-                            <h1 className={styles.cardHeader}>Hackerrank</h1><br />
-                            
-                            <p className={styles.cardBody}>
-                                Hackerrank template is used to scrab event result data from Hackerrank site. This feature simplify 
-                                your work, no need to maintain attendance manually for hackerrank.
-                            </p>
-
-                            <Button style={{fontSize:"1rem",color:"grey",float:"right",}} onClick={clickHandler}>USE 🎯</Button>
-                    </Card>
+                    <DynamicCard mainContent= {HackerrankContent} 
+                            data-aos="fade-left" />
                 </ScrollAnimation>
                     
                 </Grid>
                 <Grid item xs={12} md={4} sm={12} className={styles.cardGrid}>
                 <ScrollAnimation animateIn="fadeIn">
-                    <Card className={styles.adminCard} data-aos="fade-right">
-                        <h1 className={styles.cardHeader}>New Form</h1><br />
-                        
-                        <p className={styles.cardBody}>
-                            New form template is for your own creation of your form. Any other prefefined content was not placed in this 
-                            template. Create your form from Scratch!
-                        </p>
-
-                        <Button style={{fontSize:"1rem",color:"grey",float:"right"}} onClick={clickHandler}>USE 🎯</Button>
-                    </Card>
+                    <DynamicCard mainContent= {NewFormContent} 
+                            data-aos="fade-left" />
                 </ScrollAnimation>
                 </Grid>
             </Grid><hr style={{width:"50%",alignContent:"center"}}/>

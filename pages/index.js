@@ -1,10 +1,11 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import { useEffect,} from 'react';
 import YouTube from "@material-ui/icons/YouTube";
 import LinkedIn from "@material-ui/icons/LinkedIn";
 import Instagram from "@material-ui/icons/Instagram";
-import { Card, Grid,} from '@material-ui/core';
+import { Button, Card, Grid, Hidden,} from '@material-ui/core';
 import { AppBar } from '@material-ui/core';
 import { Toolbar } from '@material-ui/core';
 import Navbar from "../pages/Navbar";
@@ -12,7 +13,7 @@ import ScrollAnimation from 'react-animate-on-scroll';
 import Aos from "aos";
 import "aos/dist/aos.css";
 import HomeCard from "../pages/autoMate/HomeCard";
-
+import Gif from "../public/boyGif.jpg";
 export default function HomePage(props) {
 
     useEffect(() => {
@@ -101,12 +102,39 @@ return (
 
         <ScrollAnimation animateIn="fadeIn">
             <div className={styles.firstDiv}  data-aos="fade-up">
-                    <h1 className={styles.headerDiv} >LOGIC && LANGUAGE</h1>
-                    <p className={styles.motoDiv} >
+            <Grid container spacing={2}>
+                <Grid xs={12} md={6} sm={6}>
+                    <div className={styles.logicCard}>
+                        <h1 >Logic & Language</h1>
+                        <p className={styles.motoDiv}>
                         `Logic programming is a programming paradigm that is based on logic. 
                         This means that a logic programming language has sentences that follow logic, so that they express facts and rules.
                         Computation using logic programming is done by making logical inferences based on all available data.`
-                    </p>
+                        </p><hr style={{width:"80%", fontWeight:"bold"}}/>
+
+                        <div className={styles.logicBtns}>
+                            <button style={{
+                                borderRadius:"0.5rem",
+                                backgroundColor:"black",
+                                color:"white",
+                                padding:"0.5rem"
+                            }}>Grievence</button>
+                            <button style={{
+                                borderRadius:"0.5rem",
+                                color:"black",
+                                padding:"0.5rem"
+                            }}>Contact Us</button>
+                        </div>
+                    </div>
+                </Grid>  
+                <Hidden xsDown>
+                    <Grid xs={12} md={6} sm={6}>
+                        <Image src={Gif} alt="gif"/>
+                    </Grid> 
+                </Hidden> 
+            </Grid>
+
+
             </div>
             </ScrollAnimation>
         <ScrollAnimation animateIn="fadeIn">

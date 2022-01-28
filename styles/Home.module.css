@@ -6,9 +6,34 @@
   align-items: center;
   z-index: 2;
 }
+
+.logicCard{
+  margin: 1rem;
+  background-image: linear-gradient(to right, #e47b25 0%, #f0a331  51%, #f0a331  100%);
+  border-radius: 1.5rem;
+  padding: 1rem;
+}
+
+.logicBtns{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.grievenceBtn{
+  color:"white";
+  border: 1rem solid black;
+  border-radius: 1.5rem;
+  background-color: black;
+}
+
+.contactBtn{
+
+}
 .firstDiv{
   padding-top: 6rem;
-  background-image: url("../public//grunge-paint-background_1409-1337.jpg");
   /* background-color: black; */
   color:black;
   background-size: cover;
@@ -453,7 +478,7 @@
   width: 80%;
   margin: 1rem;
   height: fit-content;
-  background: linear-gradient(135deg, rgb(136, 126, 127) 0%, rgba(186, 39, 55, 1) 51%, rgba(239, 197, 202, 1) 51%, rgba(239, 197, 202, 1) 100%);
+  background: linear-gradient(135deg, rgba(186, 39, 55, 1) 0%, rgba(186, 39, 55, 1) 51%, rgba(239, 197, 202, 1) 51%, rgba(239, 197, 202, 1) 100%);
   margin-right: auto;
   margin-left: auto;
 }

@@ -97,6 +97,8 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-style: italic;
   font-weight: bolder;
+  word-spacing: 10px;
+
 }
 
 .homeGrid{

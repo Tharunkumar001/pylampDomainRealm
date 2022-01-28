@@ -30,7 +30,7 @@ export default function HomePage(props) {
         motto of the club.
     `;
 
-    const Pymentor = `
+    const SeniorMentor = `
         ■ PyMentors pursuing their final year of study will be upgraded to the
         position of Senior PyMentor from PyMentor.
         ■ Guide, assist and coordinate all the PyMentors of the club.
@@ -82,6 +82,24 @@ export default function HomePage(props) {
         Answerable to Faculty Advisor, Grand Master, Tech Champ and Tech
         Wizard.
     `
+
+    const JuniorMentor = `
+        ■ The members who top the Eligibility test will be assigned as PyMentors
+        for the whole academic year.
+        ■ Their role involves:
+        ❖ Maintaining the integrity of the members in their respective
+        classes.
+        ❖ Acts as bridge between their class and the club
+        ❖ Have rights to hammer any suggestions and opinions during
+        the discussion meet
+        ❖ Respect the advice on content, club maintenance and decisions
+        of the Governing Committee.
+        ❖ Handle and maintain the attendance of their class’s PYLAMP
+        members
+        ❖ Circulate the event information to their class members
+        ■ Answerable to the Faculty Advisor, Grand Master, Tech Champ and
+        Senior PyMentors
+    `
 return (
 
 <div className={styles.homeContainer}>
@@ -98,12 +116,35 @@ return (
                     <Navbar />
                 </Toolbar>
             </AppBar>
-        </div><br /><br />
+        </div>
 
         <ScrollAnimation animateIn="fadeIn">
+        
             <div className={styles.firstDiv}  data-aos="fade-up">
+                <div  data-aos="fade-up" style={{
+                    textAlign:"center"
+                }}>
+                    <h3 style={{
+                        fontWeight:"bold",
+                        display:"flex",
+                        marginLeft:"auto",
+                        marginRight:"auto",
+                        width:"50%",
+                        fontStyle:"italic"
+                    }}>Everybody should learn to program a computer 
+                        because it teaches you how to think. -Steve Jobs</h3>
+                </div><br />
+                
             <Grid container spacing={2}>
                 <Grid xs={12} md={6} sm={6}>
+                    <Image src={Gif} alt="gif"/>
+                </Grid><br />
+
+                <Grid xs={12} md={6} sm={6} style={{
+                    display:"flex",
+                    marginRight:"auto",
+                    marginLeft:"auto"
+                }}>
                     <div className={styles.logicCard}>
                         <h1 >Logic & Language</h1>
                         <p className={styles.motoDiv}>
@@ -127,11 +168,7 @@ return (
                         </div>
                     </div>
                 </Grid>  
-                <Hidden xsDown>
-                    <Grid xs={12} md={6} sm={6}>
-                        <Image src={Gif} alt="gif"/>
-                    </Grid> 
-                </Hidden> 
+
             </Grid>
 
 
@@ -157,20 +194,22 @@ return (
         <div className={styles.clubPostionDiv} data-aos="fade-up">
             <h1 style={{textAlign:"center", color:"black"}}>CLUB POSITIONS📝</h1>
             <Grid container spacing={2} className={styles.homeGrid}>
-                <Grid xs={12} md={4} sm={4} >
+                <Grid xs={12} md={4} sm={4}>
                         <HomeCard 
                             data-aos="fade-left"
                             position="CLUB ADVISER" 
                             positonDetails={Adviser}
                             avatar="A"
                             candidate="K.VIJAYA" 
+                            role="Faculty of VCET"
                         /><br />
 
                         <HomeCard 
-                            position="PYMENTOR" 
-                            positonDetails={Pymentor}
-                            avatar="M"
-                            candidate="K.VIJAYA" 
+                            position="SENIOR-PYMENTOR" 
+                            positonDetails={SeniorMentor}
+                            avatar="SM"
+                            candidate="RubanKumar & HariHaran" 
+                            role= "III-yr"
                         /><br />                   
                 </Grid>
                 <Grid xs={12} md={4} sm={4}>
@@ -178,7 +217,8 @@ return (
                             position="GRAND MASTER" 
                             positonDetails={Grandmaster}
                             avatar="GM"
-                            candidate="V.P.JANANI" 
+                            candidate="V.P.JANANI"
+                            role="IV-yr"
                         /><br />        
             
                         <HomeCard 
@@ -186,6 +226,7 @@ return (
                             positonDetails={TechWizard}
                             avatar="T"
                             candidate="Tharunkumar & Udaya" 
+                            role="III-yr"
                         /><br />
                 
                 </Grid>
@@ -195,14 +236,25 @@ return (
                             positonDetails={TechChamp}
                             avatar="TC"
                             candidate="P.NITHESHPRAWIN" 
+                            role="III-yr"
                         /> <br />  
             
                         <HomeCard 
-                            position="PYMESSENGER" 
+                            position="PY-MESSENGER" 
                             positonDetails={PyMessenger}
                             avatar="PM"
                             candidate="Sanjay" 
+                            role="II-yr"
                     /><br />
+                </Grid>
+                <Grid xs={12} md={12} sm={12}>
+                        <HomeCard 
+                            position="JUNIOR-PYMENTOR" 
+                            positonDetails={JuniorMentor}
+                            avatar="JP"
+                            candidate="Gokul & Sharmatha & Sowbarnika & Harinisha & Tamilanjali"
+                            role="II-yr" 
+                        /><br />        
                 </Grid>
             </Grid>
         </div>

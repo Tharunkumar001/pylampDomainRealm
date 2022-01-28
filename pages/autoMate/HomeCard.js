@@ -44,12 +44,12 @@ export default function HomeCard(props) {
                         </IconButton>
                         }
                         title={props.position}
-                        subheader={props.candidate}
+                        // subheader={props.candidate}
                     />
 
                     <CardContent>
                         <Typography variant="body2" color="text.secondary">
-
+                            {props.candidate} - {props.role}
                         </Typography>
                     </CardContent>
                     <CardActions disableSpacing>

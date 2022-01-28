@@ -94,16 +94,6 @@ return (
             <Grid container columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
                 <Grid item xs={12} md={4} sm={12} className={styles.cardGrid}>
                 <ScrollAnimation animateIn="fadeIn">
-                    {/* <Card className={styles.adminCard} data-aos="fade-left">
-                        <h1 className={styles.cardHeader}>Default Form</h1><br />
-                        
-                        <p className={styles.cardBody}>
-                            Default form is predefined form for instant use. We structure this template based upon your past 
-                            requirements. Eventhough you can edit this template.
-                        </p>
-
-                        <Button style={{fontSize:"1rem",color:"grey",float:"right",}} onClick={clickHandler}>USE 🎯</Button>
-                    </Card> */}
                     <DynamicCard 
                         mainContent= {DefaultFormContent}
                         header = "Default Form"

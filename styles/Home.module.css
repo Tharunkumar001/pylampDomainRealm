@@ -82,7 +82,7 @@
   background-repeat: no-repeat;
   width: 100%;
   height: 100hv; */
-  background-image: linear-gradient(to right, #72728a 0%, #4e535a  51%, #181b1b  100%)
+  /* background-image: linear-gradient(to right, #72728a 0%, #4e535a  51%, #181b1b  100%) */
 }
 .headerDiv{
   color:black;
@@ -449,6 +449,15 @@
   margin-left: auto;
 }
 
+.homeCard{
+  width: 80%;
+  margin: 1rem;
+  height: fit-content;
+  background: linear-gradient(135deg, rgb(136, 126, 127) 0%, rgba(186, 39, 55, 1) 51%, rgba(239, 197, 202, 1) 51%, rgba(239, 197, 202, 1) 100%);
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .cardGrid{
   display: flex;
   flex-direction: row;
@@ -467,7 +476,7 @@
 }
 
 .cardBody{
-  width: 60%;
+  width: 90%;
   margin:2rem;
   font-weight: bold;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

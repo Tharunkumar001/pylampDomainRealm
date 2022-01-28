@@ -99,7 +99,9 @@ export default function HomePage(props) {
         ❖ Circulate the event information to their class members
         ■ Answerable to the Faculty Advisor, Grand Master, Tech Champ and
         Senior PyMentors
-    `
+    `;
+
+
 return (
 
 <div className={styles.homeContainer}>
@@ -159,12 +161,13 @@ return (
                                 backgroundColor:"black",
                                 color:"white",
                                 padding:"0.5rem"
-                            }}>Grievence</button>
-                            <button style={{
+                            }}>Reach Out</button>
+                            <button onClick={() => window.scrollBy(0, 10000)} 
+                            style={{
                                 borderRadius:"0.5rem",
                                 color:"black",
                                 padding:"0.5rem"
-                            }}>Contact Us</button>
+                            }}>Follow Us</button>
                         </div>
                     </div>
                 </Grid>  
@@ -192,7 +195,7 @@ return (
 
         <ScrollAnimation animateIn="fadeIn">
         <div className={styles.clubPostionDiv} data-aos="fade-up">
-            <h1 style={{textAlign:"center", color:"black"}}>CLUB POSITIONS📝</h1>
+            <h1 style={{textAlign:"center", color:"black"}}>Club Positions..📝</h1>
             <Grid container spacing={2} className={styles.homeGrid}>
                 <Grid xs={12} md={4} sm={4}>
                         <HomeCard 
@@ -289,7 +292,6 @@ return (
                 </Grid>
             </Grid>
         </div>
-        
     </main>
 
     <footer className={styles.footer}>

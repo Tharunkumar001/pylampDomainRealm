@@ -129,7 +129,7 @@ return (
                         display:"flex",
                         marginLeft:"auto",
                         marginRight:"auto",
-                        width:"50%",
+                        width:"62%",
                         fontStyle:"italic"
                     }}>Everybody should learn to program a computer 
                         because it teaches you how to think. -Steve Jobs</h3>
@@ -148,9 +148,9 @@ return (
                     <div className={styles.logicCard}>
                         <h1 >Logic & Language</h1>
                         <p className={styles.motoDiv}>
-                        `Logic programming is a programming paradigm that is based on logic. 
-                        This means that a logic programming language has sentences that follow logic, so that they express facts and rules.
-                        Computation using logic programming is done by making logical inferences based on all available data.`
+                            `Logic programming is a programming paradigm that is based on logic. 
+                            This means that a logic programming language has sentences that follow logic, so that they express facts and rules.
+                            Computation using logic programming is done by making logical inferences based on all available data.`
                         </p><hr style={{width:"80%", fontWeight:"bold"}}/>
 
                         <div className={styles.logicBtns}>

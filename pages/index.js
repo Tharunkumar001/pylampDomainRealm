@@ -211,8 +211,8 @@ return (
                             position="SENIOR-PYMENTOR" 
                             positonDetails={SeniorMentor}
                             avatar="SM"
-                            candidate="RubanKumar & HariHaran" 
-                            role= "III-yr"
+                            candidate="RubanKumar & HariHaran & Sabarinath & Sathyasri" 
+                            role= "III & IV -yr"
                         /><br />                   
                 </Grid>
                 <Grid xs={12} md={4} sm={4}>

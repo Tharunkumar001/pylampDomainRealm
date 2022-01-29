@@ -38,11 +38,11 @@ export default function HomeCard(props) {
                             {props.avatar}
                         </Avatar>
                         }
-                        action={
-                        <IconButton aria-label="settings">
-                            <MoreVert />
-                        </IconButton>
-                        }
+                        // action={
+                        // <IconButton aria-label="settings">
+                        //     <MoreVert />
+                        // </IconButton>
+                        // }
                         title={props.position}
                         // subheader={props.candidate}
                     />

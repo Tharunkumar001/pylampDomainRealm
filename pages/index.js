@@ -171,17 +171,14 @@ return (
                         </div>
                     </div>
                 </Grid>  
-
             </Grid>
-
-
-            </div>
+            </div><br /><br />
             </ScrollAnimation>
         <ScrollAnimation animateIn="fadeIn">
             <div className={styles.motoDiv} data-aos="fade-left" >
                     <h1 >About Pylamp!!</h1>
 
-                    <p className={styles.motoDiv}>
+                    <p className={styles.aboutDiv}>
                         The Club PyLamp was developed to sow the seeds of coding, 
                         problem-solving, and domain knowledge among students. 
                         Mentoring sessions are conducted twice a week to build a consistent learning environment for students to help them master their coding skills. 

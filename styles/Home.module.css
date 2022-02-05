@@ -764,5 +764,11 @@
 .profileSubmitBtn{
   font-size: large;
   font-weight: bold;
-  
+
+}
+
+.profileCardContent{
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
 }

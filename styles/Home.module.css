@@ -740,3 +740,29 @@
 .EventDialogTitle{
   background-image: linear-gradient(to right, #74748f 0%, #0072ff  51%, #00c6ff  100%)
 }
+
+/*Profile Login Page*/
+
+.profileLoginCard{
+  width: fit-content;
+  height: max-content;
+  padding: 1rem;
+  border-radius: 1.5rem;
+  box-sizing: border-box;
+  margin-right: auto;
+  margin-left: auto;
+  background-image: linear-gradient(to right, #797783 0%, #928DAB  51%, #b4b4b4  100%);
+
+}
+
+.profileLoginCardAction{
+  display: flex;
+  flex-direction: column;
+
+}
+
+.profileSubmitBtn{
+  font-size: large;
+  font-weight: bold;
+  
+}

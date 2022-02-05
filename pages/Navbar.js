@@ -40,7 +40,7 @@ export default function Layout({children}){
                         <Button onClick = {() => router.push("/FormPage")}>Attendance</Button>
                     </li>
                     <li className={styles.navitem}>
-                        <Button>Profile</Button>
+                        <Button onClick = {() => router.push("/Profile")}>Profile</Button>
                     </li>
                 </ul>
                 <button className={isOpen === false ? 

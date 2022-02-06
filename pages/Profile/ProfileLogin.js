@@ -6,9 +6,12 @@ import Arrow from "@material-ui/icons/SendOutlined"
 import { useState } from 'react';
 import EmailValidator from "email-validator";
 import cogoToast from 'cogo-toast';
+import axios from 'axios';
+import cookie from 'react-cookies'
 
 export default function ProfileLogin() {
     const [login, setLogin] = useState({email:"",userName:"", rollNo:"", password:"", rememberMe:false});
+
 
     const handleLogin = async(e) => {
         var emailValidate = await EmailValidator.validate(login.email);
@@ -19,7 +22,17 @@ export default function ProfileLogin() {
 
         var passwordValidate = await ((login.password).length >= 5) ? true : false;
         
-
+        if(emailValidate === false || validUsername === false || rollNoValidate === false || passwordValidate === false){
+            cogoToast.error("Enter valid data");
+        }else{
+            const apiCall = await axios.post("http://localhost:3000/api/profileHandler",{loginDetails: login})
+            try {
+                console.log(apiCall);
+                // cookie.save("jwt",apiCall.token);
+            } catch (error) {
+                console.log(error)
+            }
+        } 
     }
 return (
     <div>
@@ -29,17 +42,17 @@ return (
 
             <CardActions className={styles.profileLoginCardAction}>
             <Image src={Logo} alt="logo" width="50rem" height="50rem" /><br />
-                <TextField id="Email" label="Email" variant="standard" 
+                <TextField id="Email" label="Email" variant="filled" 
                 helperText="Eg: abc@gmail.com"
                 value={login.email.trim()} onChange={(e) => setLogin({...login, email: e.target.value})}/>
 
-                <TextField id="Username" label="Username" variant="standard" helperText="Atleast 4 words"
+                <TextField id="Username" label="Username" variant="filled" helperText="Atleast 4 words"
                 value={login.userName.trim()} onChange={(e) => setLogin({...login, userName: e.target.value})}/>
                 
-                <TextField id="RollNo" label="RollNo" variant="standard" helperText="Eg: 19CSR116" 
+                <TextField id="RollNo" label="RollNo" variant="filled" helperText="Eg: 19CSR116" 
                 value={login.rollNo.trim()} onChange={(e) => setLogin({...login, rollNo: e.target.value})}/>
 
-                <TextField id="Password" label="Password" variant="standard" helperText="Atleast 5 words"
+                <TextField id="Password" label="Password" variant="filled" helperText="Atleast 5 words"
                 value={login.password.trim()} onChange={(e) => setLogin({...login, password: e.target.value})}/>
             </CardActions>
 

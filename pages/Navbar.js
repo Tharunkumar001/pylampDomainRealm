@@ -17,7 +17,6 @@ export default function Layout({children}){
     {
         const promtValue = await prompt("Pylamp Password",null);
         const apiCall = await axios.post("https://pylamp-domain-realm.vercel.app/api/attendanceHandler",{promtValue:promtValue});
-        console.log(apiCall);
         cookie.save("adminAllow",apiCall.data);
         (apiCall.data)? router.push("/AdminPage"): cogoToast.error("Enter Valid Password");
     }

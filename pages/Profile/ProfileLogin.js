@@ -75,13 +75,13 @@ return (
                 value={login.password.trim()} onChange={(e) => setLogin({...login, password: e.target.value})}/>
             </CardActions>
 
-            <CardContent className={styles.profileCardContent}>
+            <CardActions className={styles.profileCardContent}>
                 <ButtonBase 
                     className={styles.profileSubmitBtn} 
                     onClick={handleLogin}
                 >
                     Login <Arrow /></ButtonBase>
-            </CardContent>
+            </CardActions>
 
             <ButtonBase onClick={handleOpen}>ForgotPassword</ButtonBase>
         </Card><br />
@@ -93,7 +93,7 @@ return (
             aria-describedby="alert-dialog-description"
         >
         <DialogTitle className={styles.alertDialogTitle}>
-            GET BACK!!
+            Password Recovery!!
         </DialogTitle>
         <DialogContent>
         <DialogContentText id="alert-dialog-description">

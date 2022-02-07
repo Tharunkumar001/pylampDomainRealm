@@ -76,11 +76,11 @@ return (
             </CardActions>
 
             <CardActions className={styles.profileCardContent}>
-                <ButtonBase 
+                <Button
                     className={styles.profileSubmitBtn} 
                     onClick={handleLogin}
                 >
-                    Login <Arrow /></ButtonBase>
+                    Login <Arrow /></Button>
             </CardActions>
 
             <ButtonBase onClick={handleOpen}>ForgotPassword</ButtonBase>

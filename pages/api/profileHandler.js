@@ -19,7 +19,8 @@ const profileHandler = async(req, res)=> {
             let token = jwt.sign({ RollNo: req.body.loginDetails.rollNo }, process.env.TOKEN_SECRET, { expiresIn: '8760hr' });
             res.status(201).send(token,"NEW USER");
         }else{
-            res.status(202).send(findUser)
+            let token = jwt.sign({ RollNo: req.body.loginDetails.rollNo }, process.env.TOKEN_SECRET, { expiresIn: '8760hr' });
+            res.status(202).send({userData: findUser, jwt: token});
         }
         
     }
@@ -29,15 +30,15 @@ const profileHandler = async(req, res)=> {
     else if(req.method == "PUT"){
         var token = req.body.jwt;
 
-    if (!token) return res.status(401).send({ auth: false, message: 'No token provided.' });
+        if (!token) return res.status(401).send({ auth: false, message: 'No token provided.' });
 
-    jwt.verify(token, process.env.TOKEN_SECRET, (err, decoded) => {
-        if (err) return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
+        jwt.verify(token, process.env.TOKEN_SECRET, (err, decoded) => {
+            if (err) return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
 
-        const foundUser = Login.findOne({ RollNo: decoded.RollNo }).then((result) => {
-            res.status(200).send({auth: true, user: result.RollNo});
+            const foundUser = Login.findOne({ RollNo: decoded.RollNo }).then((result) => {
+                res.status(200).send({auth: true, user: result.RollNo});
+            })
         })
-    })
     }
 }
 

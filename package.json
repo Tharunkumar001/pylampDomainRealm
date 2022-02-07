@@ -25,6 +25,7 @@
     "mongoose": "^6.0.14",
     "next": "12.0.4",
     "next-connect": "^0.11.0",
+    "nodemailer": "^6.7.2",
     "react": "17.0.2",
     "react-animate-on-scroll": "^2.1.5",
     "react-bootstrap": "^2.0.4",

@@ -8,10 +8,20 @@ import EmailValidator from "email-validator";
 import cogoToast from 'cogo-toast';
 import axios from 'axios';
 import cookie from 'react-cookies'
+import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
+import ForgotPassword from './ForgotPassword';
 
 export default function ProfileLogin() {
     const [login, setLogin] = useState({email:"",userName:"", rollNo:"", password:"",});
+    const [open, setOpen] = useState(false);
 
+    const handleClose = () => {
+        setOpen(false);
+    }
+    
+    const handleOpen = () => {
+        setOpen(true);
+    }
 
     const handleLogin = async(e) => {
         var emailValidate = await EmailValidator.validate(login.email);
@@ -25,15 +35,18 @@ export default function ProfileLogin() {
         if(emailValidate === false || validUsername === false || rollNoValidate === false || passwordValidate === false){
             cogoToast.error("Enter valid data");
         }else{
-            const apiCall = await axios.post("http://localhost:3000/api/profileHandler",{loginDetails: login})
+            const apiCall = await axios.post("https://pylamp-domain-realm.vercel.app/api/profileHandler",{loginDetails: login})
             
             if(apiCall.status == 201){
                 cookie.save("jwt",apiCall.data)
                 cogoToast.success("Successfully logedIn");
             }else if(apiCall.status == 202){
-                let validateUser = (apiCall.data[0].Password == login.password)? true: false;
+                console.log(apiCall)
+                let validateUser = (apiCall.data.userData[0].Password == login.password)? true: false;
                 if(validateUser){
                     cogoToast.success("Successfully logedIn");
+                    cookie.save("jwt",apiCall.data.jwt);
+                    window.location.reload();
                 }else{
                     cogoToast.error("Enter Valid Password");
                 }
@@ -70,8 +83,29 @@ return (
                     Login <Arrow /></ButtonBase>
             </CardContent>
 
-            <ButtonBase>ForgotPassword</ButtonBase>
+            <ButtonBase onClick={handleOpen}>ForgotPassword</ButtonBase>
         </Card><br />
+
+        <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+        >
+        <DialogTitle className={styles.alertDialogTitle}>
+            GET BACK!!
+        </DialogTitle>
+        <DialogContent>
+        <DialogContentText id="alert-dialog-description">
+            <ForgotPassword />
+        </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+            <Button onClick={handleClose} autoFocus>
+                Close
+            </Button>
+        </DialogActions>
+    </Dialog>
     </div>
 )
 }

@@ -41,12 +41,11 @@ export default function ProfileLogin() {
                 cookie.save("jwt",apiCall.data.jwt)
                 cogoToast.success("Successfully logedIn");
             }else if(apiCall.status == 202){
-                console.log(apiCall)
                 let validateUser = (apiCall.data.userData[0].Password == login.password)? true: false;
                 if(validateUser){
                     cogoToast.success("Successfully logedIn");
                     cookie.save("jwt",apiCall.data.jwt);
-                    // window.location.reload();
+                    window.location.reload();
                 }else{
                     cogoToast.error("Enter Valid Password");
                 }
@@ -76,11 +75,11 @@ return (
             </CardActions>
 
             <CardActions className={styles.profileCardContent}>
-                <Button
+                <ButtonBase
                     className={styles.profileSubmitBtn} 
                     onClick={handleLogin}
                 >
-                    Login <Arrow /></Button>
+                    Login <Arrow /></ButtonBase>
             </CardActions>
 
             <ButtonBase onClick={handleOpen}>ForgotPassword</ButtonBase>

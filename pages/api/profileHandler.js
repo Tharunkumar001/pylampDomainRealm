@@ -3,6 +3,8 @@
 import connectDB from "../../middleware/mongodb";
 import Login from "../../models/login";
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config();
 
 const profileHandler = async(req, res)=> {
     if(req.method === "POST"){

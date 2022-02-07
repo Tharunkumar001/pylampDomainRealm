@@ -38,7 +38,7 @@ export default function ProfileLogin() {
             const apiCall = await axios.post("https://pylamp-domain-realm.vercel.app/api/profileHandler",{loginDetails: login})
             
             if(apiCall.status == 201){
-                cookie.save("jwt",apiCall.data)
+                cookie.save("jwt",apiCall.data.jwt)
                 cogoToast.success("Successfully logedIn");
             }else if(apiCall.status == 202){
                 console.log(apiCall)
@@ -46,7 +46,7 @@ export default function ProfileLogin() {
                 if(validateUser){
                     cogoToast.success("Successfully logedIn");
                     cookie.save("jwt",apiCall.data.jwt);
-                    window.location.reload();
+                    // window.location.reload();
                 }else{
                     cogoToast.error("Enter Valid Password");
                 }

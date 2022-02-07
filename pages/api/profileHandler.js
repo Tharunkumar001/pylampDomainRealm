@@ -17,7 +17,7 @@ const profileHandler = async(req, res)=> {
             profile.save();
 
             let token = jwt.sign({ RollNo: req.body.loginDetails.rollNo }, process.env.TOKEN_SECRET, { expiresIn: '8760hr' });
-            res.status(201).send(token,"NEW USER");
+            res.status(201).send({jwt:token, message:"NEW USER"});
         }else{
             let token = jwt.sign({ RollNo: req.body.loginDetails.rollNo }, process.env.TOKEN_SECRET, { expiresIn: '8760hr' });
             res.status(202).send({userData: findUser, jwt: token});

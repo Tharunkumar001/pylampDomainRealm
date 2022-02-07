@@ -10,7 +10,7 @@ import axios from 'axios';
 import cookie from 'react-cookies'
 
 export default function ProfileLogin() {
-    const [login, setLogin] = useState({email:"",userName:"", rollNo:"", password:"", rememberMe:false});
+    const [login, setLogin] = useState({email:"",userName:"", rollNo:"", password:"",});
 
 
     const handleLogin = async(e) => {
@@ -26,11 +26,17 @@ export default function ProfileLogin() {
             cogoToast.error("Enter valid data");
         }else{
             const apiCall = await axios.post("http://localhost:3000/api/profileHandler",{loginDetails: login})
-            try {
-                console.log(apiCall);
-                // cookie.save("jwt",apiCall.token);
-            } catch (error) {
-                console.log(error)
+            
+            if(apiCall.status == 201){
+                cookie.save("jwt",apiCall.data)
+                cogoToast.success("Successfully logedIn");
+            }else if(apiCall.status == 202){
+                let validateUser = (apiCall.data[0].Password == login.password)? true: false;
+                if(validateUser){
+                    cogoToast.success("Successfully logedIn");
+                }else{
+                    cogoToast.error("Enter Valid Password");
+                }
             }
         } 
     }
@@ -57,7 +63,6 @@ return (
             </CardActions>
 
             <CardContent className={styles.profileCardContent}>
-                <input type="checkbox" onChange={(e) => setLogin({...login, rememberMe: !login.rememberMe})}/><label>RememberMe</label>
                 <ButtonBase 
                     className={styles.profileSubmitBtn} 
                     onClick={handleLogin}
@@ -66,7 +71,7 @@ return (
             </CardContent>
 
             <ButtonBase>ForgotPassword</ButtonBase>
-        </Card>
+        </Card><br />
     </div>
 )
 }

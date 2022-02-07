@@ -24,9 +24,6 @@ const profileHandler = async(req, res)=> {
         }
         
     }
-    else if(req.method === "GET"){
-        
-    }
     else if(req.method == "PUT"){
         var token = req.body.jwt;
 

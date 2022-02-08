@@ -771,3 +771,28 @@
   flex-direction: row;
   gap: 0.5rem;
 }
+
+.profileCard{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+}
+
+.profileDiv{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+.profileSegment{
+  width: 100%;
+  background-color: #F7F6F7;
+  color: grey;
+  opacity: 0.8;
+  font-weight: bolder;
+  height: min-content;
+}

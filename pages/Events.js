@@ -51,6 +51,7 @@ const columns = [
 
 ];
 
+
 const EventPage = () => {
     const router = useRouter();
     const [row, setRow] = useState([]);

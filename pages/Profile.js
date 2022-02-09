@@ -16,7 +16,7 @@ export default function Profile() {
                 if(jwt == undefined){
                     blblbl() //for terminate try block
                 }
-                const apiCall = axios.put("http://localhost:3000/api/profileHandler",{jwt: jwt});
+                const apiCall = axios.put("https://pylamp-domain-realm.vercel.app/api/profileHandler",{jwt: jwt});
                 
                 apiCall.then((data) => {
                     setUser(data.data.user);

@@ -40,6 +40,7 @@ export default function ProfileLogin() {
             if(apiCall.status == 201){
                 cookie.save("jwt",apiCall.data.jwt)
                 cogoToast.success("Successfully logedIn");
+                window.location.reload();
             }else if(apiCall.status == 202){
                 let validateUser = (apiCall.data.userData[0].Password == login.password)? true: false;
                 if(validateUser){

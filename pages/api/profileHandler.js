@@ -38,6 +38,8 @@ const profileHandler = async(req, res)=> {
                 res.status(200).send({auth: true, user: result.RollNo});
             })
         })
+    }else if(req.method == "GET"){
+        console.log(req)
     }
 }
 

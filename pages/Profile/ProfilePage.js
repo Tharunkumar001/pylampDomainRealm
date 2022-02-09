@@ -2,24 +2,65 @@ import Head from 'next/head';
 import styles from '../../styles/Home.module.css';
 import { useRouter } from 'next/dist/client/router';
 import { Avatar, Button, Card, CardContent, CardHeader, Typography,  } from '@material-ui/core';
-import { ArrowForward } from '@material-ui/icons';
 import { ArrowForwardIos } from '@material-ui/icons';
 import { DataGrid } from '@material-ui/data-grid';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import cookie from 'react-cookies'
+import { Stack } from 'react-bootstrap';
 
-const row = [
-    { id: 1, eventName: 'Hello', participation: 'World' },
-    { id: 2, eventName: 'DataGridPro', participation: 'is Awesome' },
-    { id: 3, eventName: 'MUI', participation: 'is Amazing' },
-  ];
-  
-  const columns = [
-    { field: 'eventName', headerName: 'EventName', width: 150 },
-    { field: 'participation', headerName: 'Participation', width: 150 },
-  ];
+const columns = [
+    {
+        field: 'eventName',
+        headerName: 'Event Name',
+        width: 200,
+        editable: true,
+    },
+
+    {
+        field: 'period',
+        headerName: 'Event Date',
+        width: 200,
+        editable: true,
+    },
+    {
+        field: 'participation',
+        headerName: 'Participation',
+        width: 200,
+        editable: true,
+    },
+];
 
 export default function ProfilePage() {
+    const [row, setRow] = useState([]);
+    const [user, setUser] = useState({userName: "", userRollNo: ""});
     const router = useRouter();
 
+    useEffect(() => {
+        (async() => {
+            const jwtCall = await axios.put("https://pylamp-domain-realm.vercel.app/api/profileHandler",{jwt: cookie.load("jwt")})
+            const User = await axios.put("https://pylamp-domain-realm.vercel.app/api/profile",{rollNo: jwtCall.data.user})
+            setUser({...user, userName: User.data[0].UserName, userRollNo: User.data[0].RollNo});
+
+            try {
+                const apiCall = await axios.post("https://pylamp-domain-realm.vercel.app/api/profile/",{rollNo: jwtCall.data.user});
+                var expRows = [];
+                let data = apiCall.data;
+                if(apiCall.status == 200){
+                    data.map((value,index) => {
+                        expRows.push(
+                            { id: value._id, eventName: value.eventName, participation: "✅"},
+                        )           
+                    });
+                    setRow(expRows.reverse());
+                }
+            } catch (error) {
+                console.log(error)
+            }
+            
+
+        })();
+    },[])
 return (
     <div>
         <Head>
@@ -33,15 +74,14 @@ return (
                 <CardHeader
                     avatar={
                         <Avatar aria-label="recipe">
-                            U
+                            {user.userName[0]}
                         </Avatar>
                     }
                 />
-                <Typography style={{fontWeight:"bold",fontSize:"1rem"}}>user name</Typography>
-                <Typography style={{fontWeight:"lighter",opacity:"0.8"}}>user email</Typography>
+                <Typography style={{fontWeight:"bold",fontSize:"1rem"}}>{user.userName}</Typography>
+                <Typography style={{fontWeight:"lighter",opacity:"0.8"}}>{user.userRollNo}</Typography>
                 
                 <CardContent>
-                    {/* <button className={styles.editProfileBtn}>Edit Profile </button> */}
                     <Button variant="outlined" endIcon={<ArrowForwardIos />} 
                     style={{backgroundColor:"#0168FE", borderRadius:"1rem", color:"white"}}
                     >
@@ -62,6 +102,13 @@ return (
                         autoHeight={true}
                         autoPageSize={true}
                         checkboxSelection={false}
+                        components={{
+                            NoRowsOverlay: () => (
+                                <Stack height="100%" alignItems="center" justifyContent="center">
+                                    No rows in DataGrid
+                                </Stack>
+                            )
+                        }}
                     />
                 </CardContent>
 

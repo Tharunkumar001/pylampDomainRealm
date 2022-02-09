@@ -14,10 +14,17 @@ import { useRouter } from 'next/dist/client/router';
 
 const FormPage = (props) => {
     const router = useRouter();
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
+    var yyyy = today.getFullYear();
+
+    today = mm + '/' + dd + '/' + yyyy;
+
     const [eventDetails, setValue] = useState({header:"Undefined",about:"Undefined",
         period:"Undefined", formType: "Default",});
     const [data, setData] = useState({ name: "", rollNo: "", class: "NA", eventName:eventDetails.header, 
-        eventId: "", formType: "Default" });
+        eventId: "", formType: "Default", eventDate: today });
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState();

@@ -7,6 +7,7 @@ const UserSchema = new mongoose.Schema({
     eventName: String,
     formType: String,
     eventId: String,
+    eventDate: String,
 })
 
 mongoose.models = {};

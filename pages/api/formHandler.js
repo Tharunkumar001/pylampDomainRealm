@@ -15,6 +15,7 @@ const handler = async(req, res)=> {
         eventId: req.body.eventId,
         eventName: req.body.eventName,
         formType: req.body.formType,
+        eventDate: req.body.eventDate,
       });
       createUser.save();
       res.status(200).send("Successfully User Attendance Marked");

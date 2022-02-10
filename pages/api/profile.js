@@ -7,21 +7,24 @@ import Login from "../../models/login";
 
 const profile = async(req, res)=> {
     if(req.method === "POST"){
+        var array;
         const findUserParticipations = User.find({rollNo: req.body.rollNo}).then((data)=>{
             if(data.lenght == 0){
                 res.status(401).send({info: false, message: "No More Events You Participated"});
             }else{
-                res.status(200).send(data);
+                const findUserDet = Login.find({RollNo: req.body.rollNo}).then((done) => {
+                    res.status(200).send({active: data, details: done});
+                })
             }
         })
         
     }
-    else if(req.method === "PUT"){
-        const findUserParticipations = Login.find({RollNo: req.body.rollNo}).then((data)=>{
-            res.status(200).send(data);
+    else if(req.method === "GET"){
+        const EventDetails = Default.find({}).then((data)=>{
+            res.status(200).send(data.length);
         })
     }
-    else if(req.method == "GET"){
+    else if(req.method == "PUT"){
         
     }
 }

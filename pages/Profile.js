@@ -8,23 +8,18 @@ import cogoToast from 'cogo-toast';
 
 export default function Profile() {
     const [user, setUser] = useState();
-    const [state, setState] = useState(<ProfileLogin />)
+    const [state, setState] = useState()
     useEffect(() =>{
         (async() => {
-            try {
                 let jwt = await cookie.load("jwt");
                 if(jwt == undefined){
                     blblbl() //for terminate try block
                 }
-                const apiCall = axios.put("https://pylamp-domain-realm.vercel.app/api/profileHandler",{jwt: jwt});
-                
-                apiCall.then((data) => {
-                    setUser(data.data.user);
-                    setState(<ProfilePage />)
-                })
-            } catch (error) {
-                setState(<ProfileLogin />)
-            }
+                const apiCall = await axios.put("https://pylamp-domain-realm.vercel.app/api/profileHandler",{jwt: jwt});
+
+                setUser(apiCall.data.user);
+                setState(<ProfilePage />)
+
         })()
         
     },[]);

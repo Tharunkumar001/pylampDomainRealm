@@ -1,13 +1,25 @@
 import Head from 'next/head';
 import styles from '../../styles/Home.module.css';
 import { useRouter } from 'next/dist/client/router';
-import { Avatar, Button, Card, CardContent, CardHeader, Typography,  } from '@material-ui/core';
+import { Avatar, Button, Card, CardContent, CardHeader, Grid, Typography,  } from '@material-ui/core';
 import { ArrowForwardIos } from '@material-ui/icons';
 import { DataGrid } from '@material-ui/data-grid';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import cookie from 'react-cookies'
 import { Stack } from 'react-bootstrap';
+import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+import {
+    BarChart,
+    Bar,
+    XAxis,
+    YAxis,
+    CartesianGrid,
+    Tooltip,
+    Legend
+} from "recharts";
+
 
 const columns = [
     {
@@ -34,18 +46,32 @@ const columns = [
 export default function ProfilePage() {
     const [row, setRow] = useState([]);
     const [user, setUser] = useState({userName: "", userRollNo: ""});
+    const [bar, setBar] = useState(data);
+    const [barData, setData] = useState({Participation:"1", Event: "1",});
+    const [Avg, setAvg] = useState(0);
     const router = useRouter();
+
+    const data = [
+        {
+            name: "Participation",
+            Participation:  `${barData.Participation}`,
+            Events: `${barData.Event}`,
+        },
+    ];
 
     useEffect(() => {
         (async() => {
             const jwtCall = await axios.put("https://pylamp-domain-realm.vercel.app/api/profileHandler",{jwt: cookie.load("jwt")})
-            const User = await axios.put("https://pylamp-domain-realm.vercel.app/api/profile",{rollNo: jwtCall.data.user})
-            setUser({...user, userName: User.data[0].UserName, userRollNo: User.data[0].RollNo});
+            const eventCall = await axios.get("https://pylamp-domain-realm.vercel.app/api/profile");
 
             try {
                 const apiCall = await axios.post("https://pylamp-domain-realm.vercel.app/api/profile/",{rollNo: jwtCall.data.user});
+                setUser({...user, userName: apiCall.data.details[0].UserName, userRollNo: apiCall.data.details[0].RollNo});
+                
                 var expRows = [];
-                let data = apiCall.data;
+                let data = apiCall.data.active;
+                setData({...barData, Participation: apiCall.data.active.length,Event: eventCall.data});
+
                 if(apiCall.status == 200){
                     data.map((value,index) => {
                         expRows.push(
@@ -57,8 +83,14 @@ export default function ProfilePage() {
             } catch (error) {
                 console.log(error)
             }
-            
 
+            let eventVal = barData.Event;
+            let participation = barData.Participation;
+
+            var divide = (eventVal/participation);
+            var avg = Math.floor(100/divide);
+
+            setAvg(avg);
         })();
     },[])
 return (
@@ -102,18 +134,43 @@ return (
                         autoHeight={true}
                         autoPageSize={true}
                         checkboxSelection={false}
-                        components={{
-                            NoRowsOverlay: () => (
-                                <Stack height="100%" alignItems="center" justifyContent="center">
-                                    No rows in DataGrid
-                                </Stack>
-                            )
-                        }}
                     />
                 </CardContent>
 
                 <CardContent className={styles.profileSegment}>
                     Stats
+                </CardContent>
+
+                <CardContent id="myChart">
+                <Grid container spacing={2} >
+                <Grid item xs={12} md={8} sm={8}>
+                    <BarChart
+                            width={300}
+                            height={300}
+                            data={data}
+                        >
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="name" />
+                            <YAxis />
+                            <Tooltip />
+                            <Legend />
+                            <Bar dataKey="Events" fill="#8884d8" />
+                            <Bar dataKey="Participation" fill="#82ca9d" />
+                        </BarChart>
+                </Grid><br />
+
+                <Grid item xs={6} md={4} sm={4} style={{
+                    display:"flex",
+                    marginRight:"auto",
+                    marginLeft:"auto"
+                }}>
+                        <CircularProgressbar 
+                            strokeWidth={2} 
+                            value={Avg} 
+                            text={`${Avg}%`}
+                        />
+                </Grid>  
+            </Grid>
                 </CardContent>
             </Card>
         </div>

@@ -796,3 +796,9 @@
   font-weight: bolder;
   height: min-content;
 }
+
+.profileGrid{
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}

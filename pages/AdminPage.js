@@ -7,7 +7,7 @@ import YouTube from "@material-ui/icons/YouTube";
 import LinkedIn from "@material-ui/icons/LinkedIn";
 import Instagram from "@material-ui/icons/Instagram";
 import { Button, Card,Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Typography } from '@material-ui/core';
-import { Router, useRouter } from 'next/dist/client/router';
+import {useRouter } from 'next/dist/client/router';
 import { AppBar } from '@material-ui/core';
 import { Toolbar } from '@material-ui/core';
 import FormPage from "../pages/FormPage";
@@ -36,7 +36,7 @@ export default function AdminPage() {
         });
         var verify = cookie.load("adminAllow");
         (!verify)? router.push("/"): null;
-    },[]);
+    },[router]);
     
     const handleClose = () => {
         setOpen(false);

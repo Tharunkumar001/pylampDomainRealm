@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react';
-import ProfileLogin from './Profile/ProfileLogin';
-import ProfilePage from './Profile/ProfilePage';
+import ProfileLogin from './ProfileLogin';
+import ProfilePage from './ProfilePage';
 import cookie from 'react-cookies'
 import axios from 'axios';
 import cogoToast from 'cogo-toast';

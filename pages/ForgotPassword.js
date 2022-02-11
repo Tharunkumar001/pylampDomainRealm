@@ -1,6 +1,6 @@
 import { Card, CardActions, TextField, Box, CardActionArea, Button, CardContent, ButtonBase } from '@material-ui/core';
-import styles from '../../styles/Home.module.css';
-import Logo from "../../public/pylampLogo.png";
+import styles from '../styles/Home.module.css';
+import Logo from "../public/pylampLogo.png";
 import Image from 'next/image';
 import Arrow from "@material-ui/icons/SendOutlined"
 import { useState } from 'react';

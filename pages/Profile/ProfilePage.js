@@ -80,17 +80,19 @@ export default function ProfilePage() {
                     });
                     setRow(expRows.reverse());
                 }
+
+                let eventVal = barData.Event;
+                let participation = barData.Participation;
+
+                var divide = (eventVal/participation);
+                var average = Math.floor(100/divide);
+
+                await setAvg(average);
             } catch (error) {
                 console.log(error)
             }
 
-            let eventVal = barData.Event;
-            let participation = barData.Participation;
-
-            var divide = (eventVal/participation);
-            var avg = Math.floor(100/divide);
-
-            setAvg(avg);
+            
         })();
     },[])
 return (
@@ -167,11 +169,18 @@ return (
                         <CircularProgressbar 
                             strokeWidth={2} 
                             value={Avg} 
-                            text={`${Avg}%`}
+                            text={`
+                            ${Avg}%
+                            `}
+                            
                         />
                 </Grid>  
             </Grid>
-                </CardContent>
+            </CardContent>
+
+            <CardContent>
+                <h4>Active % should greater than 40%</h4>
+            </CardContent>
             </Card>
         </div>
     </div>

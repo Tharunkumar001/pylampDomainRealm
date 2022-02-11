@@ -16,7 +16,7 @@ export default function Profile() {
                     blblbl() //for terminate try block
                 }
                 const apiCall = await axios.put("https://pylamp-domain-realm.vercel.app/api/profileHandler",{jwt: jwt});
-
+                
                 setUser(apiCall.data.user);
                 setState(<ProfilePage />)
 

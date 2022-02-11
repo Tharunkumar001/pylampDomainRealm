@@ -7,9 +7,9 @@ import { DataGrid } from '@material-ui/data-grid';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import cookie from 'react-cookies'
-import { Stack } from 'react-bootstrap';
-import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
+import {CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+
 import {
     BarChart,
     Bar,
@@ -62,10 +62,10 @@ export default function ProfilePage() {
     useEffect(() => {
         (async() => {
             const jwtCall = await axios.put("https://pylamp-domain-realm.vercel.app/api/profileHandler",{jwt: cookie.load("jwt")})
-            const eventCall = await axios.get("https://pylamp-domain-realm.vercel.app/api/profile");
+            const eventCall = await axios.get("https://pylamp-domain-realm.vercel.app/api/profileApi");
 
             try {
-                const apiCall = await axios.post("https://pylamp-domain-realm.vercel.app/api/profile/",{rollNo: jwtCall.data.user});
+                const apiCall = await axios.post("https://pylamp-domain-realm.vercel.app/api/profileApi",{rollNo: jwtCall.data.user});
                 setUser({...user, userName: apiCall.data.details[0].UserName, userRollNo: apiCall.data.details[0].RollNo});
                 
                 var expRows = [];

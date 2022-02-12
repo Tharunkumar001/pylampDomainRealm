@@ -8,7 +8,8 @@ import cogoToast from 'cogo-toast';
 
 export default function Profile() {
     const [user, setUser] = useState();
-    const [state, setState] = useState(<ProfilePage />)
+    const [state, setState] = useState(<ProfileLogin />);
+    
     useEffect(() =>{
         (async() => {
                 let jwt = await cookie.load("jwt");

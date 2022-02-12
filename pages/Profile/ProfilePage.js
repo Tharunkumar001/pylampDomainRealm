@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
+import styles from '../../styles/Home.module.css';
 import { useRouter } from 'next/dist/client/router';
 import { Avatar, Button, Card, CardContent, CardHeader, Grid, Typography,  } from '@material-ui/core';
 import { ArrowForwardIos } from '@material-ui/icons';

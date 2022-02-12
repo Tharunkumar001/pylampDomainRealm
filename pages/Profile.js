@@ -1,14 +1,14 @@
 
 import { useEffect, useState } from 'react';
-import ProfileLogin from './ProfileLogin';
-import ProfilePage from './ProfilePage';
+import ProfileLogin from './Profile/ProfileLogin';
+import ProfilePage from './Profile/ProfilePage';
 import cookie from 'react-cookies'
 import axios from 'axios';
 import cogoToast from 'cogo-toast';
 
 export default function Profile() {
     const [user, setUser] = useState();
-    const [state, setState] = useState()
+    const [state, setState] = useState(<ProfilePage />)
     useEffect(() =>{
         (async() => {
                 let jwt = await cookie.load("jwt");

@@ -11,10 +11,6 @@ const profile = async(req, res)=> {
         const findUserParticipations = User.find({rollNo: req.body.rollNo}).then((data)=>{
             if(data.lenght == 0){
                 res.status(401).send({info: false, message: "No More Events You Participated"});
-            }else{
-                const findUserDet = Login.find({RollNo: req.body.rollNo}).then((done) => {
-                    res.status(200).send({active: data, details: done});
-                })
             }
         })
         
@@ -25,7 +21,9 @@ const profile = async(req, res)=> {
         })
     }
     else if(req.method == "PUT"){
-        
+        const findUserDet = Login.find({RollNo: req.body.rollNo}).then((done) => {
+            res.status(200).send({active: data, details: done});
+        })
     }
 }
 

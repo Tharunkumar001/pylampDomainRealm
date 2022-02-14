@@ -90,7 +90,7 @@ export default function ProfilePage() {
 
             
         })();
-    },[])
+    },[barData.Event, barData.Participation])
 return (
     <div>
         <Head>

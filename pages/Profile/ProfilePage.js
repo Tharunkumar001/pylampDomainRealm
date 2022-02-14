@@ -39,13 +39,12 @@ export default function ProfilePage() {
     useEffect(() => {
         (async() => {
             const jwtCall = await axios.put("https://pylamp-domain-realm.vercel.app/api/profileHandler",{jwt: cookie.load("jwt")})
-            const User = await axios.put("https://pylamp-domain-realm.vercel.app/api/profileApi",{rollNo: jwtCall.data.user})
-            setUser({...user, userName: User.data[0].UserName, userRollNo: User.data[0].RollNo});
-
+            // const User = await axios.put("https://pylamp-domain-realm.vercel.app/api/profileApi",{rollNo: jwtCall.data.user})
             try {
                 const apiCall = await axios.post("https://pylamp-domain-realm.vercel.app/api/profileApi",{rollNo: jwtCall.data.user});
+                setUser({...user, userName: apiCall.data.userDetails[0].UserName, userRollNo: apiCall.data.userDetails[0].RollNo});
                 var expRows = [];
-                let data = apiCall.data;
+                let data = apiCall.data.tableData;
                 if(apiCall.status == 200){
                     data.map((value,index) => {
                         expRows.push(
@@ -113,7 +112,7 @@ return (
                 </CardContent>
 
                 <CardContent className={styles.profileSegment}>
-                    Stats
+                    
                 </CardContent>
             </Card>
         </div>

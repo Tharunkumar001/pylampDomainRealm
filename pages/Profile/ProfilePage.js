@@ -62,15 +62,11 @@ export default function ProfilePage() {
     useEffect(() => {
         (async() => {
             const jwtCall = await axios.put("https://pylamp-domain-realm.vercel.app/api/profileHandler",{jwt: cookie.load("jwt")})
-            const eventCall = await axios.get("https://pylamp-domain-realm.vercel.app/api/profileApi");
-            const putCall = await axios.put("https://pylamp-domain-realm.vercel.app/api/profileApi")
             try {
                 const apiCall = await axios.post("https://pylamp-domain-realm.vercel.app/api/profileApi",{rollNo: jwtCall.data.user});
-                setUser({...user, userName: putCall.data.details[0].UserName, userRollNo: putCall.data.details[0].RollNo});
                 
                 var expRows = [];
                 let data = putCall.data.active;
-                setData({...barData, Participation: putCall.data.active.length,Event: eventCall.data});
 
                 if(apiCall.status == 200){
                     data.map((value,index) => {

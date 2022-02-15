@@ -62,9 +62,9 @@ export default function ProfilePage() {
 
                 var expRows = [];
                 let data = tableApi.data.tableData;
-
-                let divide = (barData.Event) / (barData.Active);
-                let Avg = Math.floor(100/divide);
+                
+                var divide = (barData.Event) / (barData.Active);
+                var Avg = Math.floor(100/divide);
                 setData(Avg)
 
                 if(tableApi.status == 200){
@@ -141,34 +141,40 @@ return (
                 <Grid container spacing={2}>
                         <Grid xs={12} md={6} sm={6} style={{
                             display:"flex",
-                            justifyContent:"center"
+                            justifyContent:"center",
+                            paddingBottom:"2rem"
                         }}>
                                 <BarChart
                                     width={300}
                                     height={300}
                                     data={data}
                                     >
-                                    <CartesianGrid strokeDasharray="3 3" />
-                                    <XAxis dataKey="name" />
-                                    <YAxis />
                                     <Tooltip />
                                     <Legend />
-                                    <Bar dataKey="Active" fill="#8884d8" />
-                                    <Bar dataKey="Event" fill="#82ca9d" />
+                                    <Bar dataKey="Active" fill="#3581EB" />
+                                    <Bar dataKey="Event" fill="#20D77C" />
                                 </BarChart>
-                        </Grid><br />
+                        </Grid><br /><br />
 
                         <Grid xs={12} md={6} sm={6} style={{
                             display:"flex",
-                            justifyContent:"center"
+                            justifyContent:"center",
+                            flexDirection:"column"
                         }}>
-                        <div style={{ width: 200, height: 200 }}>
+                        <div style={{ width: 100, height: 100 }}>
                             <CircularProgressbar 
                                 value={circulatBar} 
                                 text={`${circulatBar}%`}
                             />
-                            <h5>Above 40% is necesssary.</h5>
                         </div>
+                        <h5>You should have above 40% participation.</h5>
+                        <h5 style={{
+                            color: "grey",
+                            opacity: "0.8",
+                            fontWeight: "bolder",
+                        }}>
+                            (below 40% you cant be a member of Pylamp)
+                        </h5>
                         </Grid> 
                     </Grid>
                 </CardContent>

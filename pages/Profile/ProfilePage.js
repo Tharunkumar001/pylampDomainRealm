@@ -1,13 +1,18 @@
 import Head from 'next/head';
 import styles from '../../styles/Home.module.css';
 import { useRouter } from 'next/dist/client/router';
-import { Avatar, Button, Card, CardContent, CardHeader, Typography,  } from '@material-ui/core';
+import { Avatar, Box, Button, Card, CardContent, CardHeader, CircularProgress, Grid, Typography,  } from '@material-ui/core';
 import { ArrowForwardIos } from '@material-ui/icons';
 import { DataGrid } from '@material-ui/data-grid';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import cookie from 'react-cookies'
 import { Stack } from 'react-bootstrap';
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+
+
 
 const columns = [
     {
@@ -34,18 +39,35 @@ const columns = [
 export default function ProfilePage() {
     const [row, setRow] = useState([]);
     const [user, setUser] = useState({userName: "", userRollNo: ""});
+    const [barData, setBar] = useState({Event:"", Active:""});
+    const [circulatBar, setData] = useState(0);
     const router = useRouter();
+
+    const data = [
+        {
+            name: 'Participation',
+            Event: `${barData.Event}`,
+            Active: `${barData.Active}`,
+        },
+    ]
 
     useEffect(() => {
         (async() => {
-            const jwtCall = await axios.put("https://pylamp-domain-realm.vercel.app/api/profileHandler",{jwt: cookie.load("jwt")})
-            // const User = await axios.put("https://pylamp-domain-realm.vercel.app/api/profileApi",{rollNo: jwtCall.data.user})
+            const jwtApi = await axios.put("https://pylamp-domain-realm.vercel.app/api/profileHandler",{jwt: cookie.load("jwt")})
+            const statsApi = await axios.get("https://pylamp-domain-realm.vercel.app/api/profileApi");
             try {
-                const apiCall = await axios.post("https://pylamp-domain-realm.vercel.app/api/profileApi",{rollNo: jwtCall.data.user});
-                setUser({...user, userName: apiCall.data.userDetails[0].UserName, userRollNo: apiCall.data.userDetails[0].RollNo});
+                const tableApi = await axios.post("https://pylamp-domain-realm.vercel.app/api/profileApi",{rollNo: jwtApi.data.user});
+                setUser({...user, userName: tableApi.data.userDetails[0].UserName, userRollNo: tableApi.data.userDetails[0].RollNo});
+                setBar({...barData,Event: statsApi.data, Active: tableApi.data.tableData.length});
+
                 var expRows = [];
-                let data = apiCall.data.tableData;
-                if(apiCall.status == 200){
+                let data = tableApi.data.tableData;
+
+                let divide = (barData.Event) / (barData.Active);
+                let Avg = Math.floor(100/divide);
+                setData(Avg)
+
+                if(tableApi.status == 200){
                     data.map((value,index) => {
                         expRows.push(
                             { id: value._id, eventName: value.eventName, participation: "✅"},
@@ -53,11 +75,11 @@ export default function ProfilePage() {
                     });
                     setRow(expRows.reverse());
                 }
+
+
             } catch (error) {
                 console.log(error)
             }
-            
-
         })();
     },[])
 return (
@@ -91,7 +113,7 @@ return (
                     Events
                 </CardContent>
 
-                <CardContent style={{width:'100%'}}>
+                <CardContent style={{width:'100%', paddingTop:"1rem"}}>
                     <DataGrid 
                         rows={row} 
                         columns={columns} 
@@ -112,7 +134,43 @@ return (
                 </CardContent>
 
                 <CardContent className={styles.profileSegment}>
-                    
+                    Stats
+                </CardContent>
+
+                <CardContent style={{width:"100%"}}>
+                <Grid container spacing={2}>
+                        <Grid xs={12} md={6} sm={6} style={{
+                            display:"flex",
+                            justifyContent:"center"
+                        }}>
+                                <BarChart
+                                    width={300}
+                                    height={300}
+                                    data={data}
+                                    >
+                                    <CartesianGrid strokeDasharray="3 3" />
+                                    <XAxis dataKey="name" />
+                                    <YAxis />
+                                    <Tooltip />
+                                    <Legend />
+                                    <Bar dataKey="Active" fill="#8884d8" />
+                                    <Bar dataKey="Event" fill="#82ca9d" />
+                                </BarChart>
+                        </Grid><br />
+
+                        <Grid xs={12} md={6} sm={6} style={{
+                            display:"flex",
+                            justifyContent:"center"
+                        }}>
+                        <div style={{ width: 200, height: 200 }}>
+                            <CircularProgressbar 
+                                value={circulatBar} 
+                                text={`${circulatBar}%`}
+                            />
+                            <h5>Above 40% is necesssary.</h5>
+                        </div>
+                        </Grid> 
+                    </Grid>
                 </CardContent>
             </Card>
         </div>

@@ -25,7 +25,9 @@ const profile = async(req, res)=> {
         })
     }
     else if(req.method == "GET"){
-        
+        const getEvents = Default.find({}).then((data) => {
+            res.status(200).send(data.length);
+        })
     }
 }
 

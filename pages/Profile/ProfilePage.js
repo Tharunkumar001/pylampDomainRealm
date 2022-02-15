@@ -40,12 +40,11 @@ export default function ProfilePage() {
     const [row, setRow] = useState([]);
     const [user, setUser] = useState({userName: "", userRollNo: ""});
     const [barData, setBar] = useState({Event:"", Active:""});
-    const [circulatBar, setData] = useState(0);
+    const [circulatBar, setData] = useState({percent:"0"});
     const router = useRouter();
 
     const data = [
         {
-            name: 'Participation',
             Event: `${barData.Event}`,
             Active: `${barData.Active}`,
         },
@@ -64,8 +63,8 @@ export default function ProfilePage() {
                 let data = tableApi.data.tableData;
                 
                 var divide = (barData.Event) / (barData.Active);
-                var Avg = Math.floor(100/divide);
-                setData(Avg)
+                const Avg = Math.floor(100/divide);
+                setData({...circulatBar, percent: Avg});
 
                 if(tableApi.status == 200){
                     data.map((value,index) => {
@@ -81,7 +80,7 @@ export default function ProfilePage() {
                 console.log(error)
             }
         })();
-    },[])
+    },[barData, circulatBar, user])
 return (
     <div>
         <Head>
@@ -163,8 +162,8 @@ return (
                         }}>
                         <div style={{ width: 100, height: 100 }}>
                             <CircularProgressbar 
-                                value={circulatBar} 
-                                text={`${circulatBar}%`}
+                                value={circulatBar.percent} 
+                                text={`${circulatBar.percent}%`}
                             />
                         </div>
                         <h5>You should have above 40% participation.</h5>

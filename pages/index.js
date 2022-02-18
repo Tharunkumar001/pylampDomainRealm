@@ -112,68 +112,51 @@ return (
     </Head>
 
     <main className={styles.homeMain}>
-        <div>
-            <AppBar>
-                <Toolbar>
-                    <Navbar />
-                </Toolbar>
-            </AppBar>
-        </div>
+        <div style={{backgroundColor:"#010003"}}>
+            <Navbar />
 
-        <ScrollAnimation animateIn="fadeIn">
+            <ScrollAnimation animateIn="fadeIn">
         
-            <div className={styles.firstDiv}  data-aos="fade-up">
-                <div  data-aos="fade-up" style={{
-                    textAlign:"center"
-                }}>
-                    <h3 style={{
-                        fontWeight:"bold",
-                        display:"flex",
-                        marginLeft:"auto",
-                        marginRight:"auto",
-                        width:"62%",
-                        fontStyle:"italic"
-                    }}>Everybody should learn to program a computer 
-                        because it teaches you how to think. -Steve Jobs</h3>
-                </div><br />
-                
-            <Grid container spacing={2}>
-                <Grid xs={12} md={6} sm={6}>
-                    <Image src={Gif} alt="gif"/>
-                </Grid><br />
+            <div data-aos="fade-up" >
 
+            <Grid container spacing={2} className={styles.firstDiv}>
                 <Grid xs={12} md={6} sm={6} style={{
                     display:"flex",
-                    marginRight:"auto",
-                    marginLeft:"auto"
+                    justifyContent:"center"
                 }}>
-                    <div className={styles.logicCard}>
-                        <h1 >Logic & Language</h1>
-                        <p className={styles.motoDiv}>
-                            `Logic programming is a programming paradigm that is based on logic. 
-                            This means that a logic programming language has sentences that follow logic, so that they express facts and rules.
-                            Computation using logic programming is done by making logical inferences based on all available data.`
-                        </p><hr style={{width:"80%", fontWeight:"bold"}}/>
-
-                        <div className={styles.logicBtns}>
-                            <button style={{
-                                borderRadius:"0.5rem",
-                                backgroundColor:"black",
-                                color:"white",
-                                padding:"0.5rem"
-                            }}>Reach Out</button>
-                            <button onClick={() => window.scrollBy(0, 10000)} 
-                            style={{
-                                borderRadius:"0.5rem",
-                                color:"black",
-                                padding:"0.5rem"
-                            }}>Follow Us</button>
-                        </div>
+                    <div className={styles.quoteGrid}>
+                        <h1>
+                            
+                            You Dont GiveUp<br />
+                            Still Have Chance<br />
+                            <span style={{color:"#566dee"}}>To Win...😎</span>
+                        </h1>
                     </div>
-                </Grid>  
+                    
+                </Grid>
+
+                <Hidden >
+                    <Grid xs={12} md={6} sm={6} >
+                    <h1 className={styles.quoteGrid}>Logic & Language</h1>
+
+                    <div className={styles.logicCard}>
+                        <p className={styles.motoDiv}>
+                            `Logic is the means of thinking right. 
+                            Language is the dress of thought. 
+                            It is essentially thought that shapes the language or shapes the language. 
+                            Thoughts must be expressed in language, 
+                            because if we do not express our thoughts in language, 
+                            we will not be able to analyze them logically.`
+                        </p><hr style={{width:"80%", fontWeight:"bold"}}/>
+                    </div>
+                    </Grid>  
+                </Hidden>
+                
             </Grid>
             </div><br /><br />
             </ScrollAnimation>
+        </div>
+
         <ScrollAnimation animateIn="fadeIn">
             <div className={styles.motoDiv} data-aos="fade-left" >
                     <h1 >About Pylamp!!</h1>
@@ -298,3 +281,30 @@ return (
     </footer>
     </div>
 )}
+
+
+/* 
+                                    <div className={styles.logicCard}>
+                        <h1 >Logic & Language</h1>
+                        <p className={styles.motoDiv}>
+                            `Logic programming is a programming paradigm that is based on logic. 
+                            This means that a logic programming language has sentences that follow logic, so that they express facts and rules.
+                            Computation using logic programming is done by making logical inferences based on all available data.`
+                        </p><hr style={{width:"80%", fontWeight:"bold"}}/>
+
+                        <div className={styles.logicBtns}>
+                            <button style={{
+                                borderRadius:"0.5rem",
+                                backgroundColor:"black",
+                                color:"white",
+                                padding:"0.5rem"
+                            }}>Reach Out</button>
+                            <button onClick={() => window.scrollBy(0, 10000)} 
+                            style={{
+                                borderRadius:"0.5rem",
+                                color:"black",
+                                padding:"0.5rem"
+                            }}>Follow Us</button>
+                        </div>
+                    </div>
+*/

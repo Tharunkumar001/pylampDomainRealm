@@ -26,21 +26,35 @@ export default function Layout({children}){
             <nav className={styles.navbar}>
                 
                 <Image src={Logo} alt="logo" width="50rem" height="50rem" />
-                <h1>Pylamp</h1>
+                <h1 style={{
+                    color:"#C8B08A"
+                }}>Pylamp</h1>
 
                 <ul className={isOpen === false ? 
                         styles.navmenu : styles.navmenu +' '+ styles.active}>
                     <li className={styles.navitem}>
-                        <Button onClick={routeAdmin}>Admin</Button>
+                        <Button onClick={routeAdmin} style={{
+                            color:"white",
+                            fontFamily:"monospace"
+                        }}>Admin</Button>
                     </li>
                     <li className={styles.navitem}>
-                        <Button onClick = {() => router.push("/Events")}>Events</Button>
+                        <Button onClick = {() => router.push("/Events")} style={{
+                            color:"white",
+                            fontFamily:"monospace"
+                        }}>Events</Button>
                     </li>
                     <li className={styles.navitem}>
-                        <Button onClick = {() => router.push("/FormPage")}>Attendance</Button>
+                        <Button onClick = {() => router.push("/FormPage")} style={{
+                            color:"white",
+                            fontFamily:"monospace"
+                        }}>Attendance</Button>
                     </li>
                     <li className={styles.navitem}>
-                        <Button onClick = {() => router.push("/Profile")}>Profile <ProfileIcon /></Button>
+                        <Button onClick = {() => router.push("/Profile")} style={{
+                            color:"white",
+                            border:"0.1rem solid white"
+                        }}><ProfileIcon /></Button>
                     </li>
                 </ul>
                 <button className={isOpen === false ? 

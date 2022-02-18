@@ -80,7 +80,7 @@ export default function ProfilePage() {
                 console.log(error)
             }
         })();
-    },[barData, circulatBar, user])
+    },[])
 return (
     <div>
         <Head>
@@ -177,7 +177,7 @@ return (
                         </Grid> 
                     </Grid>
                 </CardContent>
-            </Card>
+            </Card><br />
         </div>
     </div>
 )

@@ -49,8 +49,10 @@ export default function HomeCard(props) {
 
                     <CardContent>
                         <Typography variant="body2" color="text.secondary">
-                            {props.candidate} - {props.role}
+                            {props.candidate}<br />
+                            {props.role}
                         </Typography>
+
                     </CardContent>
                     <CardActions disableSpacing>
                         <IconButton aria-label="add to favorites">

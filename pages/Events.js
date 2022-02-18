@@ -96,6 +96,9 @@ const EventPage = () => {
         <div style={{backgroundColor:"#010003"}}>
           <Navbar />
         </div>
+        <div>
+          <h2 style={{color:"grey", opacity:"0.8", textAlign:"center"}}>Pylamp Events</h2>
+        </div>
       <div className={styles.dataGrid}>
         <DataGrid
           components={{

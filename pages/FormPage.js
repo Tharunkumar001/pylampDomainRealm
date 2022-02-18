@@ -96,10 +96,7 @@ return (
             <Navbar />
         </div>
     <div className={styles.formContainer}>
-
         <div className={styles.rowBtn} >
-        {/* <h3 className={styles.period}>{eventDetails.period}</h3> */}
-
             <h4 className={styles.header}>
                 <h3>{eventDetails.header}</h3><br />
             </h4>
@@ -107,8 +104,7 @@ return (
 
         <div className={styles.form}>
         <label>
-        <h2>🎯</h2>
-
+            <h2>🎯</h2>
             <form className={styles.formLabel} onSubmit={submitHandler} >
 
                 <input placeholder="Name" autoComplete="off" value={data.name.trim()} type="text" name="inputForName" required className={styles.input}
@@ -133,6 +129,7 @@ return (
             </form>
         </label>
         </div><br />
+        
         <Dialog
         open={open}
         onClose={handleClose}

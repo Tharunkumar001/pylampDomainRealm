@@ -80,7 +80,7 @@ export default function ProfilePage() {
                 console.log(error)
             }
         })();
-    },[])
+    },[circulatBar])
 return (
     <div>
         <Head>
@@ -151,7 +151,7 @@ return (
                                     <Tooltip />
                                     <Legend />
                                     <Bar dataKey="Active" fill="#3581EB" />
-                                    <Bar dataKey="Event" fill="#20D77C" />
+                                    <Bar dataKey="Event" fill="#6c757a" />
                                 </BarChart>
                         </Grid><br /><br />
 

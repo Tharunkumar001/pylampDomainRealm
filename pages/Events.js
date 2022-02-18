@@ -92,14 +92,10 @@ const EventPage = () => {
     }
 
   return (
-      <div>
-
-        <AppBar>
-            <Toolbar>
-                <Navbar />
-            </Toolbar>
-        </AppBar>
-
+      <div >
+        <div style={{backgroundColor:"#010003"}}>
+          <Navbar />
+        </div>
       <div className={styles.dataGrid}>
         <DataGrid
           components={{

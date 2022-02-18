@@ -91,12 +91,10 @@ const FormPage = (props) => {
         setOpen(true);
     }
 return (
-    <div className={styles.formPage} style={{paddingTop:"1rem"}}>
-        <AppBar>
-            <Toolbar>
-                <Navbar />
-            </Toolbar>
-        </AppBar>
+    <div className={styles.formPage}>
+        <div style={{backgroundColor:"#010003"}}>
+            <Navbar />
+        </div>
     <div className={styles.formContainer}>
 
         <div className={styles.rowBtn} >

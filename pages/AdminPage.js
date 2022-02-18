@@ -82,12 +82,8 @@ return (
     </Head>
 
     <main className={styles.adminMain}>
-        <div>
-            <AppBar>
-                <Toolbar>
-                    <Navbar />
-                </Toolbar>
-            </AppBar>
+        <div style={{backgroundColor:"#010003"}}>
+            <Navbar />
         </div><br /><br />
 
         <div className={styles.cardContainer}>

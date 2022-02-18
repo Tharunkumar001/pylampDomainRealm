@@ -84,8 +84,8 @@ export default function ProfilePage() {
 return (
     <div>
         <Head>
-            <title>Domain Realm</title>
-            <meta name="description" content="Web development session" />
+            <title>Pylamp</title>
+            <meta name="description" content="code forever" />
             <link rel="icon" href="/pylampLogo.png" />
         </Head>
         <div>

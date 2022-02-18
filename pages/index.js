@@ -106,8 +106,8 @@ return (
 
 <div className={styles.homeContainer}>
     <Head>
-        <title>Domain Realm</title>
-        <meta name="description" content="Web development session" />
+        <title>Pylamp</title>
+        <meta name="description" content="code forever" />
         <link rel="icon" href="/pylampLogo.png" />
     </Head>
 
@@ -183,7 +183,7 @@ return (
                             position="CLUB ADVISER" 
                             positonDetails={Adviser}
                             avatar="A"
-                            candidate="K.VIJAYA" 
+                            candidate="K.VIJAYA, Priyavarshini" 
                             role="Faculty of VCET"
                         /><br />
 

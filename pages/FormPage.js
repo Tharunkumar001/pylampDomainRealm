@@ -111,7 +111,7 @@ return (
                     onChange={e => setData({ ...data, name: e.target.value })}
                 /><br />
 
-                <input placeholder="RollNo" autoComplete="off" value={data.rollNo.trim()} type="text" name="inputForName" required className={styles.input}
+                <input placeholder="RollNo" autoComplete="off" value={data.rollNo.trim().toUpperCase()} type="text" name="inputForName" required className={styles.input}
                     onChange={e => setData({ ...data, rollNo: e.target.value })}
                 /><br />
                 {/* {error && <span>Enter your Full Pattern</span>} */}

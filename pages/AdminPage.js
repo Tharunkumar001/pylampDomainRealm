@@ -84,7 +84,7 @@ return (
     <main className={styles.adminMain}>
         <div style={{backgroundColor:"#010003"}}>
             <Navbar />
-        </div><br /><br />
+        </div>
 
         <div className={styles.cardContainer}>
             <Grid container columnSpacing={{ xs: 1, sm: 2, md: 3 }} >

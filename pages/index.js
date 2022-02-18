@@ -127,8 +127,8 @@ return (
                     <div className={styles.quoteGrid}>
                         <h1>
                             
-                            You Dont GiveUp<br />
-                            Still Have Chance<br />
+                            You Dont GiveUp❔<br />
+                            Still Have Chance➡️<br />
                             <span style={{color:"#566dee"}}>To Win...😎</span>
                         </h1>
                     </div>

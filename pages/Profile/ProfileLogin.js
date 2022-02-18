@@ -69,7 +69,7 @@ return (
                 value={login.userName.trim()} onChange={(e) => setLogin({...login, userName: e.target.value})}/>
                 
                 <TextField id="RollNo" label="RollNo" variant="filled" helperText="Eg: 19CSR116" 
-                value={login.rollNo.trim()} onChange={(e) => setLogin({...login, rollNo: e.target.value})}/>
+                value={login.rollNo.trim().toUpperCase()} onChange={(e) => setLogin({...login, rollNo: e.target.value})}/>
 
                 <TextField id="Password" label="Password" variant="filled" helperText="Atleast 5 words"
                 value={login.password.trim()} onChange={(e) => setLogin({...login, password: e.target.value})}/>

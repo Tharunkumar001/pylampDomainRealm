@@ -88,7 +88,9 @@ return (
             <meta name="description" content="Web development session" />
             <link rel="icon" href="/pylampLogo.png" />
         </Head>
-
+        <div>
+            <h2 style={{color:"grey", opacity:"0.8", textAlign:"center"}}>Pylamp Profile</h2>
+        </div>
         <div className={styles.profileDiv}>
             <Card className={styles.profileCard}>
                 <CardHeader
@@ -122,13 +124,6 @@ return (
                         autoHeight={true}
                         autoPageSize={true}
                         checkboxSelection={false}
-                        components={{
-                            NoRowsOverlay: () => (
-                                <Stack height="100%" alignItems="center" justifyContent="center">
-                                    No rows in DataGrid
-                                </Stack>
-                            )
-                        }}
                     />
                 </CardContent>
 

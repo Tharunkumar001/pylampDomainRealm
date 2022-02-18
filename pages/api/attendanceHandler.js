@@ -16,7 +16,7 @@ const handler = async(req, res)=> {
             res.status(200).send(false);
         }
     }else if(req.method === "POST"){
-        if(req.body.promtValue === 'Pylamp@vcet'){
+        if(req.body.promtValue === process.env.PylampPassword){
             res.send(true)
         }else{
             res.send(false)

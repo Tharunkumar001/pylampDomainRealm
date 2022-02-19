@@ -1,16 +1,11 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import styles from '../styles/Home.module.css';
-import Logo from "../public/pylampLogo.png";
 import { useState,useEffect } from 'react';
 import YouTube from "@material-ui/icons/YouTube";
 import LinkedIn from "@material-ui/icons/LinkedIn";
 import Instagram from "@material-ui/icons/Instagram";
-import { Button, Card,Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Typography } from '@material-ui/core';
+import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, } from '@material-ui/core';
 import {useRouter } from 'next/dist/client/router';
-import { AppBar } from '@material-ui/core';
-import { Toolbar } from '@material-ui/core';
-import FormPage from "../pages/FormPage";
 import DefaultForm from "../pages/FormContainer/DefaultForm";
 import Navbar from "../pages/Navbar";
 import ScrollAnimation from 'react-animate-on-scroll';

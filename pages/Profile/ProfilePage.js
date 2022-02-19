@@ -1,14 +1,13 @@
 import Head from 'next/head';
 import styles from '../../styles/Home.module.css';
 import { useRouter } from 'next/dist/client/router';
-import { Avatar, Box, Button, Card, CardContent, CardHeader, CircularProgress, Grid, Typography,  } from '@material-ui/core';
+import { Avatar,  Button, Card, CardContent, CardHeader,  Grid, Typography,  } from '@material-ui/core';
 import { ArrowForwardIos } from '@material-ui/icons';
 import { DataGrid } from '@material-ui/data-grid';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import cookie from 'react-cookies'
-import { Stack } from 'react-bootstrap';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar,Tooltip, Legend,} from 'recharts';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 

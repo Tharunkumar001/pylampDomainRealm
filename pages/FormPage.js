@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -8,7 +7,6 @@ import YouTube from "@material-ui/icons/YouTube";
 import LinkedIn from "@material-ui/icons/LinkedIn";
 import Instagram from "@material-ui/icons/Instagram";
 import Navbar from "../pages/Navbar";
-import { AppBar, Toolbar } from '@material-ui/core';
 import cogoToast from 'cogo-toast';
 import { useRouter } from 'next/dist/client/router';
 

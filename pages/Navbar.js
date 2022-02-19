@@ -35,7 +35,7 @@ export default function Layout({children}){
                     <li className={styles.navitem}>
                         <Button onClick={routeAdmin} style={{
                             color:"white",
-                            fontFamily:"monospace"
+                            fontFamily:"monospace",
                         }}>Admin</Button>
                     </li>
                     <li className={styles.navitem}>

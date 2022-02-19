@@ -492,10 +492,6 @@
   list-style-type: none;
 }
 
-.navitem {
-  margin-left: 5rem;
-}
-
 .navlink{
   font-size: 2rem;
   font-weight: 400;
@@ -513,8 +509,9 @@
       left: -100%;
       top: 5rem;
       flex-direction: column;
-      background-color: rgb(7, 6, 6);
+      background-color: #070606;
       width: 100%;
+      height: 100vh;
       border-radius: 10px;
       text-align: center;
       transition: 0.3s;
@@ -720,7 +717,7 @@
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  background-image: linear-gradient(to right, #1F1C2C 0%, #928DAB  51%, #1F1C2C  100%);
+  /* background-image: linear-gradient(to right, #1F1C2C 0%, #928DAB  51%, #1F1C2C  100%); */
 
 }
 

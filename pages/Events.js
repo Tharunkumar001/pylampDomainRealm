@@ -118,7 +118,7 @@ const EventPage = () => {
               EventDate: row.row.period, About: row.row.about, EventType: row.row.formType, EventId: row.row.id});
           }}
         />
-      </div>
+      </div><br />
       {(loading)? <div className={styles.load}>
           <CircularProgress />
         </div> : null }

@@ -14,7 +14,7 @@ export default function ForgotPassword() {
     const [login, setLogin] = useState({email:"",rollNo:"",});
     const handleSend = async(e) => {
         try {
-            const apiCall = await axios.post("https://pylamp-domain-realm.vercel.app/api/forgotPassword",{data: login})
+            const apiCall = await axios.post("https://pylamp-official.vercel.app/api/forgotPassword",{data: login})
             cogoToast.success(`${apiCall.data.message}`);
         } catch (error) {
             cogoToast.info(`${apiCall.data.message}`);

@@ -12,7 +12,7 @@ import cogoToast from 'cogo-toast';
 
 const delFunction = async(x) => {
     var rollNo = x;
-    const apiCall = await axios.put("https://pylamp-domain-realm.vercel.app/api/formHandler",{roll:rollNo});
+    const apiCall = await axios.put("https://pylamp-official.vercel.app/api/formHandler",{roll:rollNo});
 }
 
 

@@ -51,10 +51,10 @@ export default function ProfilePage() {
 
     useEffect(() => {
         (async() => {
-            const jwtApi = await axios.put("https://pylamp-domain-realm.vercel.app/api/profileHandler",{jwt: cookie.load("jwt")})
-            const statsApi = await axios.get("https://pylamp-domain-realm.vercel.app/api/profileApi");
+            const jwtApi = await axios.put("https://pylamp-official.vercel.app/api/profileHandler",{jwt: cookie.load("jwt")})
+            const statsApi = await axios.get("https://pylamp-official.vercel.app/api/profileApi");
             try {
-                const tableApi = await axios.post("https://pylamp-domain-realm.vercel.app/api/profileApi",{rollNo: jwtApi.data.user});
+                const tableApi = await axios.post("https://pylamp-official.vercel.app/api/profileApi",{rollNo: jwtApi.data.user});
                 setUser({...user, userName: tableApi.data.userDetails[0].UserName, userRollNo: tableApi.data.userDetails[0].RollNo});
                 setBar({...barData,Event: statsApi.data, Active: tableApi.data.tableData.length});
 

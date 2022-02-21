@@ -32,8 +32,8 @@ const FormPage = (props) => {
             const formId  = await prompt("Enter Event Id", localStorage.getItem("currentFormId"));
             
             try {
-                const api = await axios.put("https://pylamp-domain-realm.vercel.app/api/setForm",{formId:formId});
-                //https://pylamp-domain-realm.vercel.app/
+                const api = await axios.put("https://pylamp-official.vercel.app/api/setForm",{formId:formId});
+                //https://pylamp-official.vercel.app/
                 if(api.status === 200){
                     setValue({...eventDetails, header: api.data[0].eventName, 
                         about: api.data[0].about, period: api.data[0].period
@@ -59,8 +59,8 @@ const FormPage = (props) => {
     const validateclass = (data.class !== "NA") ? false : true;
 
     if (!validateRollNo && !validateclass) {
-        axios.post("https://pylamp-domain-realm.vercel.app/api/formHandler", data).then((res) => {
-        //https://pylamp-domain-realm.vercel.app/  
+        axios.post("https://pylamp-official.vercel.app/api/formHandler", data).then((res) => {
+        //https://pylamp-official.vercel.app/  
         console.log(res)
         setLoading(true);
         if (res.data == false) {

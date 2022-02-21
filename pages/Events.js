@@ -63,7 +63,7 @@ const EventPage = () => {
     useEffect(() => {
         (async () => {
 
-          var api = await axios.get("https://pylamp-domain-realm.vercel.app/api/setForm");
+          var api = await axios.get("https://pylamp-official.vercel.app/api/setForm");
           var expRows = [];
           setLoading(false)
           var data = api.data;

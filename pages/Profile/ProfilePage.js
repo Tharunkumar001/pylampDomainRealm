@@ -54,10 +54,10 @@ export default function ProfilePage() {
     useEffect(() => {
         (async() => {
             setLoading(true);
-            const jwtApi = await axios.put("https://pylamp-official.vercel.app/api/profileHandler",{jwt: cookie.load("jwt")})
-            const statsApi = await axios.get("https://pylamp-official.vercel.app/api/profileApi");
+            const jwtApi = await axios.put("http://localhost:3000/api/profileHandler",{jwt: cookie.load("jwt")})
+            const statsApi = await axios.get("http://localhost:3000/api/profileApi");
             try {
-                const tableApi = await axios.post("https://pylamp-official.vercel.app/api/profileApi",{rollNo: jwtApi.data.user});
+                const tableApi = await axios.post("http://localhost:3000/api/profileApi",{rollNo: jwtApi.data.user});
                 setUser({...user, userName: tableApi.data.userDetails[0].UserName, userRollNo: tableApi.data.userDetails[0].RollNo});
                 setBar({...barData,Event: statsApi.data, Active: tableApi.data.tableData.length});
 
@@ -83,8 +83,12 @@ export default function ProfilePage() {
         })();
     },[]);
 
+    // const grievenceHandler = () => {
+    //     var apiCall = axios.
+    // }
+ 
     const handleLogout = async() => {
-        var logoutApi = await axios.post("https://pylamp-official.vercel.app/api/logoutHandler",{rollNo: user.userRollNo});
+        var logoutApi = await axios.post("http://localhost:3000/api/logoutHandler",{rollNo: user.userRollNo});
         
     }
 return (
@@ -182,6 +186,27 @@ return (
                     </Grid>
                 </CardContent>
 
+                <CardContent className={styles.profileSegment}>
+                    Grievence
+                </CardContent>
+
+                <CardContent>
+                    <h3 style={{
+                        color: "grey",
+                        opacity: "0.8",
+                    }}>Send Your Grievence related to Pylamp!!!</h3>
+                </CardContent>
+                    <form style={{
+                        display:"flex",
+                        flexDirection:"column",
+                        gap:"1rem"
+                    }} >
+                        <textarea type="text" rows="4" cols="50" placeholder='grievence...'/>
+                        <textarea type="text" rows="4" cols="50" placeholder='any suggetion...'/>
+                        <button style={{
+                            width:"max-content"
+                        }} type="submit">Send</button>
+                    </form>
                 <CardContent>
                     <Button onClick={handleLogout}>Logout</Button>
                 </CardContent>

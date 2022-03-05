@@ -62,7 +62,6 @@ export default function DefaultForm() {
 return (
     <div className={styles.defaultForm}>
         <h1 style={{textAlign:"center",color:"rgb(71, 74, 218)",}}>Default form</h1>
-        <button className={styles.setBtn} onClick={() => setOpen(true)}>SET</button>
 
         <div className={styles.formContainer}>
 
@@ -103,7 +102,14 @@ return (
             <ExpandMoreOutlined />
             
             </ExpandMore>
-            <h2>Preview</h2>
+            <CardContent style={{
+              display:"flex",
+              flexDirection:"row",
+              gap:"1rem"
+            }}>
+              <h2>Preview</h2>
+              <button className={styles.setBtn} onClick={() => setOpen(true)}>SET</button>
+            </CardContent>
           </CardActions>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>

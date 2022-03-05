@@ -35,7 +35,7 @@ export default function ProfileLogin() {
         if(emailValidate === false || validUsername === false || rollNoValidate === false || passwordValidate === false){
             cogoToast.error("Enter valid data");
         }else{
-            const apiCall = await axios.post("http://localhost:3000/api/profileHandler",{loginDetails: login})
+            const apiCall = await axios.post("https://pylamp-official.vercel.app/api/profileHandler",{loginDetails: login})
             
             if(apiCall.status == 201){
                 cookie.save("jwt",apiCall.data.jwt)

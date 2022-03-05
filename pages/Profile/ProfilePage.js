@@ -54,10 +54,10 @@ export default function ProfilePage() {
     useEffect(() => {
         (async() => {
             setLoading(true);
-            const jwtApi = await axios.put("http://localhost:3000/api/profileHandler",{jwt: cookie.load("jwt")})
-            const statsApi = await axios.get("http://localhost:3000/api/profileApi");
+            const jwtApi = await axios.put("https://pylamp-official.vercel.app/api/profileHandler",{jwt: cookie.load("jwt")})
+            const statsApi = await axios.get("https://pylamp-official.vercel.app/api/profileApi");
             try {
-                const tableApi = await axios.post("http://localhost:3000/api/profileApi",{rollNo: jwtApi.data.user});
+                const tableApi = await axios.post("https://pylamp-official.vercel.app/api/profileApi",{rollNo: jwtApi.data.user});
                 setUser({...user, userName: tableApi.data.userDetails[0].UserName, userRollNo: tableApi.data.userDetails[0].RollNo});
                 setBar({...barData,Event: statsApi.data, Active: tableApi.data.tableData.length});
 
@@ -81,14 +81,14 @@ export default function ProfilePage() {
                 console.log(error)
             }
         })();
-    },[]);
+    },[barData, circulatBar, user]);
 
     // const grievenceHandler = () => {
     //     var apiCall = axios.
     // }
  
     const handleLogout = async() => {
-        var logoutApi = await axios.post("http://localhost:3000/api/logoutHandler",{rollNo: user.userRollNo});
+        var logoutApi = await axios.post("https://pylamp-official.vercel.app/api/logoutHandler",{rollNo: user.userRollNo});
         
     }
 return (

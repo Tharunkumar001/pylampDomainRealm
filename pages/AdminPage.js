@@ -12,9 +12,11 @@ import ScrollAnimation from 'react-animate-on-scroll';
 import Aos from "aos";
 import cookie from 'react-cookies'
 import DynamicCard from './autoMate/DynamicCard';
+import NewForm from './FormContainer/NewForm';
 
 export default function AdminPage() {
     const router = useRouter();
+
     const [sessionTopic,setTopic] = useState({pylampSession:"pylampSession Attendance", solveMe:"Solve Me Attendance", 
     hackerRank:"Hackerrank Attendance", signatureEvent:"signatureEvent Attendance"});
     

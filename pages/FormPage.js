@@ -9,6 +9,9 @@ import Instagram from "@material-ui/icons/Instagram";
 import Navbar from "../pages/Navbar";
 import cogoToast from 'cogo-toast';
 import { useRouter } from 'next/dist/client/router';
+import UnLock from "@material-ui/icons/LockOpen"
+import Lock from "@material-ui/icons/Lock"
+import cookie from 'react-cookies'
 
 const FormPage = (props) => {
     const router = useRouter();
@@ -24,8 +27,6 @@ const FormPage = (props) => {
     const [data, setData] = useState({ name: "", rollNo: "", class: "NA", eventName:eventDetails.header, 
         eventId: "", formType: "Default", eventDate: today });
     const [open, setOpen] = useState(false);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState();
 
     useEffect(() => {
         (async () => {
@@ -61,7 +62,6 @@ const FormPage = (props) => {
     if (!validateRollNo && !validateclass) {
         axios.post("https://pylamp-official.vercel.app/api/formHandler", data).then((res) => {
         //https://pylamp-official.vercel.app/  
-        console.log(res)
         setLoading(true);
         if (res.data == false) {
             setLoading(false);
@@ -88,7 +88,8 @@ const FormPage = (props) => {
     const handleOpen = () => {
         setOpen(true);
     }
-return (
+
+    return (
     <div className={styles.formPage}>
         <div style={{backgroundColor:"#010003"}}>
             <Navbar />
@@ -116,6 +117,8 @@ return (
                 <select className={styles.input}
                     onChange={e => setData({ ...data, class: e.target.value })} required>
                     <option value="NA">CLASS</option>
+                    <option value="CSE3A">CSE2A</option>
+                    <option value="CSE3B">CSE2B</option>
                     <option value="CSE3A">CSE3A</option>
                     <option value="CSE3B">CSE3B</option>
                     <option value="CSE5A">CSE5A</option>

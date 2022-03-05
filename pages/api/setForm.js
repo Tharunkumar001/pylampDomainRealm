@@ -2,13 +2,14 @@
 
 import Default from "../../models/form";
 import connectDB from "../../middleware/mongodb";
+import { ContactSupportOutlined } from "@material-ui/icons";
 
 const formHandler = async(req, res)=> {
     if(req.method === "POST"){
         const defaultForm = new Default({
-            eventName: req.body.eventDetails.header,
-            period: req.body.eventDetails.period,
-            about: req.body.eventDetails.about,
+            eventName: req.body.eventDetails.header.value,
+            period: req.body.eventDetails.period.value,
+            about: req.body.eventDetails.about.value,
             exactDate: new Date().toString(),
             formType: "Default"
         });

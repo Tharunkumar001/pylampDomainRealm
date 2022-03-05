@@ -57,7 +57,7 @@ export default function Attendance(props) {
                 setData(sortedArray)
             }
     });
-    },[]);
+    },[eventDetails]);
 
     const handleClose = () => {
         setOpen(false);

@@ -6,11 +6,11 @@ import styles from '../../styles/Home.module.css';
 
 
 export default function DynamicCard(props) {
-  const [expanded, setExpanded] = React.useState(false);
+    const [expanded, setExpanded] = React.useState(false);
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+    const handleExpandClick = () => {
+        setExpanded(!expanded);
+    };
 
     return (
         <Card sx={{ maxWidth: 200 }}  className={styles.adminCard}>
@@ -34,8 +34,8 @@ export default function DynamicCard(props) {
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                    <TouchApp />
+                <IconButton aria-label="add to favorites" >
+                    <TouchApp onClick={() => alert("clicked")}/>
                 </IconButton>
             </CardActions>
         </Card>

@@ -9,11 +9,13 @@ import axios from 'axios';
 import cookie from 'react-cookies'
 import ProfileIcon from "@material-ui/icons/Person";
 
-export default function Layout({children}){
+export default function Navbar({children}){
 
     const [isOpen,setIsOpen] = useState(false);
     const openMenu= ()=> setIsOpen(!isOpen);
     const router = useRouter();
+
+    
     const routeAdmin = async() =>
     {
         const promtValue = await prompt("Pylamp Password",null);

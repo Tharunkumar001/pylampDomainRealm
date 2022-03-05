@@ -39,7 +39,7 @@ const profileHandler = async(req, res)=> {
             })
         })
     }else if(req.method == "GET"){
-        console.log(req)
+        
     }
 }
 

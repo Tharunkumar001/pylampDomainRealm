@@ -28,6 +28,14 @@
   margin-left: auto;
 }
 
+.PreviewCard{
+  width: 100%;
+  margin: 1rem;
+  height: fit-content;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .logicCard{
   margin: 1rem;
   border: 0.5rem solid white;
@@ -427,6 +435,7 @@
   font-weight: bold;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-style: italic;
+
 }
 
 /*HomePage CSS*/
@@ -605,7 +614,7 @@
 }
 
 
-  .header, .defaultBtn, .form {
+  .defaultBtn, .form {
   background-image: linear-gradient(to right, #1F1C2C 0%, #928DAB  51%, #1F1C2C  100%);
 
 }
@@ -618,7 +627,7 @@
     text-transform: uppercase;
     transition: 0.5s;
     background-size: 200% auto;
-    color: white;  
+    color: rgb(15, 13, 13);  
     box-shadow: 0 0 20px #eee;
     border-radius: 10px;
     display: flex;
@@ -637,7 +646,7 @@
     width: max-content;
   }
 
-  .header:hover, .defaultBtn:hover, .form:hover {
+  .defaultBtn:hover, .form:hover {
     background-position: right center; /* change the direction of the change here */
     color: #fff;
     text-decoration: none;
@@ -663,11 +672,11 @@
 
   .rowBtn{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 0.5rem;
     justify-content: center;
     align-items: flex-end;
-    padding-top: 5rem;
+    padding-top: 1rem;
   }
 
   @media (max-width: 600px) {
@@ -709,7 +718,6 @@
 .contentPart1{
   width:100%;
   height: 30rem;
-
   background-color: antiquewhite;
 }
 
@@ -808,4 +816,14 @@
   left: 50%;
   margin: 0;
   position: absolute;
+}
+
+/* New Form */
+
+.newFormBtnRow{
+  border: 0.4rem line grey;
+  border-radius: 0.5rem;
+  background: none;
+  font-size: large;
+  padding: 0.3rem 1rem;
 }

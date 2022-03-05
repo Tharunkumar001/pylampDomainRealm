@@ -126,7 +126,6 @@ return (
                 }}>
                     <div className={styles.quoteGrid}>
                         <h1>
-                            
                             You Dont GiveUp❔<br />
                             Still Have Chance➡️<br />
                             <span style={{color:"#566dee"}}>To Win...😎</span>
@@ -183,7 +182,7 @@ return (
                             position="CLUB ADVISER" 
                             positonDetails={Adviser}
                             avatar="A"
-                            candidate="K.VIJAYA, Priyavarshini" 
+                            candidate="K.VIJAYA, PRIYAVARSHINI" 
                             role="Faculty of VCET"
                         /><br />
 
@@ -191,7 +190,7 @@ return (
                             position="SENIOR-PYMENTOR" 
                             positonDetails={SeniorMentor}
                             avatar="SM"
-                            candidate="RubanKumar & HariHaran & Sabarinath & Sathyasri III & IV -yr" 
+                            candidate="RUBANKUMAR & HARIHARAN & SABARINATHAN & SATHYASRI III & IV -yr" 
                         /><br />                   
                 </Grid>
                 <Grid xs={12} md={4} sm={4}>
@@ -207,7 +206,7 @@ return (
                             position="TECH WIZARD" 
                             positonDetails={TechWizard}
                             avatar="T"
-                            candidate="Tharunkumar & Udaya" 
+                            candidate="THARUNKUMAR & UDAYA" 
                             role="III-yr"
                         /><br />
                 
@@ -225,7 +224,7 @@ return (
                             position="PY-MESSENGER" 
                             positonDetails={PyMessenger}
                             avatar="PM"
-                            candidate="Sanjay" 
+                            candidate="SANJAY" 
                             role="II-yr"
                     /><br />
                 </Grid>
@@ -234,7 +233,7 @@ return (
                             position="JUNIOR-PYMENTOR" 
                             positonDetails={JuniorMentor}
                             avatar="JP"
-                            candidate="Gokul & Sharmatha & Sowbarnika & Harinisha & Tamilanjali"
+                            candidate="GOKUL & SHARMATHA & SOWBARNIKA & HARINISHA & TAMILANJALI"
                             role="II-yr" 
                         /><br />        
                 </Grid>

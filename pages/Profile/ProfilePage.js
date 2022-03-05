@@ -2,13 +2,14 @@ import Head from 'next/head';
 import styles from '../../styles/Home.module.css';
 import { useRouter } from 'next/dist/client/router';
 import { Avatar,  Button, Card, CardContent, CardHeader,  Grid, Typography,  } from '@material-ui/core';
-import { ArrowForwardIos } from '@material-ui/icons';
+import { ArrowForwardIos, CopyrightOutlined } from '@material-ui/icons';
 import { DataGrid } from '@material-ui/data-grid';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import cookie from 'react-cookies'
 import { BarChart, Bar,Tooltip, Legend,} from 'recharts';
 import { CircularProgressbar } from 'react-circular-progressbar';
+import { CircularProgress } from '@material-ui/core';
 import 'react-circular-progressbar/dist/styles.css';
 
 
@@ -40,6 +41,7 @@ export default function ProfilePage() {
     const [user, setUser] = useState({userName: "", userRollNo: ""});
     const [barData, setBar] = useState({Event:"", Active:""});
     const [circulatBar, setData] = useState({percent:"0"});
+    const [loading, setLoading] = useState(false);
     const router = useRouter();
 
     const data = [
@@ -51,6 +53,7 @@ export default function ProfilePage() {
 
     useEffect(() => {
         (async() => {
+            setLoading(true);
             const jwtApi = await axios.put("https://pylamp-official.vercel.app/api/profileHandler",{jwt: cookie.load("jwt")})
             const statsApi = await axios.get("https://pylamp-official.vercel.app/api/profileApi");
             try {
@@ -73,13 +76,17 @@ export default function ProfilePage() {
                     });
                     setRow(expRows.reverse());
                 }
-
-
+                setLoading(false);
             } catch (error) {
                 console.log(error)
             }
         })();
-    },[circulatBar])
+    },[]);
+
+    const handleLogout = async() => {
+        var logoutApi = await axios.post("https://pylamp-official.vercel.app/api/logoutHandler",{rollNo: user.userRollNo});
+        
+    }
 return (
     <div>
         <Head>
@@ -89,6 +96,9 @@ return (
         </Head>
         <div>
             <h2 style={{color:"grey", opacity:"0.8", textAlign:"center"}}>Pylamp Profile</h2>
+            <div style={{display:"flex",justifyContent:"center"}}>
+                {(loading)? <CircularProgress />: null}
+            </div>
         </div>
         <div className={styles.profileDiv}>
             <Card className={styles.profileCard}>
@@ -170,6 +180,10 @@ return (
                         </h5>
                         </Grid> 
                     </Grid>
+                </CardContent>
+
+                <CardContent>
+                    <Button onClick={handleLogout}>Logout</Button>
                 </CardContent>
             </Card><br />
         </div>

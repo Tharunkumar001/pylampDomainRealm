@@ -48,7 +48,12 @@ const columns = [
     width: 200,
     editable: true,
   },
-
+  {
+    field: 'count',
+    headerName: 'Count',
+    width: 200,
+    editable: true,
+  },
 ];
 
 
@@ -59,6 +64,7 @@ const EventPage = () => {
     const [dialog, setDialog] = useState({EventName:"", ExactDate:"", 
     EventDate:"", About:"", EventId:"", EventType:""});
     const [loading, setLoading] = useState(true);
+    const [participation, setCount] = useState(0);
 
     useEffect(() => {
         (async () => {
@@ -69,9 +75,14 @@ const EventPage = () => {
           var data = api.data;
 
           data.map((value,index) => {
+            var countData;
+            axios.put("https://pylamp-official.vercel.app/api/attendanceHandler",{eventId: value._id}).then((res) => {
+              //https://pylamp-domain-realm.vercel.app
+              countData = res.data.length;
+            });
             expRows.push(
               { id: value._id, eventName: value.eventName, exactDate: value.exactDate, 
-                period: value.period, about: value.about, formType: value.formType,},
+                period: value.period, about: value.about, formType: value.formType, count: countData || 0},
             )           
           })
           setRow(expRows.reverse());
@@ -115,7 +126,8 @@ const EventPage = () => {
           onRowClick={(row) => {
             handleOpen();
             setDialog({...dialog, EventName: row.row.eventName, ExactDate: row.row.exactDate, 
-              EventDate: row.row.period, About: row.row.about, EventType: row.row.formType, EventId: row.row.id});
+              EventDate: row.row.period, About: row.row.about, EventType: row.row.formType, 
+              EventId: row.row.id,});
           }}
         />
       </div><br />

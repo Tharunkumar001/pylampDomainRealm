@@ -75,7 +75,7 @@ return (
               </Grid>
 
           <Grid item xs={12} sm={4} md={4} className={styles.cardGrid}>
-            <EditText type="text" defaultValue={eventDetails.period} 
+            <EditText type="date" defaultValue={eventDetails.period} 
             onSave={(e) => setValue({...eventDetails, period: e})} style={{
               width: "max-content",
               borderRadius:"1rem"

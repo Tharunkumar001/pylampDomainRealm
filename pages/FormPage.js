@@ -62,9 +62,9 @@ const FormPage = (props) => {
     if (!validateRollNo && !validateclass) {
         axios.post("https://pylamp-official.vercel.app/api/formHandler", data).then((res) => {
         //https://pylamp-official.vercel.app/  
-        setLoading(true);
+        // setLoading(true);
         if (res.data == false) {
-            setLoading(false);
+            // setLoading(false);
             cogoToast.info("already you marked your attendance", { position: 'bottom-center' });
 
             setTimeout(() => {

@@ -45,8 +45,8 @@ export default function Attendance(props) {
     var bool = false;
 
     useEffect(() => {
-        axios.put("https://pylamp-domain-realm.vercel.app/api/attendanceHandler",{eventId: localStorage.getItem("eventId")}).then((res) => {
-            //https://pylamp-domain-realm.vercel.app
+        axios.put("https://pylamp-official.vercel.app/api/attendanceHandler",{eventId: localStorage.getItem("eventId")}).then((res) => {
+            //https://pylamp-official.vercel.app
             if(res.data === false){
                 cogoToast.info("Empty Responses!!")
             }else{

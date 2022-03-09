@@ -71,7 +71,7 @@ export default function ProfilePage() {
                 if(tableApi.status == 200){
                     data.map((value,index) => {
                         expRows.push(
-                            { id: value._id, eventName: value.eventName, participation: "✅"},
+                            { id: value._id, eventName: value.eventName, period: value.eventDate, participation: "✅"},
                         )           
                     });
                     setRow(expRows.reverse());

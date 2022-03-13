@@ -72,11 +72,10 @@ return (
     <div>
             <main className={styles.main}>
         <h1 className={styles.title}>
-            Welcome to Pylamp!
+            {eventDetails.eventName}
         </h1>
         
         <div style={{display:"flex", justifyContent:"center", alignItems:"center", flexDirection:"row", gap:"0.2rem"}}>
-            <h4>{eventDetails.eventName}</h4><hr />
             <h4>{eventDetails.eventId}</h4>
         </div>
 

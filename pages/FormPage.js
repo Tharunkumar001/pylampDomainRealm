@@ -12,6 +12,7 @@ import { useRouter } from 'next/dist/client/router';
 import UnLock from "@material-ui/icons/LockOpen"
 import Lock from "@material-ui/icons/Lock"
 import cookie from 'react-cookies'
+import { CircularProgress } from '@material-ui/core';
 
 const FormPage = (props) => {
     const router = useRouter();
@@ -27,13 +28,14 @@ const FormPage = (props) => {
     const [data, setData] = useState({ name: "", rollNo: "", class: "NA", eventName:eventDetails.header, 
         eventId: "", formType: "Default", eventDate: today });
     const [open, setOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         (async () => {
             const formId  = await prompt("Enter Event Id", localStorage.getItem("currentFormId"));
             
             try {
-                const api = await axios.put("https://pylamp-official.vercel.app/api/setForm",{formId:formId});
+                const api = await axios.put("https://pylamp-official.vercel.app/api/setForm",{formId: formId});
                 //https://pylamp-official.vercel.app/
                 if(api.status === 200){
                     setValue({...eventDetails, header: api.data[0].eventName, 
@@ -62,17 +64,17 @@ const FormPage = (props) => {
     if (!validateRollNo && !validateclass) {
         axios.post("https://pylamp-official.vercel.app/api/formHandler", data).then((res) => {
         //https://pylamp-official.vercel.app/  
-        // setLoading(true);
+        setLoading(true);
         if (res.data == false) {
-            // setLoading(false);
-            cogoToast.info("already you marked your attendance", { position: 'bottom-center' });
+            cogoToast.info("Your Presence Marked", { position: 'bottom-center' });
 
             setTimeout(() => {
+                setLoading(false)
                 handleOpen();
             }, 3000);
 
         } else {
-            setLoading(false);
+            setLoading(false)
             handleOpen();
         }
     })
@@ -83,6 +85,7 @@ const FormPage = (props) => {
 
     const handleClose = () => {
         setOpen(false);
+        router.push("/")
     }
     
     const handleOpen = () => {
@@ -131,6 +134,9 @@ const FormPage = (props) => {
         </label>
         </div><br />
         
+        {(loading)? <div className={styles.load}>
+            <CircularProgress />
+        </div> : null }
         <Dialog
         open={open}
         onClose={handleClose}
@@ -142,7 +148,7 @@ const FormPage = (props) => {
         </DialogTitle>
         <DialogContent>
         <DialogContentText id="alert-dialog-description">
-            Successfully your attendance marked..
+            Your Attendance Marked Successfully..
         </DialogContentText>
         </DialogContent>
         <DialogActions>

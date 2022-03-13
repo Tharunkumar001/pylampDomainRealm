@@ -60,7 +60,7 @@ export default function ProfilePage() {
                 const tableApi = await axios.post("https://pylamp-official.vercel.app/api/profileApi",{rollNo: jwtApi.data.user});
                 setUser({...user, userName: tableApi.data.userDetails[0].UserName, userRollNo: tableApi.data.userDetails[0].RollNo});
                 setBar({...barData,Event: statsApi.data, Active: tableApi.data.tableData.length});
-
+                
                 var expRows = [];
                 let data = tableApi.data.tableData;
                 
@@ -83,14 +83,11 @@ export default function ProfilePage() {
         })();
     },[barData, circulatBar, user]);
 
-    // const grievenceHandler = () => {
-    //     var apiCall = axios.
-    // }
- 
     const handleLogout = async() => {
         var logoutApi = await axios.post("https://pylamp-official.vercel.app/api/logoutHandler",{rollNo: user.userRollNo});
         
     }
+
 return (
     <div>
         <Head>

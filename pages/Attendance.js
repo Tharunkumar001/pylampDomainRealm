@@ -13,7 +13,7 @@ import {DataGrid} from "@material-ui/data-grid";
 
 const delFunction = async(x) => {
     var rollNo = x;
-    const apiCall = await axios.put("http://localhost:3000/api/formHandler",{roll:rollNo});
+    const apiCall = await axios.put("https://pylamp-official.vercel.app/api/formHandler",{roll:rollNo});
 }
 
 const column = [
@@ -43,7 +43,7 @@ export default function Attendance(props) {
     useEffect(() => {
         (async() => {
             const eventId = localStorage.getItem("eventId")
-            const api = await axios.put("http://localhost:3000/api/attendanceHandler",{eventId: eventId});
+            const api = await axios.put("https://pylamp-official.vercel.app/api/attendanceHandler",{eventId: eventId});
             
             var data = api.data;
             var RowData = [];

@@ -52,6 +52,7 @@ export default function Navbar({children}){
                             fontFamily:"monospace"
                         }}>Attendance</Button>
                     </li>
+                    
                     <li className={styles.navitem}>
                         <Button onClick = {() => router.push("/Profile")} style={{
                             color:"white",

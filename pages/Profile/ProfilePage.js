@@ -11,8 +11,7 @@ import { BarChart, Bar,Tooltip, Legend,} from 'recharts';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import { CircularProgress } from '@material-ui/core';
 import 'react-circular-progressbar/dist/styles.css';
-
-
+import cogoToast from 'cogo-toast';
 
 const columns = [
     {
@@ -28,6 +27,7 @@ const columns = [
         width: 200,
         editable: true,
     },
+
     {
         field: 'participation',
         headerName: 'Participation',
@@ -43,6 +43,7 @@ export default function ProfilePage() {
     const [circulatBar, setData] = useState({percent:"0"});
     const [loading, setLoading] = useState(false);
     const router = useRouter();
+    const [grievence, setGrievence] = useState({grievence: "", suggetion: "",});
 
     const data = [
         {
@@ -63,10 +64,11 @@ export default function ProfilePage() {
                 
                 var expRows = [];
                 let data = tableApi.data.tableData;
-                
-                var divide = (barData.Event) / (barData.Active);
+
+                var divide = (barData.Active) / (barData.Event);
                 const Avg = Math.floor(100/divide);
                 setData({...circulatBar, percent: Avg});
+                console.log(barData.Event,barData.Active,Avg)
 
                 if(tableApi.status == 200){
                     data.map((value,index) => {
@@ -81,11 +83,22 @@ export default function ProfilePage() {
                 console.log(error)
             }
         })();
-    },[barData, circulatBar, user]);
+    },[]);
 
     const handleLogout = async() => {
         var logoutApi = await axios.post("https://pylamp-official.vercel.app/api/logoutHandler",{rollNo: user.userRollNo});
+        cookie.remove("jwt");
+        window.location.reload();
+    }
+
+    const handleGrievence = async() => {
+        var grievenceApi = await axios.put("https://pylamp-official.vercel.app/api/grievenceHandler",{data: grievence});
         
+        if(grievence.status == 200) {
+            cogoToast.success("Your Grievence Submit Successfully");
+        }else{
+            cogoToast.error("SomeThing Went Wrong");
+        }
     }
 
 return (
@@ -155,8 +168,8 @@ return (
                                     >
                                     <Tooltip />
                                     <Legend />
-                                    <Bar dataKey="Active" fill="#3581EB" />
-                                    <Bar dataKey="Event" fill="#6c757a" />
+                                    <Bar dataKey="Event" fill="#3581EB" />
+                                    <Bar dataKey="Active" fill="#6c757a" />
                                 </BarChart>
                         </Grid><br /><br />
 
@@ -198,11 +211,13 @@ return (
                         flexDirection:"column",
                         gap:"1rem"
                     }} >
-                        <textarea type="text" rows="4" cols="50" placeholder='grievence...'/>
-                        <textarea type="text" rows="4" cols="50" placeholder='any suggetion...'/>
+                        <textarea type="text" rows="4" cols="50" placeholder='grievence...' 
+                        onChange={(e) => setGrievence({...grievence, grievence: e.target.value})}/>
+                        <textarea type="text" rows="4" cols="50" placeholder='any suggetion...'
+                        onChange={(e) => setGrievence({...grievence, suggetion: e.target.value})}/>
                         <button style={{
                             width:"max-content"
-                        }} type="submit">Send</button>
+                        }} onClick={handleGrievence}>Send</button>
                     </form>
                 <CardContent>
                     <Button onClick={handleLogout}>Logout</Button>

@@ -48,12 +48,7 @@ const columns = [
     width: 200,
     editable: true,
   },
-  {
-    field: 'count',
-    headerName: 'Count',
-    width: 200,
-    editable: true,
-  },
+
 ];
 
 
@@ -69,20 +64,20 @@ const EventPage = () => {
     useEffect(() => {
         (async () => {
 
-          var api = await axios.get("https://pylamp-official.vercel.app/api/setForm");
+          var api = await axios.get("http://localhost:3000/api/setForm");
           var expRows = [];
           setLoading(false)
           var data = api.data;
 
           data.map((value,index) => {
             var countData;
-            axios.put("https://pylamp-official.vercel.app/api/attendanceHandler",{eventId: value._id}).then((res) => {
+            axios.put("http://localhost:3000/api/attendanceHandler",{eventId: value._id}).then((res) => {
               //https://pylamp-domain-realm.vercel.app
               countData = res.data.length;
             });
             expRows.push(
               { id: value._id, eventName: value.eventName, exactDate: value.exactDate, 
-                period: value.period, about: value.about, formType: value.formType, count: countData || 0},
+                period: value.period, about: value.about, formType: value.formType,},
             )           
           })
           setRow(expRows.reverse());

@@ -88,7 +88,7 @@ export default function ProfilePage() {
     const handleLogout = async() => {
         var logoutApi = await axios.post("https://pylamp-official.vercel.app/api/logoutHandler",{rollNo: user.userRollNo});
         cookie.remove("jwt");
-        window.location.reload();
+        window.location.reload()
     }
 
     const handleGrievence = async() => {
@@ -209,7 +209,8 @@ return (
                     <form style={{
                         display:"flex",
                         flexDirection:"column",
-                        gap:"1rem"
+                        gap:"1rem",
+                        width: "80%"
                     }} >
                         <textarea type="text" rows="4" cols="50" placeholder='grievence...' 
                         onChange={(e) => setGrievence({...grievence, grievence: e.target.value})}/>

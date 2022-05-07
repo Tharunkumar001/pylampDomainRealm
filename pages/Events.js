@@ -64,14 +64,14 @@ const EventPage = () => {
     useEffect(() => {
         (async () => {
 
-          var api = await axios.get("http://localhost:3000/api/setForm");
+          var api = await axios.get("https://pylamp-official.vercel.app/api/setForm");
           var expRows = [];
           setLoading(false)
           var data = api.data;
 
           data.map((value,index) => {
             var countData;
-            axios.put("http://localhost:3000/api/attendanceHandler",{eventId: value._id}).then((res) => {
+            axios.put("https://pylamp-official.vercel.app/api/attendanceHandler",{eventId: value._id}).then((res) => {
               //https://pylamp-domain-realm.vercel.app
               countData = res.data.length;
             });

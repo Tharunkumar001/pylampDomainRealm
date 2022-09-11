@@ -9,12 +9,78 @@ import ListIcon from "@material-ui/icons/ListAltOutlined";
 import DeleteIcon from "@material-ui/icons/Delete";
 import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core';
 import cogoToast from 'cogo-toast';
+import { DataGrid, GridToolbarContainer, GridToolbarExport  } from '@material-ui/data-grid';
+
+function CustomToolbar() {
+    return (
+    <GridToolbarContainer>
+        <GridToolbarExport />
+    </GridToolbarContainer>
+    );
+}
 
 const delFunction = async(x) => {
     var rollNo = x;
     const apiCall = await axios.put("https://pylamp-official.vercel.app/api/formHandler",{roll:rollNo});
 }
 
+const GridTable = (props) => {
+    const data = props.details;
+    var expRows = [];
+
+    data.map((value,index) => {
+        expRows.push({
+            id: index+1, name: value.name, class: value.class, rollno: value.rollNo
+        });
+    });
+
+
+    const columns = [
+
+    {
+        field: 'id',
+        headerName: 'S.No',
+        width: 200,
+        editable: true,
+    },
+    {
+        field: 'name',
+        headerName: 'Name',
+        width: 130,
+        editable: true,
+    },
+    {
+        field: 'class',
+        headerName: 'Class',
+        width: 200,
+        editable: true,
+    },
+    {
+        field: 'rollno',
+        headerName: 'Roll No',
+        width: 200,
+        editable: true,
+    }
+]
+
+    return(
+        <div  className={styles.dataGrid}>
+        <DataGrid
+            components={{
+                Toolbar: CustomToolbar,
+            }}
+            rows={expRows}
+            columns={columns}
+            pageSize={5}
+            rowsPerPageOptions={[5]}
+            disableSelectionOnClick
+            autoHeight={true}
+            autoPageSize={true}
+            checkboxSelection={false}
+        />
+        </div>
+    )
+}
 
 const TableData = (props) => {
     return(
@@ -80,7 +146,7 @@ return (
         </div>
 
         <h4 className={styles.countBar}>{count}</h4>
-        <div>
+        <div style={{display:"flex", gap:"1rem"}}>
             <Button variant="contained" startIcon={<BoxIcon />} onClick={() => setView("grid")}>
                 GridView
             </Button>
@@ -97,11 +163,10 @@ return (
                                 <h6>{ele.rollNo}</h6>
                             </Grid>                       
                     ))}
-            </Grid> : <Grid container rowSpacing={1} spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-                    {data.map((ele,ind) => (
-                        <TableData key={ind} serialNo={ind+1} name={ele.name} section={ele.class} roll={ele.rollNo}/>
-                    ))}
-            </Grid> }
+            </Grid> : 
+                    <div style={{width:"100%"}}>
+                            <GridTable details={data} />
+                    </div> }
 
             <Dialog
                 open={open}

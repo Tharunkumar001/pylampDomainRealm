@@ -1,19 +1,15 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import { useEffect,} from 'react';
 import YouTube from "@material-ui/icons/YouTube";
 import LinkedIn from "@material-ui/icons/LinkedIn";
 import Instagram from "@material-ui/icons/Instagram";
 import { Button, Card, Grid, Hidden,} from '@material-ui/core';
-import { AppBar } from '@material-ui/core';
-import { Toolbar } from '@material-ui/core';
 import Navbar from "../pages/Navbar";
 import ScrollAnimation from 'react-animate-on-scroll';
 import Aos from "aos";
 import "aos/dist/aos.css";
 import HomeCard from "../pages/autoMate/HomeCard";
-import Gif from "../public/boyGif.jpg";
 export default function HomePage(props) {
 
     useEffect(() => {
@@ -190,7 +186,7 @@ return (
                             position="SENIOR-PYMENTOR" 
                             positonDetails={SeniorMentor}
                             avatar="SM"
-                            candidate="RUBANKUMAR & HARIHARAN & SABARINATHAN & SATHYASRI III & IV -yr" 
+                            candidate="SABARINATHAN & SATHYASRI III & IV -yr" 
                         /><br />                   
                 </Grid>
                 <Grid xs={12} md={4} sm={4}>
@@ -198,7 +194,7 @@ return (
                             position="GRAND MASTER" 
                             positonDetails={Grandmaster}
                             avatar="GM"
-                            candidate="V.P.JANANI"
+                            candidate="P.NITHESHPRAWIN"
                             role="IV-yr"
                         /><br />        
             
@@ -207,7 +203,7 @@ return (
                             positonDetails={TechWizard}
                             avatar="T"
                             candidate="THARUNKUMAR & UDAYA" 
-                            role="III-yr"
+                            role="IV-yr"
                         /><br />
                 
                 </Grid>
@@ -216,7 +212,7 @@ return (
                             position="TECH CHAMP" 
                             positonDetails={TechChamp}
                             avatar="TC"
-                            candidate="P.NITHESHPRAWIN" 
+                            candidate="SANJAY" 
                             role="III-yr"
                         /> <br />  
             
@@ -224,8 +220,8 @@ return (
                             position="PY-MESSENGER" 
                             positonDetails={PyMessenger}
                             avatar="PM"
-                            candidate="SANJAY" 
-                            role="II-yr"
+                            candidate="GOKUL" 
+                            role="III-yr"
                     /><br />
                 </Grid>
                 <Grid xs={12} md={12} sm={12}>
@@ -233,8 +229,8 @@ return (
                             position="JUNIOR-PYMENTOR" 
                             positonDetails={JuniorMentor}
                             avatar="JP"
-                            candidate="GOKUL & SHARMATHA & SOWBARNIKA & HARINISHA & TAMILANJALI"
-                            role="II-yr" 
+                            candidate="SHARMATHA & SOWBARNIKA & HARINISHA & TAMILANJALI"
+                            role="III-yr" 
                         /><br />        
                 </Grid>
             </Grid>

@@ -150,11 +150,11 @@ return (
                     />
                 </CardContent>
 
-                <CardContent className={styles.profileSegment}>
+                {/* <CardContent className={styles.profileSegment}>
                     Stats
-                </CardContent>
+                </CardContent> */}
 
-                <CardContent style={{width:"100%"}}>
+                {/* <CardContent style={{width:"100%"}}>
                 <Grid container spacing={2}>
                         <Grid xs={12} md={6} sm={6} style={{
                             display:"flex",
@@ -194,7 +194,7 @@ return (
                         </h5>
                         </Grid> 
                     </Grid>
-                </CardContent>
+                </CardContent> */}
 
                 <CardContent className={styles.profileSegment}>
                     Grievence
